@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 
   <title>Opera viva | Fotografia di mare, navi ed equipaggi</title>
-  <link rel="icon" href="favicon.jpg">
+  <link rel="icon" href="favicon.jpg" type="image/jpeg">
+  <link rel="shortcut icon" href="favicon.jpg" type="image/jpeg">
   <meta name="description" content="Opera viva è un progetto fotografico su navi, equipaggi, porti e marinai. Tecniche antiche come il collodio umido e sguardi infrarossi per raccontare una nuova epopea di mare.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="color-scheme" content="dark light">
@@ -14,7 +15,6 @@
 
   <link rel="canonical" href="https://operaviva.it/">
 
-  <link rel="icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <meta property="og:locale" content="it_IT">
@@ -1000,7 +1000,6 @@
     <div class="viewShell" data-view-shell aria-live="polite">
       <div data-view="home" data-home-view>
         <section class="hero" aria-label="Intro" data-hero>
-          <!-- PATCH: autoplay enabled -->
           <div class="heroVideo" data-hero-video data-video-url="https://www.youtube.com/watch?v=nSSJRcRtqpo" data-video-start="8" data-video-autoplay="1" aria-hidden="true">
             <div class="heroVideo__ph"></div>
             <img class="heroVideo__thumb" alt="" data-thumb>
@@ -1041,7 +1040,6 @@
           </div>
         </section>
 
-        <!-- PATCH: text replaced + hscroll autoplay -->
         <section id="epopea" class="section" aria-label="Una nuova epopea">
           <div class="wrap split">
             <div class="reveal">
@@ -1227,7 +1225,6 @@
           </div>
         </section>
 
-        <!-- PATCH: system messages removed (events still loads from events.md, but not mentioned to user) -->
         <section id="eventi" class="section" aria-label="Eventi">
           <div class="wrap">
             <div class="reveal">
@@ -1255,7 +1252,6 @@
           </div>
         </section>
 
-        <!-- PATCH: removed "Diario di bordo" and replaced with grid gallery -->
         <section id="galleria" class="section" aria-label="Galleria">
           <div class="wrap">
             <div class="reveal">
@@ -1589,17 +1585,22 @@
 
       let lightbox = null;
 
-      const GITHUB_REPO = "emanuele-passarelli";
       const isGithubHost = window.location.hostname.toLowerCase().endsWith(".github.io");
-      const BASE_PATH = isGithubHost ? ("/" + GITHUB_REPO) : "";
+      const inferGithubBase = () => {
+        if(!isGithubHost) return "";
+        const parts = (window.location.pathname || "/").split("/").filter(Boolean);
+        return parts.length ? ("/" + parts[0]) : "";
+      };
+      const BASE_PATH = inferGithubBase();
 
       const resolveAssetUrl = (u) => {
         const s = (u || '').trim();
         if(!s) return s;
         if(/^([a-z]+:)?\/\//i.test(s) || s.startsWith('data:') || s.startsWith('blob:')) return s;
         const clean = s.replace(/^\.\//, '');
+
         if(clean.startsWith('img/') || clean.startsWith('videos/') || clean.startsWith('assets/') || clean.startsWith('fonts/')){
-          return (BASE_PATH || '') + '/' + clean;
+          return BASE_PATH ? (BASE_PATH + '/' + clean) : clean;
         }
         return s;
       };
@@ -1978,7 +1979,6 @@
         }
       };
 
-      /* PATCH: hScroll supports multiple instances + autoplay option */
       const initHScroll = () => {
         const boxes = Array.from(document.querySelectorAll('[data-hscroll]'));
         if(!boxes.length) return () => {};
@@ -2421,7 +2421,6 @@
   </script>
 
   <script>
-    // Mobile: disable pinch & double-tap zoom site-wide
     (function(){
       const prevent = (e) => { e.preventDefault(); };
       document.addEventListener('gesturestart', prevent, { passive: false });
