@@ -59,6 +59,7 @@
 
     /* Techniques page must scroll normally */
     [data-view="techniques"]{ height:auto; overflow: visible; }
+      [data-view="whatwedo"]{ height:auto; overflow: visible; }
 
     .techSection{ border-top: 1px solid color-mix(in oklab, var(--border) 75%, transparent); padding-top: var(--s-5); }
     .techSection__grid{ display:grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); align-items: start; }
@@ -1225,6 +1226,86 @@
           </div>
         </section>
 
+<section class="section techTeaser" aria-label="Cosa facciamo">
+  <div class="wrap">
+    <div class="section__inner techTeaser__inner">
+      <div class="techTeaser__copy">
+        <p class="kicker">
+          <span lang="it">Cosa facciamo</span>
+          <span lang="en">What we do</span>
+        </p>
+        <h2 class="h2">
+          <span lang="it">Dalla nave all’opera</span>
+          <span lang="en">From ship to artwork</span>
+        </h2>
+        <p class="lead">
+          <span lang="it">
+            Realizziamo opere singole o serie complete, anche su misura per una parete o per un luogo. Possiamo imbarcarci per un viaggio e costruire un racconto su più giorni, fino a un fotolibro fine art.
+          </span>
+          <span lang="en">
+            We create single works or full series, including custom pieces designed for a wall or a space. We can also embark for a multi-day journey and build a story, up to a fine art photobook.
+          </span>
+        </p>
+        <div class="btnRow">
+          <a class="btn" href="./cosa-facciamo" data-route="/cosa-facciamo">
+            <span lang="it">Scopri di più</span>
+            <span lang="en">Learn more</span>
+          </a>
+          <a class="btn btn--ghost" href="./tecniche" data-route="/tecniche">
+            <span lang="it">Guarda le tecniche</span>
+            <span lang="en">See techniques</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="techTeaser__pills" aria-label="Panoramica servizi">
+        <div class="pillCard">
+          <div class="pillCard__icon"><i class="fa-solid fa-ruler-combined"></i></div>
+          <div class="pillCard__body">
+            <p class="pillCard__title">
+              <span lang="it">Opere su misura</span>
+              <span lang="en">Custom wall works</span>
+            </p>
+            <p class="pillCard__text">
+              <span lang="it">Formati, ritmo e numero di opere pensati per la tua parete.</span>
+              <span lang="en">Sizes, rhythm, and number of works designed for your wall.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="pillCard">
+          <div class="pillCard__icon"><i class="fa-solid fa-ship"></i></div>
+          <div class="pillCard__body">
+            <p class="pillCard__title">
+              <span lang="it">Imbarco e racconto</span>
+              <span lang="en">Embark &amp; story</span>
+            </p>
+            <p class="pillCard__text">
+              <span lang="it">Un periodo di giorni raccontato da dentro, con continuità.</span>
+              <span lang="en">A multi-day period documented from within, with continuity.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="pillCard">
+          <div class="pillCard__icon"><i class="fa-solid fa-book-open"></i></div>
+          <div class="pillCard__body">
+            <p class="pillCard__title">
+              <span lang="it">Fotolibro fine art</span>
+              <span lang="en">Fine art photobook</span>
+            </p>
+            <p class="pillCard__text">
+              <span lang="it">Un racconto che diventa oggetto, curato e stampato bene.</span>
+              <span lang="en">A story that becomes an object, carefully designed and printed.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
         <section id="eventi" class="section" aria-label="Eventi">
           <div class="wrap">
             <div class="reveal">
@@ -1402,8 +1483,8 @@
       </div>
     </template>
 
-    <template id="tpl-techniques">
-      <div data-view="techniques" data-techniques-view>
+    <template id="tpl-whatwedo">
+      <div data-view="whatwedo" data-whatwedo-view>
         <section class="techStack" aria-label="Cosa facciamo">
           <div class="wrap">
             <div class="techStack__head">
@@ -1521,6 +1602,190 @@
         </section>
       </div>
     </template>
+
+<template id="tpl-techniques">
+  <div data-view="techniques" data-techniques-view>
+    <section class="section techHero" aria-label="Tecniche e stampe">
+      <div class="wrap">
+        <div class="techHero__grid">
+          <div class="techHero__copy">
+            <p class="kicker">
+              <span lang="it">Tecniche</span>
+              <span lang="en">Techniques</span>
+            </p>
+            <h1 class="h1">
+              <span lang="it">Collodio, pellicola, infrarosso</span>
+              <span lang="en">Collodion, film, infrared</span>
+            </h1>
+            <p class="lead">
+              <span lang="it">
+                Usiamo processi diversi per ottenere risultati diversi: oggetti unici su lastra, negativi su pellicola e stampe fine art da infrarosso digitale. Qui trovi una guida semplice alle differenze, così puoi scegliere l’opera giusta.
+              </span>
+              <span lang="en">
+                Different processes create different results: unique plate images, film negatives, and fine art prints from digital infrared. Here’s a clear guide to the differences, so you can choose the right work.
+              </span>
+            </p>
+            <div class="btnRow">
+              <a class="btn btn--ghost" href="./cosa-facciamo" data-route="/cosa-facciamo">
+                <span lang="it">Cosa facciamo</span>
+                <span lang="en">What we do</span>
+              </a>
+              <a class="btn" href="./contatti" data-route="/contatti">
+                <span lang="it">Parliamone</span>
+                <span lang="en">Get in touch</span>
+              </a>
+            </div>
+          </div>
+          <div class="techHero__media" data-tech-anim>
+            <div class="techMedia">
+              <img src="img/opera-viva-3.jpg" alt="Opera Viva - tecniche fotografiche">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section techStack" aria-label="Dettagli tecniche">
+      <div class="wrap">
+        <div class="techStack__items">
+
+          <article class="techSection" data-tech-anim>
+            <div class="techSection__media">
+              <div class="techMedia">
+                <img src="img/opera-viva-1.jpg" alt="Collodio umido su lastra">
+              </div>
+            </div>
+            <div class="techSection__body">
+              <h2 class="h3 techSection__title techAnim">
+                <span lang="it">Collodio umido</span>
+                <span lang="en">Wet plate collodion</span>
+              </h2>
+              <p class="techSection__text techAnim">
+                <span lang="it">
+                  È un processo ottocentesco: si prepara la lastra, si espone quando è ancora bagnata e si sviluppa subito. Il risultato è un oggetto fisico, unico, con una presenza che non assomiglia al digitale.
+                </span>
+                <span lang="en">
+                  A 19th-century process: the plate is prepared, exposed while still wet, and developed immediately. The result is a unique physical object with a presence that doesn’t feel digital.
+                </span>
+              </p>
+              <p class="techSection__text techAnim">
+                <span lang="it"><strong>Tintype</strong>: collodio su metallo, immagine positiva diretta.</span>
+                <span lang="en"><strong>Tintype</strong>: collodion on metal, a direct positive image.</span>
+              </p>
+              <p class="techSection__text techAnim">
+                <span lang="it"><strong>Ambrotype</strong>: collodio su vetro, immagine che “diventa” positiva su fondo scuro.</span>
+                <span lang="en"><strong>Ambrotype</strong>: collodion on glass, an image that reads as positive on a dark backing.</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="techSection techSection--reverse" data-tech-anim>
+            <div class="techSection__media">
+              <div class="techMedia">
+                <img src="img/opera-viva-2.jpg" alt="Pellicola analogica e stampa">
+              </div>
+            </div>
+            <div class="techSection__body">
+              <h2 class="h3 techSection__title techAnim">
+                <span lang="it">Pellicola analogica</span>
+                <span lang="en">Analog film</span>
+              </h2>
+              <p class="techSection__text techAnim">
+                <span lang="it">
+                  La pellicola registra un negativo: permette una resa tonale morbida, una grana organica e una grande libertà in stampa. È ideale per serie e racconti, perché mantiene coerenza e profondità su più immagini.
+                </span>
+                <span lang="en">
+                  Film records a negative: soft tonal transitions, organic grain, and great printing flexibility. It’s ideal for series and storytelling, with consistent depth across multiple images.
+                </span>
+              </p>
+              <p class="techSection__text techAnim">
+                <span lang="it">Dalla scansione alla stampa fine art, curiamo ogni passaggio per un risultato controllato e duraturo.</span>
+                <span lang="en">From scan to fine art print, we control every step for a consistent, archival result.</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="techSection" data-tech-anim>
+            <div class="techSection__media">
+              <div class="techMedia">
+                <img src="img/opera-viva-7.jpg" alt="Fotografia infrarossa digitale">
+              </div>
+            </div>
+            <div class="techSection__body">
+              <h2 class="h3 techSection__title techAnim">
+                <span lang="it">Infrarosso digitale</span>
+                <span lang="en">Digital infrared</span>
+              </h2>
+              <p class="techSection__text techAnim">
+                <span lang="it">
+                  L’infrarosso cattura una parte dello spettro che l’occhio non vede. Cambia il rapporto tra cielo, acqua e superfici: la scena diventa quasi “altra”, ma resta reale. È perfetto per stampe contemporanee e atmosfere sospese.
+                </span>
+                <span lang="en">
+                  Infrared captures a part of the spectrum the eye can’t see. It reshapes skies, water, and surfaces into something uncanny yet real. Perfect for contemporary fine art prints and suspended atmospheres.
+                </span>
+              </p>
+            </div>
+          </article>
+
+          <article class="techSection techSection--reverse" data-tech-anim>
+            <div class="techSection__media">
+              <div class="techMedia">
+                <img src="img/opera-viva-9.jpg" alt="Stampa fine art e carte">
+              </div>
+            </div>
+            <div class="techSection__body">
+              <h2 class="h3 techSection__title techAnim">
+                <span lang="it">Stampa fine art</span>
+                <span lang="en">Fine art printing</span>
+              </h2>
+              <p class="techSection__text techAnim">
+                <span lang="it">
+                  La stampa è parte dell’opera: scegliamo carte, formati e resa del nero per far emergere materia e luce. Che sia un’infrarosso o una scansione da pellicola, puntiamo a stampe archivistiche e leggibili a distanza.
+                </span>
+                <span lang="en">
+                  Printing is part of the artwork: paper, size, and black rendering are chosen to bring out texture and light. Whether infrared or film scan, we aim for archival prints that read well at distance.
+                </span>
+              </p>
+              <p class="techSection__text techAnim">
+                <span lang="it">Se vuoi, possiamo consigliarti anche cornice, vetro e modalità di installazione.</span>
+                <span lang="en">If you want, we can also advise on framing, glass, and installation.</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="techSection" data-tech-anim>
+            <div class="techSection__media">
+              <div class="techMedia">
+                <img src="img/opera-viva-10.jpg" alt="Opere su parete e progetto su misura">
+              </div>
+            </div>
+            <div class="techSection__body">
+              <h2 class="h3 techSection__title techAnim">
+                <span lang="it">Come scegliere</span>
+                <span lang="en">How to choose</span>
+              </h2>
+              <p class="techSection__text techAnim">
+                <span lang="it">
+                  Vuoi un oggetto irripetibile? Collodio (tintype o ambrotype). Vuoi una serie coerente o un racconto lungo? Pellicola. Vuoi una visione contemporanea e “invisibile” agli occhi? Infrarosso. Noi ti aiutiamo a decidere formati, numero di opere e ritmo della parete.
+                </span>
+                <span lang="en">
+                  Want a one-of-one object? Collodion (tintype or ambrotype). Need a coherent series or long-form story? Film. Want a contemporary vision that reveals the unseen? Infrared. We’ll help you decide sizes, number of works, and wall rhythm.
+                </span>
+              </p>
+              <div class="btnRow techAnim">
+                <a class="btn" href="./cosa-facciamo" data-route="/cosa-facciamo">
+                  <span lang="it">Vedi i servizi</span>
+                  <span lang="en">See services</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
   </main>
 
   <footer class="site-footer" data-component="footer">
@@ -1553,6 +1818,7 @@
       const viewShell = document.querySelector('[data-view-shell]');
       const tplContact = document.getElementById('tpl-contact');
       const tplTechniques = document.getElementById('tpl-techniques');
+      const tplWhatWeDo = document.getElementById('tpl-whatwedo');
 
       const popMenu = document.querySelector('[data-popmenu]');
       const menuToggle = document.querySelector('[data-action="toggle-menu"]');
@@ -2135,6 +2401,13 @@
 
         if(route === '/tecniche'){
           document.title = (root.getAttribute('data-language') === 'en')
+            ? "Techniques | Opera viva"
+            : "Tecniche | Opera viva";
+          return;
+        }
+
+        if(route === '/cosa-facciamo'){
+          document.title = (root.getAttribute('data-language') === 'en')
             ? "What we do | Opera viva"
             : "Cosa facciamo | Opera viva";
           return;
@@ -2193,8 +2466,10 @@
         const routeNorm = normalizeRoute(route || '/');
         const current = viewShell.querySelector('[data-view]')?.getAttribute('data-view') || 'home';
         const target = (routeNorm === '/contatti')
-          ? 'contact'
-          : (routeNorm === '/tecniche' ? 'techniques' : 'home');
+        ? 'contact'
+        : (routeNorm === '/tecniche')
+          ? 'techniques'
+          : (routeNorm === '/cosa-facciamo' ? 'whatwedo' : 'home');
         if(current === target) return;
 
         const reduce = prefersReducedMotion();
@@ -2219,6 +2494,9 @@
         } else if(target === 'techniques'){
           const frag = tplTechniques.content.cloneNode(true);
           viewShell.appendChild(frag);
+        } else if(target === 'whatwedo'){
+          const frag = tplWhatWeDo.content.cloneNode(true);
+          viewShell.appendChild(frag);
         } else {
           viewShell.innerHTML = HOME_HTML;
         }
@@ -2239,7 +2517,7 @@
         smartMediaIn(viewShell);
         fixRelativeImgs(viewShell);
 
-        if(target === 'techniques'){
+        if(target === 'techniques' || target === 'whatwedo'){
           cleanupView = initTechniquesDeck(viewShell);
         }
 
@@ -2280,8 +2558,10 @@
         }
 
         const route = (target === '/contatti')
-          ? '/contatti'
-          : (target === '/tecniche' ? '/tecniche' : '/');
+        ? '/contatti'
+        : (target === '/tecniche')
+          ? '/tecniche'
+          : (target === '/cosa-facciamo' ? '/cosa-facciamo' : '/');
         history.pushState({ route }, "", withBase(route));
         await swapView(route, options);
       };
