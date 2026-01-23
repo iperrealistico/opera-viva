@@ -1,51 +1,44 @@
 <!doctype html>
 <html lang="it" dir="ltr" data-theme="dark" data-language="it">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
 
-  <title>Opera Viva | Fotografia di mare, navi ed equipaggi</title>
+  <title>Opera Viva</title>
+  <link rel="icon" href="favicon.jpg" />
+  <meta name="description" content="Opera Viva: navi ed equipaggi come una nuova epopea. Collodio umido, infrarosso, tecniche fotografiche antiche." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0b0c0f" />
+  <meta name="format-detection" content="telephone=no" />
 
-  <link rel="icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Canonical: aggiorna se hai un dominio -->
+  <link rel="canonical" href="./" />
 
-  <meta name="description" content="Opera Viva è un progetto fotografico su mare, navi ed equipaggi: collodio umido, infrarosso e pellicola per raccontare rotte, porti e persone come un’epopea contemporanea.">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#212121">
-  <meta name="format-detection" content="telephone=no">
+  <link rel="icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
-  <!-- TODO: aggiorna con il dominio reale -->
-  <link rel="canonical" href="https://operaviva.it/">
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Opera Viva" />
+  <meta property="og:title" content="Opera Viva" />
+  <meta property="og:description" content="Navi ed equipaggi come una nuova epopea. Tecniche antiche e infrarosso." />
+  <meta property="og:url" content="./" />
+  <meta property="og:image" content="img/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Opera Viva" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <meta property="og:locale" content="it_IT">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Opera Viva">
-  <meta property="og:title" content="Opera Viva | Fotografia di mare, navi ed equipaggi">
-  <meta property="og:description" content="Collodio umido, infrarosso e pellicola per trasformare imbarcazioni e volti in opere senza tempo. Mostra itinerante in Italia.">
-  <!-- TODO: aggiorna con il dominio reale -->
-  <meta property="og:url" content="https://operaviva.it/">
-  <!-- TODO: crea una cover 1200x630 e aggiorna -->
-  <meta property="og:image" content="https://operaviva.it/img/og-cover.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Opera Viva">
-  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@200..900&display=swap" rel="stylesheet" />
 
-  <!-- TODO: aggiorna con il dominio reale -->
-  <link rel="alternate" hreflang="it" href="https://operaviva.it/">
-  <link rel="alternate" hreflang="en" href="https://operaviva.it/?lang=en">
-  <link rel="alternate" hreflang="x-default" href="https://operaviva.it/">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@200..900&display=swap" rel="stylesheet">
-
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer" />
 
   <!-- Lightbox (CDN, niente download) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
 
   <style>
     :root{ color-scheme: dark light; }
@@ -55,9 +48,7 @@
     .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
     .skip-link{ position:absolute; left:-9999px; top:0; padding:.75rem 1rem; background:#111; border:1px solid #333; border-radius:.75rem; z-index:9999; }
     .skip-link:focus{ left:.75rem; top:.75rem; }
-  </style>
 
-  <style>
     :root{
       --font-body: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       --font-display: Fraunces, ui-serif, Georgia, serif;
@@ -75,9 +66,8 @@
       --s-5: clamp(2.20rem, 1.45rem + 2.15vw, 3.30rem);
       --s-6: clamp(3.10rem, 2.00rem + 3.20vw, 5.10rem);
 
-      --r-1: 12px;
-      --r-2: 18px;
-      --r-3: 28px;
+      /* Rounding: quasi eliminato, come nel nuovo portfolio */
+      --r-ui: 6px;
 
       --ease-out: cubic-bezier(.16,1,.3,1);
       --ease-soft: cubic-bezier(.2,.8,.2,1);
@@ -158,7 +148,6 @@
     a{ color: inherit; text-decoration: none; }
     button{ font-family: inherit; color: inherit; }
     .wrap{ width: var(--wrap); margin-inline:auto; }
-    .bleed{ width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
 
     body::before{
       content:"";
@@ -179,6 +168,9 @@
     :root[data-language="it"] [lang="en"]{ display:none !important; }
     :root[data-language="en"] [lang="it"]{ display:none !important; }
 
+    /* Disable pinch/double-tap zoom (mobile) */
+    html, body{ touch-action: manipulation; }
+
     .kicker{
       margin: 0 0 var(--s-2);
       color: var(--muted-2);
@@ -193,7 +185,7 @@
       letter-spacing: .03em;
       margin: 0 0 var(--s-2);
     }
-    .lead{ font-size: var(--fs-1); color: var(--muted); margin: 0 0 var(--s-3); max-width: 70ch; }
+    .lead{ font-size: var(--fs-1); color: var(--muted); margin: 0 0 var(--s-3); max-width: 72ch; }
     .p{ margin: 0 0 var(--s-2); color: var(--muted); max-width: 78ch; }
     .micro{ font-size: .90em; color: var(--muted-2); margin: 0; letter-spacing: .08em; text-transform: uppercase; }
 
@@ -228,6 +220,8 @@
       backdrop-filter: none;
       transition: background var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out), backdrop-filter var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out), padding var(--dur-2) var(--ease-out);
     }
+
+    .headerHomeBtn{ margin-left:auto; }
 
     .site-header.is-scrolled .headerPill{
       padding: .35rem;
@@ -322,8 +316,6 @@
       pointer-events: auto;
     }
 
-    .section{ padding: var(--s-6) 0; }
-
     .btn{
       display:inline-flex;
       align-items:center;
@@ -348,6 +340,8 @@
     .btn:hover{ transform: translateY(-1px); border-color: var(--border-2); }
     .btn:active{ transform: translateY(0); }
     .btn i{ opacity: .9; font-size: 1em; }
+
+    .section{ padding: var(--s-6) 0; }
 
     .viewShell{
       position: relative;
@@ -399,6 +393,7 @@
       pointer-events:none;
       z-index: 2;
     }
+
     .heroVideo{
       position:absolute;
       inset:0;
@@ -464,6 +459,18 @@
       .heroVideo__cover{ transform: scale(1.28); }
     }
 
+    .heroVideo__mp4{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      opacity: .92;
+      filter: saturate(1.02) contrast(1.02);
+      pointer-events:none;
+    }
+
     .hero__wrap{
       position: relative;
       z-index: 3;
@@ -522,16 +529,7 @@
       100%{ transform: translateY(-2px); opacity: .55; }
     }
 
-    .split{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: var(--s-5);
-      align-items: start;
-    }
-    @media (max-width: 980px){
-      .split{ grid-template-columns: 1fr; }
-    }
-
+    /* Pills: niente card arrotondate, come richiesto */
     .pillRow{
       margin-top: var(--s-4);
       display:grid;
@@ -563,6 +561,7 @@
     .pill__title i{ color: var(--accent); opacity: .95; }
     .pill__text{ margin: 0; color: var(--muted); max-width: 66ch; }
 
+    /* Gallery */
     .hScroll, .gridItem{ border-radius: 0; }
 
     .hScroll{
@@ -584,7 +583,7 @@
       flex: 0 0 100%;
       scroll-snap-align: start;
       position: relative;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 16 / 10;
       background: linear-gradient(180deg, var(--bg-3), var(--bg));
       border-right: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
       overflow:hidden;
@@ -602,7 +601,6 @@
       cursor: zoom-in;
       -webkit-tap-highlight-color: transparent;
     }
-
     .media__ph{
       position:absolute;
       inset:0;
@@ -661,128 +659,72 @@
     }
     .dot:focus-visible{ outline: 2px solid color-mix(in oklab, var(--text) 55%, transparent); outline-offset: 4px; }
 
-    .grid3{
-      margin-top: var(--s-5);
+    /* Tech teaser (home) */
+    .techStrip{
+      margin-top: var(--s-3);
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: clamp(0.25rem, 0.18rem + 0.30vw, 0.55rem);
+      gap: var(--s-2);
     }
-    @media (max-width: 980px){
-      .grid3{ grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 900px){
+      .techStrip{ grid-template-columns: 1fr; }
     }
-    @media (max-width: 560px){
-      .grid3{ grid-template-columns: 1fr; }
-    }
-    .gridItem{
-      margin: 0;
-      border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
-      overflow:hidden;
-      background: linear-gradient(180deg, var(--bg-3), var(--bg));
-      box-shadow: 0 26px 110px var(--shadow);
-      aspect-ratio: 3/4;
+    .techCard{
+      background: color-mix(in oklab, var(--surface) 70%, transparent);
+      border: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+      overflow: hidden;
+      border-radius: 0;
       position: relative;
+      cursor: pointer;
     }
-
-    .quote{
-      margin: var(--s-4) 0 0;
-      padding: var(--s-3);
-      border-radius: var(--r-2);
-      border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
-      background: color-mix(in oklab, var(--surface) 92%, transparent);
-      box-shadow: 0 22px 90px var(--shadow);
-      max-width: 78ch;
+    .techCard__hit{
+      position:absolute;
+      inset:0;
+      z-index:3;
+      border-radius: inherit;
     }
-    .quote p{ margin:0; color: var(--muted); font-size: var(--fs-0); }
-    .quote .quote__mark{ color: var(--accent); font-weight: 950; letter-spacing: .08em; text-transform: uppercase; font-size: .82em; margin-bottom: .45rem; }
-
-    .eventsCard{
-      border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
-      border-radius: var(--r-3);
-      padding: var(--s-5);
-      background: color-mix(in oklab, var(--surface) 92%, transparent);
-      box-shadow: 0 30px 140px var(--shadow);
+    .techCard__media{
+      aspect-ratio: 16/10;
+      min-height: 280px;
+      position: relative;
       overflow: hidden;
     }
-    .eventsMd > :first-child{ margin-top:0; }
-    .eventsMd h1, .eventsMd h2, .eventsMd h3{
-      font-family: var(--font-display);
-      letter-spacing: .02em;
-      margin: 1.15rem 0 .55rem;
-      color: var(--text);
-      line-height: 1.12;
+    @media (max-width: 900px){
+      .techCard__media{ min-height: 220px; }
     }
-    .eventsMd p{ margin: .55rem 0; color: var(--muted); }
-    .eventsMd ul, .eventsMd ol{ margin: .55rem 0; padding-left: 1.1rem; color: var(--muted); }
-    .eventsMd li{ margin: .45rem 0; }
-    .eventsMd a{
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-      color: var(--text);
+    .techCard__media img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.02);
+      transition: transform .6s ease, filter .6s ease;
     }
-    .eventsMd code{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: .95em;
-      padding: .12rem .35rem;
-      border-radius: 10px;
-      border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
-      background: color-mix(in oklab, var(--surface-2) 85%, transparent);
+    .techCard:hover .techCard__media img{
+      transform: scale(1.05);
+      filter: contrast(1.03);
     }
-
-    .contactPage{
-      padding: clamp(7.5rem, 12vh, 10.5rem) 0 var(--s-6);
-    }
-    .contactCard{
-      margin-top: var(--s-4);
-      border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
-      border-radius: var(--r-3);
-      padding: var(--s-5);
-      background: color-mix(in oklab, var(--surface) 92%, transparent);
-      box-shadow: 0 30px 140px var(--shadow);
+    .techCard__cap{
+      padding: .9rem .9rem .95rem;
       display:flex;
-      flex-wrap: wrap;
-      align-items:flex-start;
-      justify-content: space-between;
-      gap: var(--s-4);
+      flex-direction: column;
+      gap: .25rem;
     }
-    .contactCard__right{ display:flex; flex-wrap: wrap; gap: .75rem; align-items:center; }
 
-    .btnEmail{ position: relative; }
-    .btnEmail__shell{ display:inline-flex; align-items:center; gap:.55rem; white-space: nowrap; }
-    .btnEmail__email{ display:none; letter-spacing: .04em; text-transform: none; font-weight: 900; color: var(--accent); }
-    .btnEmail.is-done .btnEmail__labelText{ display:none; }
-    .btnEmail.is-done .btnEmail__email{ display:inline; }
-
-    .btnBadge{
-      position: absolute;
-      left: 50%;
-      top: -10px;
-      transform: translateX(-50%) translateY(-8px);
-      background: color-mix(in oklab, var(--bg) 82%, transparent);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: .45rem .70rem;
-      box-shadow: 0 22px 80px var(--shadow);
-      display:flex;
-      align-items:center;
-      gap:.45rem;
+    /* Reveal */
+    .reveal{
       opacity: 0;
-      pointer-events:none;
-      transition: opacity var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out);
-      z-index: 10;
-      color: var(--text);
-      letter-spacing: .10em;
-      text-transform: uppercase;
-      font-weight: 950;
-      font-size: .72em;
-      white-space: nowrap;
+      transform: translateY(14px);
+      filter: blur(2px);
+      transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out), filter var(--dur-3) var(--ease-out);
     }
-    .btnBadge i{ color: var(--ok); }
-    .btnBadge.is-show{
+    .reveal.is-inview{
       opacity: 1;
-      transform: translateX(-50%) translateY(-16px);
+      transform: translateY(0);
+      filter: blur(0);
     }
 
+    /* Footer */
     .site-footer{
       padding: var(--s-4) 0 var(--s-5);
       border-top: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
@@ -814,20 +756,77 @@
     }
     .footer__links i{ color: var(--accent); opacity: .95; }
 
-    .reveal{
-      opacity: 0;
-      transform: translateY(14px);
-      filter: blur(2px);
-      transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out), filter var(--dur-3) var(--ease-out);
-    }
-    .reveal.is-inview{
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
+    /* UI corners: piccoli, solo sui controlli */
+    .icon-btn,
+    .chip-btn,
+    .btn,
+    .headerPill,
+    .popMenu,
+    .scrollCue__arrow,
+    .dot,
+    .footer__links a{
+      border-radius: var(--r-ui) !important;
     }
 
-    .glightbox-clean .gdesc-inner,
-    .glightbox-clean .gslide-description{ display:none !important; }
+    /* TECH STACK (processi): normal scroll */
+    .techStack{ padding-top: calc(var(--s-6) + 30px); }
+    .techStack__head{ padding: var(--s-5) 0 var(--s-4); }
+    .techStack__sections{ display:flex; flex-direction:column; gap: var(--s-6); padding-bottom: var(--s-6); }
+    [data-view="processi"]{ height:auto; overflow: visible; }
+
+    .techSection{ border-top: 1px solid color-mix(in oklab, var(--border) 75%, transparent); padding-top: var(--s-5); }
+    .techSection__grid{ display:grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); align-items: start; }
+    .techSection__grid--flip .techSection__media{ order: 2; }
+    .techSection__grid--flip .techSection__copy{ order: 1; }
+
+    @media (max-width: 900px){
+      .techSection__grid{ grid-template-columns: 1fr; gap: var(--s-3); }
+      .techSection__grid--flip .techSection__media,
+      .techSection__grid--flip .techSection__copy{ order: initial; }
+    }
+
+    .techMedia{
+      position: relative;
+      border: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+      overflow: hidden;
+      background: color-mix(in oklab, var(--surface) 82%, transparent);
+      border-radius: 0;
+    }
+    .techMedia .media__ph{
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .techMedia img{
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0;
+      transform: translateY(8px) scale(1.01);
+      filter: blur(2px);
+      transition: opacity 620ms var(--ease-out), transform 980ms var(--ease-out), filter 980ms var(--ease-out);
+      will-change: opacity, transform, filter;
+    }
+    .techMedia.is-loaded img{
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+    .techMedia.is-loaded .media__ph{
+      opacity: 0;
+      transition: opacity 520ms var(--ease-out);
+      animation: none;
+    }
+    .techMedia.has-error img{ display: none; }
+
+    .techSection__title{ font-family: var(--font-display); letter-spacing: .02em; margin: 0 0 .8rem; font-size: clamp(1.4rem, 2.2vw, 2.1rem); }
+    .techSection__p{ margin: 0 0 .9rem; color: var(--muted); line-height: 1.6; max-width: 68ch; }
+
+    .techAnim{ opacity: 0; transform: translateY(56px); filter: blur(10px); transition: opacity .9s ease, transform .95s cubic-bezier(.2,.9,.2,1), filter .9s ease; will-change: transform, opacity, filter; }
+    .techSection__media.techAnim{ transform: translateY(56px) scale(.98); }
+    .techAnim.is-in{ opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
   </style>
 </head>
 
@@ -846,16 +845,8 @@
             <i class="fa-solid fa-house"></i>
           </a>
 
-          <a class="icon-btn" href="#progetto" data-route="#progetto" aria-label="Progetto" title="Progetto">
-            <i class="fa-solid fa-compass"></i>
-          </a>
-
-          <a class="icon-btn" href="#eventi" data-route="#eventi" aria-label="Eventi" title="Eventi">
-            <i class="fa-solid fa-calendar-day"></i>
-          </a>
-
-          <a class="icon-btn" href="#cosa" data-route="#cosa" aria-label="Cosa facciamo" title="Cosa facciamo">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <a class="icon-btn" href="./processi" data-route="/processi" aria-label="Processi" title="Processi">
+            <i class="fa-solid fa-layer-group"></i>
           </a>
 
           <a class="icon-btn" href="./contatti" data-route="/contatti" aria-label="Contatti" title="Contatti">
@@ -871,6 +862,10 @@
             <span class="chip-label" data-lang-label>IT</span>
           </button>
         </div>
+
+        <a class="icon-btn headerHomeBtn" href="./" data-route="/" aria-label="Home" title="Home">
+          <i class="fa-solid fa-house"></i>
+        </a>
       </div>
     </div>
   </header>
@@ -879,10 +874,10 @@
     <div class="viewShell" data-view-shell aria-live="polite">
       <div data-view="home" data-home-view>
         <section class="hero" aria-label="Intro" data-hero>
-          <!-- TODO: sostituisci con l'ID reale del trailer (solo ID, non URL) -->
-          <div class="heroVideo" data-hero-video data-youtube-id="YOUTUBE_ID_HERE" aria-hidden="true">
+          <!-- Aggiorna data-video-url con YouTube o MP4 -->
+          <div class="heroVideo" data-hero-video data-video-url="videos/opera-viva-hero.mp4" data-video-start="0" data-video-autoplay="0" aria-hidden="true">
             <div class="heroVideo__ph"></div>
-            <img class="heroVideo__thumb" alt="" data-thumb>
+            <img class="heroVideo__thumb" alt="" data-thumb />
             <div class="heroVideo__mount" data-video-mount></div>
           </div>
 
@@ -890,140 +885,153 @@
             <div class="reveal">
               <p class="kicker">Opera Viva</p>
 
-              <h1 class="hero__title">
-                <span lang="it">Navi, equipaggi, rotte</span>
-                <span lang="en">Ships, crews, routes</span>
-              </h1>
+              <h1 class="hero__title">Opera Viva</h1>
 
-              <p class="hero__sub">
-                <span lang="it">Un progetto fotografico che insegue il mare e i suoi protagonisti: portuali, marinai, imbarcazioni. Collodio umido, infrarosso e pellicola per trasformare ogni scafo in un’opera senza tempo.</span>
-                <span lang="en">A photographic project that follows the sea and its protagonists: dockworkers, sailors, vessels. Wet plate collodion, infrared, and film to turn each hull into a timeless piece.</span>
-              </p>
+              <!-- Testo inserito ESATTAMENTE come richiesto -->
+              <div style="margin-top: var(--s-3); max-width: 78ch;">
+                <p class="p" style="color: rgba(255,255,255,.78);">
+                  Il mare è da sempre un luogo dove l’uomo si misura con sé stesso, con la bellezza e con il tempo. Ogni nave che lo attraversa porta con sé una storia, un carattere, un’anima: è molto più di un mezzo, è un essere vivo, un testimone del viaggio e delle mani che l’hanno costruita.
+                </p>
 
-              <div class="hero__cta">
-                <a class="btn btn--primary" href="#progetto" data-route="#progetto">
-                  <i class="fa-solid fa-compass"></i>
-                  <span lang="it">Scopri</span><span lang="en">Discover</span>
+                <p class="p" style="color: rgba(255,255,255,.78);">
+                  Da sempre il mare custodisce miti e leggende, rotte reali e immaginarie. Galeoni, caravelle e bastimenti hanno attraversato i secoli portando sogni di conquista, libertà e destino.
+                  Con questo progetto vogliamo riportare quella stessa aura nel presente, raccontando navi ed equipaggi come protagonisti di una nuova epopea: figure sospese tra la forza del ferro e la fragilità del tempo.
+                </p>
+
+                <p class="p" style="color: rgba(255,255,255,.78);">
+                  Attraverso tecniche fotografiche antiche, come il collodio umido, e sguardi infrarossi che rivelano ciò che normalmente resta invisibile, cerchiamo di trasformare ogni imbarcazione in un’opera senza tempo. Ogni scafo, ogni volto, ogni superficie diventa una traccia di luce, un’eco dei grandi racconti di mare che ancora ci accompagnano.
+                  Da Ulisse ai diari dei capitani, dalle leggende dei pirati alle visioni romantiche di Turner.
+                </p>
+
+                <p class="p" style="color: rgba(255,255,255,.78); margin-bottom: 0;">
+                  Le navi non sono solo strumenti di navigazione: sono creature simboliche, custodi di memorie e destini. Nel nostro lavoro diventano monumenti di luce, fissati in un istante che non conosce corrosione né oblio.
+                </p>
+              </div>
+
+              <div class="pillRow" aria-label="Punti chiave" style="margin-top: var(--s-4);">
+                <article class="pill reveal">
+                  <h3 class="pill__title">
+                    <i class="fa-solid fa-compass"></i>
+                    Una nuova epopea
+                  </h3>
+                  <p class="pill__text">Navi ed equipaggi come protagonisti, tra mito, lavoro e memoria.</p>
+                </article>
+
+                <article class="pill reveal">
+                  <h3 class="pill__title">
+                    <i class="fa-solid fa-camera-retro"></i>
+                    Tecniche antiche
+                  </h3>
+                  <p class="pill__text">Processi lenti e fisici, dove la materia lascia una firma.</p>
+                </article>
+
+                <article class="pill reveal">
+                  <h3 class="pill__title">
+                    <i class="fa-solid fa-eye"></i>
+                    Infrarosso
+                  </h3>
+                  <p class="pill__text">Uno sguardo che sposta la realtà e rivela ciò che di solito non si vede.</p>
+                </article>
+
+                <article class="pill reveal">
+                  <h3 class="pill__title">
+                    <i class="fa-solid fa-route"></i>
+                    Mostra itinerante
+                  </h3>
+                  <p class="pill__text">Un progetto che si muove, cambia luogo e resta coerente nel tempo.</p>
+                </article>
+              </div>
+
+              <div class="hero__cta" style="margin-top: var(--s-4);">
+                <a class="btn btn--primary" href="#galleria" data-route="#galleria">
+                  <i class="fa-solid fa-images"></i>
+                  <span>Galleria</span>
                 </a>
 
-                <a class="btn btn--ghost" href="./contatti" data-route="/contatti">
-                  <i class="fa-solid fa-paper-plane"></i>
-                  <span lang="it">Contatti</span><span lang="en">Contact</span>
+                <a class="btn btn--ghost" href="./processi" data-route="/processi">
+                  <i class="fa-solid fa-layer-group"></i>
+                  <span>Processi</span>
                 </a>
               </div>
 
               <div class="scrollCue" aria-hidden="true">
-                <div><span lang="it">Scorri</span><span lang="en">Scroll</span></div>
+                <div>Scorri</div>
                 <div class="scrollCue__arrow"><i class="fa-solid fa-arrow-down"></i></div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 2) Spiegazione progetto -->
-        <section id="progetto" class="section" aria-label="Il progetto">
-          <div class="wrap split">
+        <section id="galleria" class="section" aria-label="Galleria">
+          <div class="wrap">
             <div class="reveal">
-              <p class="kicker"><span lang="it">Il progetto</span><span lang="en">The project</span></p>
-
-              <h2 class="h2">
-                <span lang="it">Opera Viva</span>
-                <span lang="en">Opera Viva</span>
-              </h2>
-
-              <p class="lead">
-                <span lang="it">Il mare è un luogo dove l’uomo si misura con sé stesso, con la bellezza e con il tempo. Ogni nave porta un carattere, un’anima: non è solo un mezzo, è un essere vivo e un testimone delle mani che l’hanno costruita.</span>
-                <span lang="en">The sea is where people measure themselves against beauty and time. Every ship carries a character, a soul: more than a vehicle, it is a living witness shaped by the hands that built it.</span>
-              </p>
-
-              <p class="p">
-                <span lang="it">Raccogliamo storie di porti, equipaggi e imbarcazioni come se fossero protagonisti di una nuova epopea, sospesi tra la forza del ferro e la fragilità del tempo. Attraverso collodio umido e sguardi infrarossi che rivelano ciò che spesso resta invisibile, trasformiamo superfici e volti in tracce di luce.</span>
-                <span lang="en">We collect stories of ports, crews, and vessels as protagonists of a new epic, suspended between the strength of iron and the fragility of time. Through wet plate collodion and infrared views that reveal what is usually unseen, we turn surfaces and faces into traces of light.</span>
-              </p>
-
-              <div class="quote" aria-label="Citazione">
-                <div class="quote__mark"><span lang="it">Odissea</span><span lang="en">Odyssey</span></div>
-                <p>
-                  <span lang="it">Come nell’Odissea, ogni rotta è una prova: non cerchiamo solo un approdo, ma un racconto che resista al sale e alla distanza.</span>
-                  <span lang="en">Like in the Odyssey, every route is a trial: we are not only seeking a harbor, but a story that can endure salt and distance.</span>
-                </p>
-              </div>
-
-              <div class="pillRow" aria-label="Punti chiave">
-                <article class="pill reveal">
-                  <h3 class="pill__title">
-                    <i class="fa-solid fa-anchor"></i>
-                    <span lang="it">Una nuova epopea</span><span lang="en">A new epic</span>
-                  </h3>
-                  <p class="pill__text">
-                    <span lang="it">Navi ed equipaggi come personaggi: miti antichi e rotte reali nello stesso respiro.</span>
-                    <span lang="en">Ships and crews as characters: ancient myths and real routes in the same breath.</span>
-                  </p>
-                </article>
-
-                <article class="pill reveal">
-                  <h3 class="pill__title">
-                    <i class="fa-solid fa-flask"></i>
-                    <span lang="it">Tecniche antiche</span><span lang="en">Historic techniques</span>
-                  </h3>
-                  <p class="pill__text">
-                    <span lang="it">Collodio umido su vetro o metallo: un processo lento, fisico, irripetibile.</span>
-                    <span lang="en">Wet plate on glass or metal: a slow, physical, unrepeatable process.</span>
-                  </p>
-                </article>
-
-                <article class="pill reveal">
-                  <h3 class="pill__title">
-                    <i class="fa-solid fa-eye"></i>
-                    <span lang="it">Infrarosso</span><span lang="en">Infrared</span>
-                  </h3>
-                  <p class="pill__text">
-                    <span lang="it">Un altro strato della realtà: superfici e cieli si riscrivono, emergono dettagli nascosti.</span>
-                    <span lang="en">Another layer of reality: surfaces and skies rewrite themselves, hidden details emerge.</span>
-                  </p>
-                </article>
-
-                <article class="pill reveal">
-                  <h3 class="pill__title">
-                    <i class="fa-solid fa-route"></i>
-                    <span lang="it">Mostra itinerante</span><span lang="en">Traveling show</span>
-                  </h3>
-                  <p class="pill__text">
-                    <span lang="it">Opera Viva si muove: porti, città e spazi espositivi in continuo aggiornamento.</span>
-                    <span lang="en">Opera Viva moves: ports, cities, and exhibition spaces updated over time.</span>
-                  </p>
-                </article>
-              </div>
+              <p class="kicker">Galleria</p>
+              <h2 class="h2">Navi, volti, materia</h2>
+              <p class="lead" style="max-width: 72ch;">Una selezione di immagini del progetto. Apri le foto per vederle a pieno schermo.</p>
             </div>
 
-            <div class="reveal">
+            <div class="reveal" style="margin-top: var(--s-4);">
               <div class="hScroll" data-hscroll aria-label="Gallery orizzontale Opera Viva">
                 <div class="hScroll__rail" data-hscroll-rail>
-                  <div class="hScroll__item" data-component="smart-media">
-                    <a class="media glightbox" href="img/opera-viva-1.jpg" data-gallery="progetto" data-type="image" aria-label="Apri immagine 1">
+                  <!-- Nota: qui NON c'è più il testo "Foto: ./img/..." -->
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-1.jpg" data-gallery="opera-viva" data-type="image" aria-label="Apri immagine 1">
                       <div class="media__ph" aria-hidden="true"></div>
-                      <img class="media__img" data-src="img/opera-viva-1.jpg" alt="Opera Viva, foto 01" decoding="async" loading="lazy">
+                      <img class="media__img" data-src="img/opera-viva-1.jpg" alt="Opera Viva, foto 01" decoding="async" loading="lazy" />
                     </a>
                   </div>
-
-                  <div class="hScroll__item" data-component="smart-media">
-                    <a class="media glightbox" href="img/opera-viva-2.jpg" data-gallery="progetto" data-type="image" aria-label="Apri immagine 2">
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-2.jpg" data-gallery="opera-viva" data-type="image" aria-label="Apri immagine 2">
                       <div class="media__ph" aria-hidden="true"></div>
-                      <img class="media__img" data-src="img/opera-viva-2.jpg" alt="Opera Viva, foto 02" decoding="async" loading="lazy">
+                      <img class="media__img" data-src="img/opera-viva-2.jpg" alt="Opera Viva, foto 02" decoding="async" loading="lazy" />
                     </a>
                   </div>
-
-                  <div class="hScroll__item" data-component="smart-media">
-                    <a class="media glightbox" href="img/opera-viva-3.jpg" data-gallery="progetto" data-type="image" aria-label="Apri immagine 3">
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-3.jpg" data-gallery="opera-viva" data-type="image" aria-label="Apri immagine 3">
                       <div class="media__ph" aria-hidden="true"></div>
-                      <img class="media__img" data-src="img/opera-viva-3.jpg" alt="Opera Viva, foto 03" decoding="async" loading="lazy">
+                      <img class="media__img" data-src="img/opera-viva-3.jpg" alt="Opera Viva, foto 03" decoding="async" loading="lazy" />
                     </a>
                   </div>
-
-                  <div class="hScroll__item" data-component="smart-media">
-                    <a class="media glightbox" href="img/opera-viva-4.jpg" data-gallery="progetto" data-type="image" aria-label="Apri immagine 4">
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-4.jpg" data-gallery="opera-viva" data-type="image" aria-label="Apri immagine 4">
                       <div class="media__ph" aria-hidden="true"></div>
-                      <img class="media__img" data-src="img/opera-viva-4.jpg" alt="Opera Viva, foto 04" decoding="async" loading="lazy">
+                      <img class="media__img" data-src="img/opera-viva-4.jpg" alt="Opera Viva, foto 04" decoding="async" loading="lazy" />
+                    </a>
+                  </div>
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-5.jpg" data-gallery="opera-viva" data-type="image" aria-label="Apri immagine 5">
+                      <div class="media__ph" aria-hidden="true"></div>
+                      <img class="media__img" data-src="img/opera-viva-5.jpg" alt="Opera Viva, foto 05" decoding="async" loading="lazy" />
+                    </a>
+                  </div>
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-6.jpg" data-gallery="opera-viva" data-type="image" aria-label="Apri immagine 6">
+                      <div class="media__ph" aria-hidden="true"></div>
+                      <img class="media__img" data-src="img/opera-viva-6.jpg" alt="Opera Viva, foto 06" decoding="async" loading="lazy" />
+                    </a>
+                  </div>
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-7.jpg" data-gallery="opera-viva" data-type="image" aria-label="Apri immagine 7">
+                      <div class="media__ph" aria-hidden="true"></div>
+                      <img class="media__img" data-src="img/opera-viva-7.jpg" alt="Opera Viva, foto 07" decoding="async" loading="lazy" />
+                    </a>
+                  </div>
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-8.jpg" data-gallery="opera-viva" data-type="image" aria-label="Apri immagine 8">
+                      <div class="media__ph" aria-hidden="true"></div>
+                      <img class="media__img" data-src="img/opera-viva-8.jpg" alt="Opera Viva, foto 08" decoding="async" loading="lazy" />
+                    </a>
+                  </div>
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-9.jpg" data-gallery="opera-viva" data-type="image" aria-label="Apri immagine 9">
+                      <div class="media__ph" aria-hidden="true"></div>
+                      <img class="media__img" data-src="img/opera-viva-9.jpg" alt="Opera Viva, foto 09" decoding="async" loading="lazy" />
+                    </a>
+                  </div>
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-10.jpg" data-gallery="opera-viva" data-type="image" aria-label="Apri immagine 10">
+                      <div class="media__ph" aria-hidden="true"></div>
+                      <img class="media__img" data-src="img/opera-viva-10.jpg" alt="Opera Viva, foto 10" decoding="async" loading="lazy" />
                     </a>
                   </div>
                 </div>
@@ -1034,255 +1042,217 @@
                     <button class="dot" type="button" data-dot="1" aria-label="Vai a foto 2"></button>
                     <button class="dot" type="button" data-dot="2" aria-label="Vai a foto 3"></button>
                     <button class="dot" type="button" data-dot="3" aria-label="Vai a foto 4"></button>
+                    <button class="dot" type="button" data-dot="4" aria-label="Vai a foto 5"></button>
+                    <button class="dot" type="button" data-dot="5" aria-label="Vai a foto 6"></button>
+                    <button class="dot" type="button" data-dot="6" aria-label="Vai a foto 7"></button>
+                    <button class="dot" type="button" data-dot="7" aria-label="Vai a foto 8"></button>
+                    <button class="dot" type="button" data-dot="8" aria-label="Vai a foto 9"></button>
+                    <button class="dot" type="button" data-dot="9" aria-label="Vai a foto 10"></button>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <p class="micro" style="margin-top: var(--s-3);">
-                <span lang="it">Foto: ./img/opera-viva-1.jpg … opera-viva-10.jpg</span>
-                <span lang="en">Photos: ./img/opera-viva-1.jpg … opera-viva-10.jpg</span>
+          </div>
+        </section>
+
+        <section class="section techTeaser" aria-label="Processi e tecniche">
+          <div class="wrap">
+            <div class="reveal">
+              <p class="kicker">Processi</p>
+
+              <h2 class="h2">Non è un filtro. È un processo.</h2>
+
+              <p class="lead" style="max-width: 70ch;">
+                Collodio umido e infrarosso non cambiano solo l’estetica. Cambiano tempi, materia, rischi, unicità e il tipo di oggetto che resta.
               </p>
+            </div>
+
+            <div class="reveal" style="margin-top: var(--s-3);">
+              <a class="btn btn--primary" href="./processi" data-route="/processi">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Scopri le differenze</span>
+              </a>
+            </div>
+
+            <div class="techStrip reveal" aria-label="Anteprima processi">
+              <figure class="techCard">
+                <a class="techCard__hit" href="./processi#collodio" data-route="/processi" aria-label="Vai ai processi"></a>
+                <div class="techCard__media"><img src="img/opera-viva-2.jpg" loading="lazy" decoding="async" alt="Collodio umido" /></div>
+                <figcaption class="techCard__cap">
+                  <strong>Collodio umido</strong>
+                  <span class="micro">Rito, materia, pezzi unici</span>
+                </figcaption>
+              </figure>
+
+              <figure class="techCard">
+                <a class="techCard__hit" href="./processi#infrarosso" data-route="/processi" aria-label="Vai ai processi"></a>
+                <div class="techCard__media"><img src="img/opera-viva-6.jpg" loading="lazy" decoding="async" alt="Infrarosso" /></div>
+                <figcaption class="techCard__cap">
+                  <strong>Infrarosso</strong>
+                  <span class="micro">Spostamento del reale</span>
+                </figcaption>
+              </figure>
+
+              <figure class="techCard">
+                <a class="techCard__hit" href="./processi#stampa" data-route="/processi" aria-label="Vai ai processi"></a>
+                <div class="techCard__media"><img src="img/opera-viva-9.jpg" loading="lazy" decoding="async" alt="Stampa e conservazione" /></div>
+                <figcaption class="techCard__cap">
+                  <strong>Stampa</strong>
+                  <span class="micro">Presenza e durata</span>
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
 
-        <!-- 3) Eventi (da eventi.md) -->
-        <section id="eventi" class="section" aria-label="Eventi">
-          <div class="wrap split">
+        <section id="eventi" class="section" aria-label="Mostra itinerante">
+          <div class="wrap">
             <div class="reveal">
-              <p class="kicker"><span lang="it">Eventi</span><span lang="en">Events</span></p>
-
-              <h2 class="h2">
-                <span lang="it">Mostra itinerante</span>
-                <span lang="en">Traveling exhibition</span>
-              </h2>
-
-              <p class="lead">
-                <span lang="it">Opera Viva si sposta in Italia tra mostre, festival, porti e spazi indipendenti. Qui sotto trovi le prossime tappe, aggiornate in automatico.</span>
-                <span lang="en">Opera Viva moves across Italy through exhibitions, festivals, ports, and independent spaces. Below you will find the next stops, updated automatically.</span>
-              </p>
-
-              <p class="p">
-                <span lang="it">Per aggiornare questa sezione basta modificare il file <span class="emph">eventi.md</span> accanto a <span class="emph">index.html</span>.</span>
-                <span lang="en">To update this section, edit <span class="emph">eventi.md</span> next to <span class="emph">index.html</span>.</span>
+              <p class="kicker">Mostra itinerante</p>
+              <h2 class="h2">Eventi e tappe</h2>
+              <p class="lead" style="max-width: 72ch;">
+                Aggiornamenti su date, luoghi e collaborazioni.
               </p>
             </div>
 
-            <div class="reveal">
-              <div class="eventsCard" role="region" aria-label="Lista eventi">
-                <div class="eventsMd" data-events data-events-src="/eventi.md">
-                  <p class="p" style="margin:0;">
-                    <span lang="it">Caricamento eventi…</span>
-                    <span lang="en">Loading events…</span>
-                  </p>
+            <div class="reveal" style="margin-top: var(--s-4);">
+              <div style="border: 1px solid color-mix(in oklab, var(--border) 85%, transparent); background: color-mix(in oklab, var(--surface) 92%, transparent); box-shadow: 0 28px 120px var(--shadow); padding: var(--s-4); border-radius: 0;">
+                <div data-events aria-live="polite">
+                  <p class="p" style="margin: 0;">Caricamento eventi...</p>
                 </div>
-
-                <p class="micro" style="margin-top: var(--s-3);">
-                  <span lang="it">Fonte: eventi.md</span>
-                  <span lang="en">Source: eventi.md</span>
-                </p>
+                <!-- Nota manutenzione: aggiorna i contenuti in events.md (non viene mostrato ai visitatori) -->
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 4) Cosa facciamo -->
-        <section id="cosa" class="section" aria-label="Cosa facciamo">
-          <div class="wrap">
-            <div class="reveal">
-              <p class="kicker"><span lang="it">Cosa facciamo</span><span lang="en">What we do</span></p>
-
-              <h2 class="h2">
-                <span lang="it">Opere, commissioni e racconti</span>
-                <span lang="en">Works, commissions, stories</span>
-              </h2>
-
-              <p class="lead">
-                <span lang="it">Realizziamo opere singole e percorsi completi: dall’immagine come oggetto da parete fino al racconto lungo, vissuto a bordo e raccolto in un libro.</span>
-                <span lang="en">We create single works and complete paths: from an image as a wall object to long-form storytelling, experienced on board and collected in a book.</span>
-              </p>
-            </div>
-
-            <div class="pillRow" aria-label="Servizi">
-              <article class="pill reveal">
-                <h3 class="pill__title">
-                  <i class="fa-solid fa-ruler-combined"></i>
-                  <span lang="it">Opere su misura</span><span lang="en">Custom wall pieces</span>
-                </h3>
-                <p class="pill__text">
-                  <span lang="it">Formati e finiture pensati per spazi reali: casa, studio, barca, galleria. Ogni opera nasce per essere esposta.</span>
-                  <span lang="en">Formats and finishes designed for real spaces: home, studio, boat, gallery. Each piece is made to be displayed.</span>
-                </p>
-              </article>
-
-              <article class="pill reveal">
-                <h3 class="pill__title">
-                  <i class="fa-solid fa-layer-group"></i>
-                  <span lang="it">Tintype, Ambrotype, Pellicola</span><span lang="en">Tintype, Ambrotype, Film</span>
-                </h3>
-                <p class="pill__text">
-                  <span lang="it">Metallo, vetro, negativo: tre supporti, tre caratteri. Ti guidiamo nella scelta in base a estetica e durata.</span>
-                  <span lang="en">Metal, glass, negative: three supports, three characters. We guide the choice based on aesthetics and longevity.</span>
-                </p>
-              </article>
-
-              <article class="pill reveal">
-                <h3 class="pill__title">
-                  <i class="fa-solid fa-print"></i>
-                  <span lang="it">Fine art da infrarosso</span><span lang="en">Infrared fine art prints</span>
-                </h3>
-                <p class="pill__text">
-                  <span lang="it">Infrarosso digitale e stampa fine art: un linguaggio diverso, capace di riscrivere cieli e superfici.</span>
-                  <span lang="en">Digital infrared and fine art printing: a distinct language that rewrites skies and surfaces.</span>
-                </p>
-              </article>
-
-              <article class="pill reveal">
-                <h3 class="pill__title">
-                  <i class="fa-solid fa-portrait"></i>
-                  <span lang="it">Opere singole</span><span lang="en">Single works</span>
-                </h3>
-                <p class="pill__text">
-                  <span lang="it">Ritratti, imbarcazioni, dettagli di bordo. Un’immagine come oggetto, con un processo dichiarato.</span>
-                  <span lang="en">Portraits, vessels, onboard details. An image as an object, with a declared process.</span>
-                </p>
-              </article>
-
-              <article class="pill reveal">
-                <h3 class="pill__title">
-                  <i class="fa-solid fa-ship"></i>
-                  <span lang="it">Imbarco e viaggio</span><span lang="en">Onboard stories</span>
-                </h3>
-                <p class="pill__text">
-                  <span lang="it">Possibilità di imbarcarci per più giorni per seguire una rotta, un equipaggio, un lavoro. Racconto sul campo.</span>
-                  <span lang="en">We can board for multiple days to follow a route, a crew, a job. Field storytelling.</span>
-                </p>
-              </article>
-
-              <article class="pill reveal">
-                <h3 class="pill__title">
-                  <i class="fa-solid fa-book"></i>
-                  <span lang="it">Fotolibro stampato</span><span lang="en">Printed photobook</span>
-                </h3>
-                <p class="pill__text">
-                  <span lang="it">Quando serve un racconto lungo: immagini, testi e impaginazione per fissare una storia in un volume.</span>
-                  <span lang="en">When a long narrative is needed: images, text, and layout to fix a story into a volume.</span>
-                </p>
-              </article>
-            </div>
-
-            <div class="grid3" aria-label="Galleria Opera Viva">
-              <figure class="gridItem reveal" data-component="smart-media">
-                <a class="media glightbox" href="img/opera-viva-5.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 5">
-                  <div class="media__ph" aria-hidden="true"></div>
-                  <img class="media__img" data-src="img/opera-viva-5.jpg" alt="Opera Viva, foto 05" decoding="async" loading="lazy">
-                </a>
-              </figure>
-
-              <figure class="gridItem reveal" data-component="smart-media">
-                <a class="media glightbox" href="img/opera-viva-6.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 6">
-                  <div class="media__ph" aria-hidden="true"></div>
-                  <img class="media__img" data-src="img/opera-viva-6.jpg" alt="Opera Viva, foto 06" decoding="async" loading="lazy">
-                </a>
-              </figure>
-
-              <figure class="gridItem reveal" data-component="smart-media">
-                <a class="media glightbox" href="img/opera-viva-7.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 7">
-                  <div class="media__ph" aria-hidden="true"></div>
-                  <img class="media__img" data-src="img/opera-viva-7.jpg" alt="Opera Viva, foto 07" decoding="async" loading="lazy">
-                </a>
-              </figure>
-
-              <figure class="gridItem reveal" data-component="smart-media">
-                <a class="media glightbox" href="img/opera-viva-8.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 8">
-                  <div class="media__ph" aria-hidden="true"></div>
-                  <img class="media__img" data-src="img/opera-viva-8.jpg" alt="Opera Viva, foto 08" decoding="async" loading="lazy">
-                </a>
-              </figure>
-
-              <figure class="gridItem reveal" data-component="smart-media">
-                <a class="media glightbox" href="img/opera-viva-9.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 9">
-                  <div class="media__ph" aria-hidden="true"></div>
-                  <img class="media__img" data-src="img/opera-viva-9.jpg" alt="Opera Viva, foto 09" decoding="async" loading="lazy">
-                </a>
-              </figure>
-
-              <figure class="gridItem reveal" data-component="smart-media">
-                <a class="media glightbox" href="img/opera-viva-10.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 10">
-                  <div class="media__ph" aria-hidden="true"></div>
-                  <img class="media__img" data-src="img/opera-viva-10.jpg" alt="Opera Viva, foto 10" decoding="async" loading="lazy">
-                </a>
-              </figure>
-            </div>
-
-            <div style="margin-top: var(--s-5);" class="reveal">
-              <a class="btn btn--primary" href="./contatti" data-route="/contatti">
-                <i class="fa-solid fa-paper-plane"></i>
-                <span lang="it">Richiedi disponibilità</span><span lang="en">Ask availability</span>
-              </a>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
 
     <template id="tpl-contact">
       <div data-view="contact" data-contact-view>
-        <section class="contactPage" aria-label="Contatti">
+        <section class="section" style="padding-top: clamp(7.5rem, 12vh, 10.5rem);" aria-label="Contatti">
           <div class="wrap">
             <div class="reveal">
-              <p class="kicker"><span lang="it">Contatti</span><span lang="en">Contact</span></p>
-
-              <h1 class="hero__title" style="max-width: 26ch; margin-bottom: var(--s-2);">
-                <span lang="it">Scrivici per mostre, commissioni e collaborazioni</span>
-                <span lang="en">Reach out for exhibitions, commissions, and collaborations</span>
-              </h1>
-
-              <p class="hero__sub" style="margin-bottom: 0; color: var(--muted);">
-                <span lang="it">Siamo disponibili in Italia. Se vuoi portare Opera Viva nella tua città, o commissionare un lavoro, scrivici.</span>
-                <span lang="en">Available in Italy. If you want to host Opera Viva in your city, or commission a work, write us.</span>
-              </p>
-
-              <p class="micro" style="margin-top: .75rem;">
-                <span lang="it">Italia · Itinerante</span>
-                <span lang="en">Italy · Traveling</span>
-              </p>
+              <p class="kicker">Contatti</p>
+              <h1 class="h2" style="margin-bottom: var(--s-2);">Scrivici per tappe, stampa, collaborazioni</h1>
+              <p class="lead" style="margin-bottom: 0;">Email e Instagram sono i canali più veloci.</p>
             </div>
 
-            <div class="contactCard reveal">
+            <div class="reveal" style="margin-top: var(--s-4); border: 1px solid color-mix(in oklab, var(--border) 85%, transparent); background: color-mix(in oklab, var(--surface) 92%, transparent); box-shadow: 0 30px 140px var(--shadow); padding: var(--s-5); border-radius: 0; display:flex; flex-wrap: wrap; gap: var(--s-3); justify-content: space-between; align-items: flex-start;">
               <div style="max-width: 72ch;">
-                <p class="lead" style="margin:0;">
-                  <span lang="it"><span class="emph">Email</span> e <span class="emph">Instagram</span> sono i canali più veloci. Rispondiamo appena possibile.</span>
-                  <span lang="en"><span class="emph">Email</span> and <span class="emph">Instagram</span> are the fastest channels. We reply as soon as possible.</span>
+                <p class="p" style="margin:0;">
+                  <span class="emph">Email</span> e <span class="emph">Instagram</span>: rispondiamo appena possibile.
                 </p>
               </div>
 
-              <div class="contactCard__right" aria-label="Azioni contatto">
+              <div style="display:flex; flex-wrap: wrap; gap: .75rem; align-items:center;">
                 <button class="btn btn--primary btnEmail" type="button" data-action="copy-email" aria-label="Vedi email e copia">
                   <span class="btnBadge" aria-hidden="true" data-email-badge>
                     <i class="fa-solid fa-circle-check"></i>
-                    <span lang="it">Copiata</span><span lang="en">Copied</span>
+                    <span>Copiata</span>
                   </span>
 
-                  <span class="btnEmail__shell">
+                  <span class="btnEmail__shell" style="display:inline-flex; align-items:center; gap:.55rem; white-space: nowrap;">
                     <i class="fa-solid fa-envelope"></i>
-                    <span class="btnEmail__labelText"><span lang="it">Vedi email</span><span lang="en">View email</span></span>
-                    <span class="btnEmail__email">contact@operaviva.it</span>
+                    <span class="btnEmail__labelText">Vedi email</span>
+                    <span class="btnEmail__email" style="display:none; letter-spacing: .04em; text-transform: none; font-weight: 900; color: var(--accent);">info@operaviva.it</span>
                   </span>
                 </button>
 
-                <!-- TODO: aggiorna l'handle -->
-                <a class="btn btn--ghost" href="https://instagram.com/operaviva" rel="noopener" target="_blank">
+                <a class="btn btn--ghost" href="https://instagram.com/" rel="noopener" target="_blank">
                   <i class="fa-brands fa-instagram"></i>
                   <span>Instagram</span>
                 </a>
-
-                <a class="btn btn--ghost" href="./" data-route="/">
-                  <i class="fa-solid fa-house"></i>
-                  <span lang="it">Torna alla home</span><span lang="en">Back to home</span>
-                </a>
               </div>
             </div>
+          </div>
+        </section>
+      </div>
+    </template>
+
+    <template id="tpl-processi">
+      <div data-view="processi" data-processi-view>
+        <section class="techStack" aria-label="Processi">
+          <div class="wrap">
+            <div class="techStack__head">
+              <p class="kicker techAnim" data-tech-anim>Processi</p>
+              <h1 class="h2 techAnim" data-tech-anim>Differenze reali, senza effetti</h1>
+              <p class="lead techAnim" data-tech-anim style="max-width:72ch;">
+                Questi processi non cambiano solo la resa. Cambiano il modo in cui l’immagine nasce, la materia che rimane e il tipo di esperienza che hai in mano.
+              </p>
+            </div>
+          </div>
+
+          <div class="techStack__sections">
+
+            <section class="techSection" id="collodio">
+              <div class="wrap techSection__grid">
+                <div class="techSection__media techAnim" data-tech-anim>
+                  <div class="techMedia" data-component="smart-media">
+                    <div class="media__ph"></div>
+                    <img data-src="img/opera-viva-2.jpg" alt="Collodio umido" />
+                  </div>
+                </div>
+                <div class="techSection__copy">
+                  <h2 class="techSection__title techAnim" data-tech-anim>Collodio umido</h2>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    Preparazione, sensibilizzazione, esposizione e sviluppo avvengono in una finestra di tempo breve. È un processo fisico, denso, fatto di manualità e decisioni che non tornano indietro.
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    La superficie porta segni e variazioni che non sono difetti: sono tracce di materia. Ogni lastra è un originale, con una presenza difficile da imitare.
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    In Opera Viva diventa un modo per rendere il ferro, la pelle, le vernici e le incrostazioni come un documento senza tempo.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="techSection" id="infrarosso">
+              <div class="wrap techSection__grid techSection__grid--flip">
+                <div class="techSection__media techAnim" data-tech-anim>
+                  <div class="techMedia" data-component="smart-media">
+                    <div class="media__ph"></div>
+                    <img data-src="img/opera-viva-6.jpg" alt="Infrarosso" />
+                  </div>
+                </div>
+                <div class="techSection__copy">
+                  <h2 class="techSection__title techAnim" data-tech-anim>Infrarosso</h2>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    L’infrarosso cambia la lettura del mondo: superfici e materiali reagiscono in modo diverso, e la scena si sposta su un registro più simbolico.
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    Non è un effetto sovrapposto. È una diversa raccolta di luce, che modifica tono e separazioni, e spesso rende l’immagine più sospesa.
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    Per Opera Viva è un modo per evocare l’invisibile: il calore, il sale, il tempo, ciò che resta addosso alle navi.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="techSection" id="stampa">
+              <div class="wrap techSection__grid">
+                <div class="techSection__media techAnim" data-tech-anim>
+                  <div class="techMedia" data-component="smart-media">
+                    <div class="media__ph"></div>
+                    <img data-src="img/opera-viva-9.jpg" alt="Stampa e conservazione" />
+                  </div>
+                </div>
+                <div class="techSection__copy">
+                  <h2 class="techSection__title techAnim" data-tech-anim>Stampa</h2>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    Qui la fotografia diventa oggetto: la scelta di carta, formato e finitura determina texture e presenza. La stampa è parte del linguaggio, non un passaggio tecnico.
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    È anche una scelta di durata: conservazione, stabilità e coerenza nel tempo, per una mostra itinerante e per collezioni.
+                  </p>
+                </div>
+              </div>
+            </section>
+
           </div>
         </section>
       </div>
@@ -1293,8 +1263,9 @@
     <div class="wrap footer__wrap">
       <p class="micro">© <span data-year></span> Opera Viva</p>
       <div class="footer__links">
-        <a href="#main" data-action="back-to-top"><i class="fa-solid fa-arrow-up"></i><span lang="it">Top</span><span lang="en">Top</span></a>
-        <a href="./contatti" data-route="/contatti"><i class="fa-solid fa-paper-plane"></i><span lang="it">Contatti</span><span lang="en">Contact</span></a>
+        <a href="#main" data-action="back-to-top"><i class="fa-solid fa-arrow-up"></i><span>Top</span></a>
+        <a href="./processi" data-route="/processi"><i class="fa-solid fa-layer-group"></i><span>Processi</span></a>
+        <a href="./contatti" data-route="/contatti"><i class="fa-solid fa-paper-plane"></i><span>Contatti</span></a>
       </div>
     </div>
   </footer>
@@ -1304,10 +1275,6 @@
   <!-- Lightbox JS (CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 
-  <!-- Markdown parser + sanitizer (CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
-
   <script>
     (function(){
       "use strict";
@@ -1316,23 +1283,48 @@
       const header = document.querySelector('[data-component="header"]');
       const announcer = document.querySelector('[data-announcer]');
       const viewShell = document.querySelector('[data-view-shell]');
+
       const tplContact = document.getElementById('tpl-contact');
+      const tplProcessi = document.getElementById('tpl-processi');
 
       const popMenu = document.querySelector('[data-popmenu]');
       const menuToggle = document.querySelector('[data-action="toggle-menu"]');
 
-      // TODO: aggiorna email e IG se necessario
-      const emailValue = "contact@operaviva.it";
+      /* TODO: imposta email e repo GitHub */
+      const emailValue = "info@operaviva.it";
+
       let HOME_HTML = "";
       let heroIO = null;
+      let cleanupView = null;
 
+      // Lightbox instance
       let lightbox = null;
 
       // GitHub Pages project-site base path
-      // TODO: se pubblichi su github.io come project page, metti qui il nome repo
+      // TODO: cambia "opera-viva" con il nome della repo GitHub, se serve
       const GITHUB_REPO = "opera-viva";
       const isGithubHost = window.location.hostname.toLowerCase().endsWith(".github.io");
       const BASE_PATH = isGithubHost ? ("/" + GITHUB_REPO) : "";
+
+      const resolveAssetUrl = (u) => {
+        const s = (u || '').trim();
+        if(!s) return s;
+        if(/^([a-z]+:)?\/\//i.test(s) || s.startsWith('data:') || s.startsWith('blob:')) return s;
+        const clean = s.replace(/^\.\//, '');
+        if(clean.startsWith('img/') || clean.startsWith('videos/') || clean.startsWith('assets/') || clean.startsWith('fonts/')){
+          return (BASE_PATH || '') + '/' + clean;
+        }
+        return s;
+      };
+
+      const fixRelativeImgs = (scope) => {
+        const rootEl = scope || document;
+        rootEl.querySelectorAll('img[src]').forEach((img) => {
+          const src = img.getAttribute('src');
+          const fixed = resolveAssetUrl(src);
+          if(fixed && fixed !== src) img.setAttribute('src', fixed);
+        });
+      };
 
       const prefersReducedMotion = () =>
         window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1413,7 +1405,7 @@
         });
 
         document.querySelectorAll('[data-action="toggle-language"]').forEach(btn => {
-          const aria = (next === 'en') ? 'Cambia lingua in inglese' : 'Switch language to Italian';
+          const aria = (next === 'en') ? 'Switch language to English' : 'Cambia lingua in italiano';
           btn.setAttribute('aria-label', aria);
           btn.setAttribute('title', (next === 'en') ? 'EN' : 'IT');
         });
@@ -1509,14 +1501,14 @@
           const src = img.getAttribute('data-src');
           if(!src) return;
 
-          const holder = img.closest('[data-component="smart-media"]');
+          const holder = img.closest('[data-component="smart-media"]') || img.parentElement;
           const onLoad = () => holder && holder.classList.add('is-loaded');
           const onError = () => holder && holder.classList.add('has-error');
 
           img.addEventListener('load', onLoad, { once: true });
           img.addEventListener('error', onError, { once: true });
 
-          img.setAttribute('src', src);
+          img.setAttribute('src', resolveAssetUrl(src));
           img.removeAttribute('data-src');
         };
 
@@ -1560,42 +1552,45 @@
         const heroVideo = document.querySelector('[data-hero-video]');
         if(!heroVideo) return;
 
-        const videoId = heroVideo.getAttribute('data-youtube-id');
+        const videoUrl = (heroVideo.getAttribute('data-video-url') || '').trim();
+        const startAt = Number(heroVideo.getAttribute('data-video-start') || '0') || 0;
+        const autoplay = String(heroVideo.getAttribute('data-video-autoplay') || '0') === '1';
+
         const img = heroVideo.querySelector('[data-thumb]');
         const mount = heroVideo.querySelector('[data-video-mount]');
-        if(!videoId || !img || !mount || videoId === "YOUTUBE_ID_HERE") return;
+        if(!videoUrl || !img || !mount) return;
 
-        const candidates = [
-          `https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/maxresdefault.jpg`,
-          `https://i.ytimg.com/vi/${encodeURIComponent(videoId)}/hqdefault.jpg`
-        ];
+        const reduce = prefersReducedMotion();
+        const isYouTube = /youtube\.com|youtu\.be/i.test(videoUrl);
 
-        let idx = 0;
-        const tryLoad = () => {
-          img.onload = () => heroVideo.classList.add('is-thumb-loaded');
-          img.onerror = () => { idx += 1; if(idx < candidates.length) tryLoad(); };
-          img.src = candidates[idx];
+        const getYouTubeId = (url) => {
+          try{
+            const u = new URL(url);
+            if(u.hostname.includes('youtu.be')) return u.pathname.replace('/', '') || '';
+            if(u.searchParams.get('v')) return u.searchParams.get('v') || '';
+            const m = u.pathname.match(/\/embed\/([^/]+)/);
+            return m ? (m[1] || '') : '';
+          }catch{
+            const m = String(url).match(/(?:v=|youtu\.be\/|\/embed\/)([A-Za-z0-9_-]{6,})/);
+            return m ? m[1] : '';
+          }
         };
-        tryLoad();
 
-        const mountIframe = () => {
+        const mountYouTube = (videoId) => {
           if(heroVideo.classList.contains('is-mounted')) return;
-
-          const reduce = prefersReducedMotion();
-          const start = 0;
 
           const cover = document.createElement('div');
           cover.className = 'heroVideo__cover';
 
           const iframe = document.createElement('iframe');
-          iframe.title = "Opera Viva - Trailer";
+          iframe.title = "Hero video";
           iframe.loading = "eager";
           iframe.allowFullscreen = false;
           iframe.referrerPolicy = "strict-origin-when-cross-origin";
           iframe.allow = "autoplay; encrypted-media; picture-in-picture; web-share";
 
           const params = new URLSearchParams({
-            autoplay: reduce ? "0" : "1",
+            autoplay: (autoplay && !reduce) ? "1" : "0",
             mute: "1",
             playsinline: "1",
             rel: "0",
@@ -1604,23 +1599,97 @@
             disablekb: "1",
             fs: "0",
             iv_load_policy: "3",
-            start: String(start),
+            start: String(Math.max(0, startAt)),
             loop: "1",
             playlist: videoId
           });
 
-          iframe.src = "https://www.youtube.com/embed/" + encodeURIComponent(videoId) + "?" + params.toString();
+          iframe.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(videoId) + "?" + params.toString();
 
           cover.appendChild(iframe);
           mount.appendChild(cover);
           heroVideo.classList.add('is-mounted');
         };
 
-        const delayed = () => window.setTimeout(mountIframe, 260);
-        if('requestIdleCallback' in window){
-          window.requestIdleCallback(delayed, { timeout: 1200 });
+        const mountMP4 = (srcUrl) => {
+          if(heroVideo.classList.contains('is-mounted')) return;
+
+          const v = document.createElement('video');
+          v.className = 'heroVideo__mp4';
+          v.autoplay = autoplay && !reduce;
+          v.muted = true;
+          v.loop = true;
+          v.playsInline = true;
+          v.preload = 'metadata';
+
+          const s = document.createElement('source');
+          s.src = resolveAssetUrl(srcUrl);
+          s.type = 'video/mp4';
+          v.appendChild(s);
+
+          v.addEventListener('loadedmetadata', () => {
+            if(startAt > 0 && Number.isFinite(startAt)){
+              try{ v.currentTime = Math.max(0, startAt); }catch{}
+            }
+            if(autoplay && !reduce){
+              v.play().catch(() => {});
+            }
+          }, { once: true });
+
+          mount.appendChild(v);
+          heroVideo.classList.add('is-mounted');
+        };
+
+        const enableClickToPlay = (fn) => {
+          const onClick = () => {
+            fn();
+            heroVideo.removeEventListener('click', onClick);
+            heroVideo.classList.remove('is-clickable');
+          };
+          heroVideo.classList.add('is-clickable');
+          heroVideo.addEventListener('click', onClick, { once: true });
+        };
+
+        if(isYouTube){
+          const id = getYouTubeId(videoUrl);
+          if(!id) return;
+
+          const candidates = [
+            "https://i.ytimg.com/vi/" + encodeURIComponent(id) + "/maxresdefault.jpg",
+            "https://i.ytimg.com/vi/" + encodeURIComponent(id) + "/hqdefault.jpg"
+          ];
+
+          let idx = 0;
+          const tryLoad = () => {
+            img.onload = () => heroVideo.classList.add('is-thumb-loaded');
+            img.onerror = () => { idx += 1; if(idx < candidates.length) tryLoad(); };
+            img.src = candidates[idx];
+          };
+          tryLoad();
+
+          if(autoplay && !reduce){
+            const delayed = () => window.setTimeout(() => mountYouTube(id), 260);
+            if('requestIdleCallback' in window){
+              window.requestIdleCallback(delayed, { timeout: 1200 });
+            } else {
+              delayed();
+            }
+          } else {
+            enableClickToPlay(() => mountYouTube(id));
+          }
         } else {
-          delayed();
+          heroVideo.classList.add('is-thumb-loaded');
+
+          if(autoplay && !reduce){
+            const delayed = () => window.setTimeout(() => mountMP4(videoUrl), 120);
+            if('requestIdleCallback' in window){
+              window.requestIdleCallback(delayed, { timeout: 1200 });
+            } else {
+              delayed();
+            }
+          } else {
+            enableClickToPlay(() => mountMP4(videoUrl));
+          }
         }
       };
 
@@ -1668,44 +1737,6 @@
         setActive(0);
       };
 
-      const initEvents = async (scope) => {
-        const rootEl = scope || document;
-        const box = rootEl.querySelector('[data-events]');
-        if(!box) return;
-
-        const src = box.getAttribute('data-events-src') || '/eventi.md';
-        const url = src.startsWith('http') ? src : withBase(src.startsWith('/') ? src : ('/' + src));
-
-        if(!window.markdownit) return;
-
-        try{
-          const res = await fetch(url, { cache: 'no-cache' });
-          if(!res.ok) throw new Error("HTTP " + res.status);
-          const mdText = await res.text();
-
-          const md = window.markdownit({
-            html: false,
-            linkify: true,
-            breaks: true
-          });
-
-          const raw = md.render(mdText || "");
-          const clean = (window.DOMPurify && window.DOMPurify.sanitize)
-            ? window.DOMPurify.sanitize(raw, { USE_PROFILES: { html: true } })
-            : raw;
-
-          box.innerHTML = clean || "";
-        }catch{
-          box.innerHTML = `
-            <p class="p" style="margin:0;">
-              ${root.getAttribute('data-language') === 'en'
-                ? 'Events are being updated. Please check back soon.'
-                : 'Eventi in aggiornamento. Torna a controllare a breve.'}
-            </p>
-          `;
-        }
-      };
-
       const copyToClipboard = async (text) => {
         try{
           if(navigator.clipboard && navigator.clipboard.writeText){
@@ -1738,14 +1769,46 @@
         badge._t = window.setTimeout(() => badge.classList.remove('is-show'), 1100);
       };
 
+      const initEmailButtonUI = () => {
+        document.querySelectorAll('.btnEmail').forEach((btn) => {
+          const emailSpan = btn.querySelector('.btnEmail__email');
+          if(emailSpan) emailSpan.textContent = emailValue;
+        });
+      };
+
+      const initTechAnim = (scope) => {
+        const rootEl = scope || document;
+        const items = Array.from(rootEl.querySelectorAll('[data-tech-anim]'));
+        if(items.length === 0) return () => {};
+
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if(e.isIntersecting){
+              e.target.classList.add('is-in');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+        items.forEach((el) => io.observe(el));
+
+        return () => {
+          try{ io.disconnect(); }catch{}
+        };
+      };
+
       const setDocForRoute = (route) => {
         if(route === '/contatti'){
-          document.title = (root.getAttribute('data-language') === 'en')
-            ? "Contact | Opera Viva"
-            : "Contatti | Opera Viva";
+          document.title = "Contatti | Opera Viva";
           return;
         }
-        document.title = "Opera Viva | Fotografia di mare, navi ed equipaggi";
+
+        if(route === '/processi'){
+          document.title = "Processi | Opera Viva";
+          return;
+        }
+
+        document.title = "Opera Viva";
       };
 
       const swapView = async (route, opts) => {
@@ -1753,7 +1816,10 @@
 
         const routeNorm = normalizeRoute(route || '/');
         const current = viewShell.querySelector('[data-view]')?.getAttribute('data-view') || 'home';
-        const target = (routeNorm === '/contatti') ? 'contact' : 'home';
+        const target = (routeNorm === '/contatti')
+          ? 'contact'
+          : (routeNorm === '/processi' ? 'processi' : 'home');
+
         if(current === target) return;
 
         const reduce = prefersReducedMotion();
@@ -1765,10 +1831,18 @@
           await new Promise(r => window.setTimeout(r, 220));
         }
 
+        if(cleanupView){
+          try{ cleanupView(); }catch{}
+          cleanupView = null;
+        }
+
         viewShell.innerHTML = '';
 
         if(target === 'contact'){
           const frag = tplContact.content.cloneNode(true);
+          viewShell.appendChild(frag);
+        } else if(target === 'processi'){
+          const frag = tplProcessi.content.cloneNode(true);
           viewShell.appendChild(frag);
         } else {
           viewShell.innerHTML = HOME_HTML;
@@ -1787,15 +1861,21 @@
 
         revealIn(viewShell);
         smartMediaIn(viewShell);
+        fixRelativeImgs(viewShell);
+
+        if(target === 'processi'){
+          cleanupView = initTechAnim(viewShell);
+        }
 
         if(target === 'home'){
           initHScroll();
           initHeroVideo();
-          initEvents(viewShell);
         }
 
+        initEmailButtonUI();
         initLightbox();
         initHeaderHeroSense();
+        initEvents();
 
         if(opts && opts.scrollTo){
           const id = opts.scrollTo;
@@ -1824,7 +1904,10 @@
           return;
         }
 
-        const route = (target === '/contatti') ? '/contatti' : '/';
+        const route = (target === '/contatti')
+          ? '/contatti'
+          : (target === '/processi' ? '/processi' : '/');
+
         history.pushState({ route }, "", withBase(route));
         await swapView(route, options);
       };
@@ -1880,10 +1963,22 @@
           if(action === 'copy-email'){
             const ok = await copyToClipboard(emailValue);
             btn.classList.add('is-done');
+
+            const labelText = btn.querySelector('.btnEmail__labelText');
+            const emailSpan = btn.querySelector('.btnEmail__email');
+
+            if(labelText) labelText.style.display = 'none';
+            if(emailSpan) emailSpan.style.display = 'inline';
+
             announce(ok ? 'Email copiata' : 'Copia non riuscita');
             if(ok) showEmailBadge(btn);
+
             window.clearTimeout(btn._t);
-            btn._t = window.setTimeout(() => btn.classList.remove('is-done'), 2200);
+            btn._t = window.setTimeout(() => {
+              btn.classList.remove('is-done');
+              if(labelText) labelText.style.display = '';
+              if(emailSpan) emailSpan.style.display = '';
+            }, 2200);
             return;
           }
         });
@@ -1918,10 +2013,54 @@
       const initFirstRoute = async () => {
         const r = routeFromLocation();
         setDocForRoute(r);
+
         if(r === '/contatti'){
           await swapView('/contatti', {});
-        } else {
-          initHeaderHeroSense();
+          return;
+        }
+
+        if(r === '/processi'){
+          await swapView('/processi', {});
+          return;
+        }
+
+        initHeaderHeroSense();
+      };
+
+      const initEvents = async () => {
+        const host = document.querySelector('[data-events]');
+        if(!host) return;
+
+        try{
+          const res = await fetch(resolveAssetUrl('events.md'), { cache: 'no-cache' });
+          if(!res.ok) throw new Error('events.md not found');
+          const md = await res.text();
+
+          const lines = md.split('\n').map(l => l.trim()).filter(Boolean);
+          const items = lines.filter(l => !l.startsWith('#'));
+
+          if(items.length === 0){
+            host.innerHTML = '<p class="p" style="margin:0;">Nessun evento pubblicato al momento.</p>';
+            return;
+          }
+
+          const ul = document.createElement('ul');
+          ul.style.margin = "0";
+          ul.style.paddingLeft = "1.05rem";
+          ul.style.color = "var(--muted)";
+          ul.style.display = "grid";
+          ul.style.gap = ".55rem";
+
+          items.forEach((t) => {
+            const li = document.createElement('li');
+            li.textContent = t;
+            ul.appendChild(li);
+          });
+
+          host.innerHTML = '';
+          host.appendChild(ul);
+        }catch{
+          host.innerHTML = '<p class="p" style="margin:0;">Nessun evento pubblicato al momento.</p>';
         }
       };
 
@@ -1936,12 +2075,14 @@
 
         revealIn(document);
         smartMediaIn(document);
+        fixRelativeImgs(document);
 
         initHScroll();
         initHeroVideo();
         initLightbox();
         initHeaderHeroSense();
-        initEvents(document);
+        initEmailButtonUI();
+        initEvents();
 
         await initFirstRoute();
       };
@@ -1951,6 +2092,24 @@
       } else {
         init();
       }
+    })();
+  </script>
+
+  <script>
+    (function(){
+      const prevent = (e) => { e.preventDefault(); };
+      document.addEventListener('gesturestart', prevent, { passive: false });
+      document.addEventListener('gesturechange', prevent, { passive: false });
+      document.addEventListener('gestureend', prevent, { passive: false });
+
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', (e) => {
+        const now = Date.now();
+        if(now - lastTouchEnd <= 300){
+          e.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, { passive: false });
     })();
   </script>
 </body>
