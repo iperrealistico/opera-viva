@@ -442,7 +442,8 @@
 
     .hero{
       position: relative;
-      min-height: 100vh;
+      min-height: 88vh;
+      min-height: 88svh;
       padding: clamp(7.5rem, 12vh, 10.5rem) 0 var(--s-6);
       overflow: hidden;
       color: rgba(255,255,255,.93);
@@ -1154,48 +1155,79 @@
                 <span lang="it">Collodio umido, pellicola e infrarossi digitale non sono alternative estetiche: sono scelte di materia, tempo e verità.</span>
                 <span lang="en">Wet plate collodion, film and digital infrared are not aesthetic alternatives: they are choices of matter, time and truth.</span>
               </p>
+              
+
+              <div class="pillRow" aria-label="Sintesi tecniche">
+                <article class="pill reveal">
+                  <h3 class="pill__title"><i class="fa-solid fa-flask"></i><span lang="it">Collodio: tintype e ambrotype</span><span lang="en">Collodion: tintype and ambrotype</span></h3>
+                  <p class="pill__text"><span lang="it">Un rito breve e preciso. L’immagine nasce su metallo o vetro, come pezzo unico.</span><span lang="en">A short, precise ritual. The image is born on metal or glass, as a one of a kind object.</span></p>
+                </article>
+
+                <article class="pill reveal">
+                  <h3 class="pill__title"><i class="fa-solid fa-film"></i><span lang="it">Pellicola</span><span lang="en">Film</span></h3>
+                  <p class="pill__text"><span lang="it">Grana, transizioni morbide e decisioni in ripresa. Ogni fotogramma conta.</span><span lang="en">Grain, soft transitions and capture decisions. Every frame matters.</span></p>
+                </article>
+
+                <article class="pill reveal">
+                  <h3 class="pill__title"><i class="fa-solid fa-sun"></i><span lang="it">Infrarossi digitale</span><span lang="en">Digital infrared</span></h3>
+                  <p class="pill__text"><span lang="it">La luce cambia regole: superfici e atmosfere emergono come un’altra pelle del reale.</span><span lang="en">Light changes its rules: surfaces and atmospheres emerge like another skin of reality.</span></p>
+                </article>
+
+                <article class="pill reveal">
+                  <h3 class="pill__title"><i class="fa-solid fa-print"></i><span lang="it">Stampa e permanenza</span><span lang="en">Print and permanence</span></h3>
+                  <p class="pill__text"><span lang="it">Dalla scelta del supporto alla finitura, l’opera è pensata per durare e abitare uno spazio.</span><span lang="en">From paper choice to finishing, the work is designed to last and live in a space.</span></p>
+                </article>
+              </div>
+
+              <div class="reveal" style="margin-top: var(--s-3);">
+                <a class="btn btn--primary" href="#/tecniche" data-route="#/tecniche" aria-label="Approfondisci come lo facciamo">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                  <span lang="it">Approfondisci</span><span lang="en">Explore</span>
+                </a>
+              </div>
+          
+
             </div>
             <div class="reveal">
-              <figure class="gridItem" style="max-width: 520px; margin-left: auto; aspect-ratio: 4 / 5;">
-                <a class="media glightbox" href="img/opera-viva-8.jpg" data-gallery="come-lo-facciamo" data-type="image" aria-label="Apri immagine">
-                  <div class="media__ph" aria-hidden="true"></div>
-                  <img class="media__img" data-src="img/opera-viva-8.jpg" alt="Opera Viva, dettaglio" decoding="async" loading="lazy">
-                </a>
-              </figure>
+              <div class="hScroll" data-hscroll aria-label="Tre strade in evidenza">
+                    <div class="hScroll__rail" data-hscroll-rail>
+                      <div class="hScroll__item">
+                        <a class="media glightbox" href="img/opera-viva-5.jpg" data-gallery="tre-strade" data-type="image" aria-label="Apri immagine 1">
+                          <div class="media__ph" aria-hidden="true"></div>
+                          <img class="media__img" data-src="img/opera-viva-5.jpg" alt="Tre strade, immagine 1" loading="lazy" decoding="async" />
+                        </a>
+                      </div>
+                      <div class="hScroll__item">
+                        <a class="media glightbox" href="img/opera-viva-6.jpg" data-gallery="tre-strade" data-type="image" aria-label="Apri immagine 2">
+                          <div class="media__ph" aria-hidden="true"></div>
+                          <img class="media__img" data-src="img/opera-viva-6.jpg" alt="Tre strade, immagine 2" loading="lazy" decoding="async" />
+                        </a>
+                      </div>
+                      <div class="hScroll__item">
+                        <a class="media glightbox" href="img/opera-viva-7.jpg" data-gallery="tre-strade" data-type="image" aria-label="Apri immagine 3">
+                          <div class="media__ph" aria-hidden="true"></div>
+                          <img class="media__img" data-src="img/opera-viva-7.jpg" alt="Tre strade, immagine 3" loading="lazy" decoding="async" />
+                        </a>
+                      </div>
+                      <div class="hScroll__item">
+                        <a class="media glightbox" href="img/opera-viva-8.jpg" data-gallery="tre-strade" data-type="image" aria-label="Apri immagine 4">
+                          <div class="media__ph" aria-hidden="true"></div>
+                          <img class="media__img" data-src="img/opera-viva-8.jpg" alt="Tre strade, immagine 4" loading="lazy" decoding="async" />
+                        </a>
+                      </div>
+                    </div>
+                    <div class="hScroll__meta">
+                      <div class="dots" data-hscroll-dots aria-label="Indicatori">
+                        <button class="dot is-active" type="button" data-dot="0" aria-label="Vai alla 1"></button>
+                        <button class="dot" type="button" data-dot="1" aria-label="Vai alla 2"></button>
+                        <button class="dot" type="button" data-dot="2" aria-label="Vai alla 3"></button>
+                        <button class="dot" type="button" data-dot="3" aria-label="Vai alla 4"></button>
+                      </div>
+                    </div>
+                  </div>
             </div>
           </div>
-
-            
-
-            <div class="pillRow" aria-label="Sintesi tecniche">
-              <article class="pill reveal">
-                <h3 class="pill__title"><i class="fa-solid fa-flask"></i><span lang="it">Collodio: tintype e ambrotype</span><span lang="en">Collodion: tintype and ambrotype</span></h3>
-                <p class="pill__text"><span lang="it">Un rito breve e preciso. L’immagine nasce su metallo o vetro, come pezzo unico.</span><span lang="en">A short, precise ritual. The image is born on metal or glass, as a one of a kind object.</span></p>
-              </article>
-
-              <article class="pill reveal">
-                <h3 class="pill__title"><i class="fa-solid fa-film"></i><span lang="it">Pellicola</span><span lang="en">Film</span></h3>
-                <p class="pill__text"><span lang="it">Grana, transizioni morbide e decisioni in ripresa. Ogni fotogramma conta.</span><span lang="en">Grain, soft transitions and capture decisions. Every frame matters.</span></p>
-              </article>
-
-              <article class="pill reveal">
-                <h3 class="pill__title"><i class="fa-solid fa-sun"></i><span lang="it">Infrarossi digitale</span><span lang="en">Digital infrared</span></h3>
-                <p class="pill__text"><span lang="it">La luce cambia regole: superfici e atmosfere emergono come un’altra pelle del reale.</span><span lang="en">Light changes its rules: surfaces and atmospheres emerge like another skin of reality.</span></p>
-              </article>
-
-              <article class="pill reveal">
-                <h3 class="pill__title"><i class="fa-solid fa-print"></i><span lang="it">Stampa e permanenza</span><span lang="en">Print and permanence</span></h3>
-                <p class="pill__text"><span lang="it">Dalla scelta del supporto alla finitura, l’opera è pensata per durare e abitare uno spazio.</span><span lang="en">From paper choice to finishing, the work is designed to last and live in a space.</span></p>
-              </article>
-            </div>
-
-            <div class="reveal" style="margin-top: var(--s-3);">
-              <a class="btn btn--primary" href="#/tecniche" data-route="#/tecniche" aria-label="Approfondisci come lo facciamo">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span lang="it">Approfondisci</span><span lang="en">Explore</span>
-              </a>
-            </div>
-          </div>
+</div>
         </section>
 
         <section id="eventi" class="section" aria-label="Eventi" data-events-section hidden>
