@@ -1,0 +1,2628 @@
+<!doctype html>
+<html lang="it" dir="ltr" data-theme="dark" data-language="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+
+  <title>Opera Viva | Progetto fotografico</title>
+  <link rel="icon" href="favicon.jpg">
+  <meta name="description" content="Opera Viva è un progetto fotografico su marinai, portuali, navi e imbarcazioni: tecniche antiche, collodio umido e infrarossi per trasformare il mare in una nuova epopea.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0b0c0f">
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="canonical" href="https://example.com/">
+
+  <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Opera Viva">
+  <meta property="og:title" content="Opera Viva | Progetto fotografico">
+  <meta property="og:description" content="Marinai, portuali, navi e imbarcazioni: collodio umido, pellicola e infrarossi per raccontare il mare come un’opera senza tempo.">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:image" content="img/opera-viva-1.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Opera Viva">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="alternate" hreflang="it" href="https://example.com/">
+  <link rel="alternate" hreflang="en" href="https://example.com/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://example.com/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@200..900&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
+
+  <!-- Lightbox (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+  <!-- Markdown (Events) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+
+  <style>
+    :root{ color-scheme: dark light; }
+    html, body{ overflow-x:hidden; }
+    body{ margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    a{ color:inherit; }
+    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    .skip-link{ position:absolute; left:-9999px; top:0; padding:.75rem 1rem; background:#111; border:1px solid #333; border-radius:.75rem; z-index:9999; }
+    .skip-link:focus{ left:.75rem; top:.75rem; }
+
+    /* TECH STACK (normal scroll page) */
+    .techStack{ padding-top: calc(var(--s-6) + 30px); }
+    .techStack__head{ padding: var(--s-5) 0 var(--s-4); }
+    .techStack__sections{ display:flex; flex-direction:column; gap: var(--s-6); padding-bottom: var(--s-6); }
+
+    /* Techniques page must scroll normally */
+    [data-view="techniques"], [data-view="offer"]{ height:auto; overflow: visible; }
+
+    .techSection{ border-top: 1px solid color-mix(in oklab, var(--border) 75%, transparent); padding-top: var(--s-5); }
+    .techSection__grid{ display:grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); align-items: start; }
+    .techSection__grid--flip .techSection__media{ order: 2; }
+    .techSection__grid--flip .techSection__copy{ order: 1; }
+
+    @media (max-width: 900px){
+      .techSection__grid{ grid-template-columns: 1fr; gap: var(--s-3); }
+      .techSection__grid--flip .techSection__media,
+      .techSection__grid--flip .techSection__copy{ order: initial; }
+    }
+
+    .techMedia{
+      position: relative;
+      border: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+      overflow: hidden;
+      background: color-mix(in oklab, var(--surface) 82%, transparent);
+    }
+    .techMedia .media__ph{
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .techMedia img{
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0;
+      transform: translateY(8px) scale(1.01);
+      filter: blur(2px);
+      transition: opacity 620ms var(--ease-out), transform 980ms var(--ease-out), filter 980ms var(--ease-out);
+      will-change: opacity, transform, filter;
+    }
+    .techMedia.is-loaded img{
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+    .techMedia.is-loaded .media__ph{
+      opacity: 0;
+      transition: opacity 520ms var(--ease-out);
+      animation: none;
+    }
+    .techMedia.has-error img{ display: none; }
+
+    .techSection__title{ font-family: var(--serif); letter-spacing: .02em; margin: 0 0 .8rem; font-size: clamp(1.4rem, 2.2vw, 2.1rem); }
+    .techSection__p{ margin: 0 0 .9rem; color: var(--muted); line-height: 1.6; max-width: 68ch; }
+
+    /* Scroll reveal (strong & visible, but clean) */
+    .techAnim{ opacity: 0; transform: translateY(56px); filter: blur(10px); transition: opacity .9s ease, transform .95s cubic-bezier(.2,.9,.2,1), filter .9s ease; will-change: transform, opacity, filter; }
+    .techSection__media.techAnim{ transform: translateY(56px) scale(.98); }
+    .techAnim.is-in{ opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  </style>
+
+  <style>
+    :root{
+      --font-body: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --font-display: Fraunces, ui-serif, Georgia, serif;
+
+      --fs-0: clamp(0.94rem, 0.88rem + 0.22vw, 1.02rem);
+      --fs-1: clamp(1.08rem, 0.96rem + 0.55vw, 1.28rem);
+      --fs-2: clamp(1.42rem, 1.10rem + 1.25vw, 2.00rem);
+      --fs-3: clamp(1.95rem, 1.35rem + 2.25vw, 2.95rem);
+      --fs-4: clamp(2.60rem, 1.70rem + 3.10vw, 3.90rem);
+
+      --s-1: clamp(0.55rem, 0.44rem + 0.32vw, 0.72rem);
+      --s-2: clamp(0.88rem, 0.70rem + 0.55vw, 1.18rem);
+      --s-3: clamp(1.20rem, 0.95rem + 0.85vw, 1.70rem);
+      --s-4: clamp(1.58rem, 1.15rem + 1.30vw, 2.25rem);
+      --s-5: clamp(2.20rem, 1.45rem + 2.15vw, 3.30rem);
+      --s-6: clamp(3.10rem, 2.00rem + 3.20vw, 5.10rem);
+
+      --r-1: 12px;
+      --r-2: 18px;
+      --r-3: 28px;
+
+      --r-ui: 6px;
+      --ease-out: cubic-bezier(.16,1,.3,1);
+      --ease-soft: cubic-bezier(.2,.8,.2,1);
+      --dur-1: 180ms;
+      --dur-2: 320ms;
+      --dur-3: 720ms;
+
+      --wrap: min(1120px, calc(100% - 2*clamp(1rem, 4vw, 2.2rem)));
+
+      --accent: rgba(232,223,214,.92);
+      --accent-soft: rgba(232,223,214,.14);
+      --ph-breath: 2.6s;
+      --serif: var(--font-display);
+    }
+
+    :root[data-theme="dark"]{
+      --bg: #212121;
+      --bg-2: #1c1c1c;
+      --bg-3: #242424;
+
+      --surface: rgba(255,255,255,.035);
+      --surface-2: rgba(255,255,255,.055);
+      --surface-3: rgba(255,255,255,.075);
+
+      --border: rgba(255,255,255,.10);
+      --border-2: rgba(255,255,255,.16);
+
+      --text: rgba(245,245,245,.93);
+      --muted: rgba(216,216,216,.70);
+      --muted-2: rgba(216,216,216,.54);
+
+      --shadow: rgba(0,0,0,.60);
+      --ph-1: rgba(255,255,255,.045);
+      --ph-2: rgba(255,255,255,.095);
+      --ok: #42d17a;
+    }
+
+    :root[data-theme="light"]{
+      --bg: #ffffff;
+      --bg-2: #f6f6f6;
+      --bg-3: #efefef;
+
+      --surface: rgba(0,0,0,.03);
+      --surface-2: rgba(0,0,0,.055);
+      --surface-3: rgba(0,0,0,.085);
+
+      --border: rgba(0,0,0,.10);
+      --border-2: rgba(0,0,0,.16);
+
+      --text: rgba(0,0,0,.90);
+      --muted: rgba(0,0,0,.67);
+      --muted-2: rgba(0,0,0,.52);
+
+      --shadow: rgba(0,0,0,.18);
+      --ph-1: rgba(0,0,0,.035);
+      --ph-2: rgba(0,0,0,.085);
+      --ok: #1aa957;
+
+      --accent: rgba(30,30,30,.92);
+      --accent-soft: rgba(30,30,30,.10);
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: var(--font-body);
+      font-size: var(--fs-0);
+      line-height: 1.58;
+      letter-spacing: .015em;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg), var(--bg));
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    img, video, iframe{ max-width:100%; display:block; }
+    a{ color: inherit; text-decoration: none; }
+    button{ font-family: inherit; color: inherit; }
+    .wrap{ width: var(--wrap); margin-inline:auto; }
+    .bleed{ width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events:none;
+      opacity: .06;
+      mix-blend-mode: overlay;
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.14) 1px, transparent 0);
+      background-size: 3px 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      *, *::before, *::after{ animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }
+    }
+
+    :root[data-language="it"] [lang="en"]{ display:none !important; }
+    :root[data-language="en"] [lang="it"]{ display:none !important; }
+
+    html, body{ touch-action: manipulation; }
+
+    .kicker{
+      margin: 0 0 var(--s-2);
+      color: var(--muted-2);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: .82em;
+    }
+    .h2{
+      font-family: var(--font-display);
+      font-size: var(--fs-3);
+      line-height: 1.08;
+      letter-spacing: .03em;
+      margin: 0 0 var(--s-2);
+    }
+    .lead{ font-size: var(--fs-1); color: var(--muted); margin: 0 0 var(--s-3); max-width: 70ch; }
+    .p{ margin: 0 0 var(--s-2); color: var(--muted); max-width: 78ch; }
+    .micro{ font-size: .90em; color: var(--muted-2); margin: 0; letter-spacing: .08em; text-transform: uppercase; }
+
+    .emph{ color: var(--accent); font-weight: 900; }
+    :focus-visible{ outline: 2px solid color-mix(in oklab, var(--text) 55%, transparent); outline-offset: 3px; }
+
+    .site-header{
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 70;
+      background: transparent;
+      pointer-events: auto;
+    }
+
+    .header__wrap{
+      display:flex;
+      align-items:center;
+      justify-content: flex-end;
+      padding: .90rem 0;
+      position: relative;
+    }
+
+    .headerPill{
+      display:inline-flex;
+      align-items:center;
+      gap: .65rem;
+      position: relative;
+      border-radius: 22px;
+      padding: 0;
+      background: transparent;
+      border: 1px solid transparent;
+      backdrop-filter: none;
+      transition: background var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out), backdrop-filter var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out), padding var(--dur-2) var(--ease-out);
+    }
+
+    .headerHomeBtn{ margin-left:auto; }
+
+    .site-header.is-scrolled .headerPill{
+      padding: .35rem;
+      backdrop-filter: blur(14px);
+      background: color-mix(in oklab, var(--bg) 70%, transparent);
+      border-color: color-mix(in oklab, var(--border) 85%, transparent);
+      box-shadow: 0 22px 110px var(--shadow);
+    }
+
+    .site-header.is-over-hero .icon-btn,
+    .site-header.is-over-hero .chip-btn{
+      color: rgba(255,255,255,.93);
+      border-color: rgba(255,255,255,.20);
+      background: rgba(0,0,0,.18);
+    }
+
+    .site-header.is-over-hero.is-scrolled .headerPill{
+      background: rgba(0,0,0,.32);
+      border-color: rgba(255,255,255,.18);
+    }
+
+    .icon-btn{
+      appearance:none;
+      border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
+      background: color-mix(in oklab, var(--surface) 92%, transparent);
+      color: var(--text);
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      transition: transform var(--dur-1) var(--ease-out), border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out), opacity var(--dur-2) var(--ease-out);
+      box-shadow: 0 18px 80px var(--shadow);
+    }
+    .icon-btn:hover{ transform: translateY(-1px); border-color: var(--border-2); }
+    .icon-btn:active{ transform: translateY(0); }
+    .icon-btn.is-active{ border-color: color-mix(in oklab, var(--accent) 70%, transparent); }
+
+    .chip-btn{
+      appearance:none;
+      border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
+      background: color-mix(in oklab, var(--surface) 92%, transparent);
+      color: var(--text);
+      height: 42px;
+      padding: 0 .75rem;
+      border-radius: 16px;
+      display:inline-flex;
+      align-items:center;
+      gap: .55rem;
+      cursor:pointer;
+      transition: transform var(--dur-1) var(--ease-out), border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out), opacity var(--dur-2) var(--ease-out);
+      box-shadow: 0 18px 80px var(--shadow);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 950;
+      font-size: .78em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .chip-btn:hover{ transform: translateY(-1px); border-color: var(--border-2); }
+    .chip-btn:active{ transform: translateY(0); }
+    .chip-label{ opacity: .95; }
+
+    @media (max-width: 520px){
+      .icon-btn{ width:40px; height:40px; }
+      .chip-btn{ height:40px; }
+    }
+
+    .popMenu{
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      display:flex;
+      align-items:center;
+      gap: .55rem;
+      padding: .55rem;
+      border-radius: 18px;
+      border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
+      background: color-mix(in oklab, var(--bg) 70%, transparent);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 26px 120px var(--shadow);
+      transform-origin: top right;
+      transform: translateY(-6px) scale(.98);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out);
+    }
+    .popMenu.is-open{
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .section{ padding: var(--s-6) 0; }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.55rem;
+      padding: .95rem 1.25rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      cursor:pointer;
+      transition: transform var(--dur-1) var(--ease-out), border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out), opacity var(--dur-2) var(--ease-out);
+      font-size: .86em;
+      line-height: 1;
+      white-space: nowrap;
+      color: var(--text);
+      background: transparent;
+    }
+    .btn--primary{ background: color-mix(in oklab, var(--surface-2) 85%, transparent); }
+    .btn--ghost{ background: transparent; }
+    .btn:hover{ transform: translateY(-1px); border-color: var(--border-2); }
+    .btn:active{ transform: translateY(0); }
+    .btn i{ opacity: .9; font-size: 1em; }
+
+    .viewShell{
+      position: relative;
+      min-height: 60vh;
+      will-change: opacity, transform, filter;
+    }
+    .viewShell.is-swapping{ pointer-events: none; }
+    .viewShell.is-leaving{
+      opacity: 0;
+      transform: translateY(10px);
+      filter: blur(2px);
+      transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out), filter var(--dur-3) var(--ease-out);
+    }
+    .viewShell.is-entering{
+      opacity: 0;
+      transform: translateY(10px);
+      filter: blur(2px);
+    }
+    .viewShell.is-entered{
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+      transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out), filter var(--dur-3) var(--ease-out);
+    }
+
+    .hero{
+      position: relative;
+      min-height: 100vh;
+      padding: clamp(7.5rem, 12vh, 10.5rem) 0 var(--s-6);
+      overflow: hidden;
+      color: rgba(255,255,255,.93);
+    }
+    .hero .btn{
+      color: rgba(255,255,255,.92);
+      border-color: rgba(255,255,255,.20);
+      background: rgba(0,0,0,.16);
+    }
+    .hero .btn--primary{ background: rgba(255,255,255,.10); }
+    .hero .btn:hover{ border-color: rgba(255,255,255,.32); }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(120% 120% at 20% 0%, rgba(0,0,0,.10), rgba(0,0,0,.72)),
+        linear-gradient(180deg, rgba(0,0,0,.40), rgba(0,0,0,.70));
+      pointer-events:none;
+      z-index: 2;
+    }
+    .heroVideo{
+      position:absolute;
+      inset:0;
+      z-index: 1;
+      overflow:hidden;
+      background: linear-gradient(180deg, var(--bg-2), var(--bg));
+    }
+    .heroVideo__ph{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(140% 120% at 18% 10%, var(--ph-2), transparent 60%),
+        radial-gradient(120% 120% at 82% 85%, var(--ph-1), transparent 65%),
+        linear-gradient(180deg, var(--bg-2), var(--bg));
+      animation: phBreath var(--ph-breath) var(--ease-soft) infinite;
+      z-index: 1;
+    }
+    @keyframes phBreath{
+      0%{ filter: contrast(1) brightness(1); opacity: .70; }
+      50%{ filter: contrast(1.05) brightness(1.04); opacity: .95; }
+      100%{ filter: contrast(1) brightness(1); opacity: .70; }
+    }
+    .heroVideo__thumb{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+      filter: contrast(1.02) saturate(.95);
+      z-index: 2;
+      pointer-events:none;
+    }
+    .heroVideo.is-thumb-loaded .heroVideo__thumb{ opacity: 1; transform: scale(1.00); }
+
+    .heroVideo__mount{
+      position:absolute;
+      inset:0;
+      z-index: 3;
+      pointer-events:none;
+      opacity: 0;
+      transition: opacity var(--dur-3) var(--ease-out);
+    }
+    .heroVideo.is-mounted .heroVideo__mount{ opacity: 1; }
+
+    .heroVideo__cover{
+      position:absolute;
+      inset:-10%;
+      transform: scale(1.22);
+      transform-origin:center;
+    }
+    .heroVideo__cover iframe{
+      width:100%;
+      height:100%;
+      position:absolute;
+      inset:0;
+      border:0;
+    }
+    @media (max-width: 520px){
+      .heroVideo__cover{ transform: scale(1.28); }
+    }
+
+    .hero__wrap{
+      position: relative;
+      z-index: 3;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: var(--s-4);
+      align-items: start;
+    }
+    .hero__cta{ display:flex; flex-wrap: wrap; gap: .75rem; align-items:center; }
+
+    .scrollCue{
+      margin-top: var(--s-4);
+      display:flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: .60rem;
+      width: fit-content;
+      color: rgba(255,255,255,.60);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: .78em;
+      pointer-events:none;
+    }
+    .scrollCue__arrow{
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      background: rgba(0,0,0,.18);
+      overflow: hidden;
+      box-shadow: 0 18px 90px rgba(0,0,0,.60);
+    }
+    .scrollCue__arrow i{
+      animation: arrowDrop 1.45s var(--ease-soft) infinite;
+      opacity: .95;
+      color: rgba(255,255,255,.92);
+    }
+    @keyframes arrowDrop{
+      0%{ transform: translateY(-2px); opacity: .55; }
+      45%{ transform: translateY(6px); opacity: 1; }
+      100%{ transform: translateY(-2px); opacity: .55; }
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: var(--s-5);
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      .split{ grid-template-columns: 1fr; }
+    }
+
+    .pillRow{
+      margin-top: var(--s-4);
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s-3);
+    }
+    @media (max-width: 780px){
+      .pillRow{ grid-template-columns: 1fr; }
+    }
+
+    .pill{
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    .pill__title{
+      margin: 0 0 .35rem;
+      font-weight: 950;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: .90em;
+      color: var(--text);
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+    }
+    .pill__title i{ color: var(--accent); opacity: .95; }
+    .pill__text{ margin: 0; color: var(--muted); max-width: 66ch; }
+
+    .hScroll, .gridItem{ border-radius: 0; }
+
+    .hScroll{
+      border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
+      background: linear-gradient(180deg, var(--bg-2), var(--bg));
+      box-shadow: 0 28px 120px var(--shadow);
+      overflow: hidden;
+    }
+    .hScroll__rail{
+      display:flex;
+      overflow-x:auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .hScroll__rail::-webkit-scrollbar{ display:none; }
+
+    .hScroll__item{
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(180deg, var(--bg-3), var(--bg));
+      border-right: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+      overflow:hidden;
+    }
+    .hScroll__item:last-child{ border-right: 0; }
+
+    .media{
+      position:absolute;
+      inset:0;
+      overflow:hidden;
+      background: linear-gradient(180deg, var(--bg-3), var(--bg));
+      display:block;
+      text-decoration:none;
+      color:inherit;
+      cursor: zoom-in;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .media__ph{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(140% 120% at 18% 10%, var(--ph-2), transparent 60%),
+        radial-gradient(120% 120% at 82% 85%, var(--ph-1), transparent 65%),
+        linear-gradient(180deg, var(--bg-3), var(--bg));
+      animation: phBreath var(--ph-breath) var(--ease-soft) infinite;
+    }
+    .media__img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      transform: scale(1.02);
+      filter: blur(2px);
+      transition: opacity 680ms var(--ease-out), transform 980ms var(--ease-out), filter 980ms var(--ease-out);
+      will-change: opacity, transform, filter;
+      pointer-events:none;
+    }
+    .is-loaded .media__img{
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+    }
+    .has-error .media__img{ display:none; }
+
+    .hScroll__meta{
+      padding: .85rem 1.05rem;
+      display:flex;
+      justify-content: center;
+      align-items:center;
+      border-top: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+      background: color-mix(in oklab, var(--surface) 92%, transparent);
+    }
+
+    .dots{ display:flex; align-items:center; gap: .45rem; }
+    .dot{
+      appearance:none;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: color-mix(in oklab, var(--border) 70%, transparent);
+      border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+      transition: transform var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out);
+      cursor: pointer;
+      padding: 0;
+    }
+    .dot.is-active{
+      background: var(--accent);
+      border-color: color-mix(in oklab, var(--accent) 70%, transparent);
+      transform: scale(1.15);
+    }
+    .dot:focus-visible{ outline: 2px solid color-mix(in oklab, var(--text) 55%, transparent); outline-offset: 4px; }
+
+    .grid3{
+      margin-top: var(--s-5);
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(0.25rem, 0.18rem + 0.30vw, 0.55rem);
+    }
+    @media (max-width: 980px){
+      .grid3{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px){
+      .grid3{ grid-template-columns: 1fr; }
+    }
+    .gridItem{
+      margin: 0;
+      border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
+      overflow:hidden;
+      background: linear-gradient(180deg, var(--bg-3), var(--bg));
+      box-shadow: 0 26px 110px var(--shadow);
+      aspect-ratio: 3/4;
+      position: relative;
+    }
+
+    .contactPage{
+      padding: clamp(7.5rem, 12vh, 10.5rem) 0 var(--s-6);
+    }
+    .contactCard{
+      margin-top: var(--s-4);
+      border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
+      border-radius: var(--r-3);
+      padding: var(--s-5);
+      background: color-mix(in oklab, var(--surface) 92%, transparent);
+      box-shadow: 0 30px 140px var(--shadow);
+      display:flex;
+      flex-wrap: wrap;
+      align-items:flex-start;
+      justify-content: space-between;
+      gap: var(--s-4);
+    }
+    .contactCard__right{ display:flex; flex-wrap: wrap; gap: .75rem; align-items:center; }
+
+    .btnEmail{ position: relative; }
+    .btnEmail__shell{ display:inline-flex; align-items:center; gap:.55rem; white-space: nowrap; }
+    .btnEmail__email{ display:none; letter-spacing: .04em; text-transform: none; font-weight: 900; color: var(--accent); }
+    .btnEmail.is-done .btnEmail__labelText{ display:none; }
+    .btnEmail.is-done .btnEmail__email{ display:inline; }
+
+    .btnBadge{
+      position: absolute;
+      left: 50%;
+      top: -10px;
+      transform: translateX(-50%) translateY(-8px);
+      background: color-mix(in oklab, var(--bg) 82%, transparent);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .45rem .70rem;
+      box-shadow: 0 22px 80px var(--shadow);
+      display:flex;
+      align-items:center;
+      gap:.45rem;
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out);
+      z-index: 10;
+      color: var(--text);
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-weight: 950;
+      font-size: .72em;
+      white-space: nowrap;
+    }
+    .btnBadge i{ color: var(--ok); }
+    .btnBadge.is-show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(-16px);
+    }
+
+    .site-footer{
+      padding: var(--s-4) 0 var(--s-5);
+      border-top: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+      background: color-mix(in oklab, var(--bg) 92%, transparent);
+    }
+    .footer__wrap{
+      display:flex;
+      justify-content: space-between;
+      gap: var(--s-2);
+      align-items:center;
+      flex-wrap: wrap;
+    }
+    .footer__links{ display:flex; gap: .9rem; align-items:center; flex-wrap: wrap; }
+    .footer__links a{
+      color: var(--muted);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: .82em;
+      display:inline-flex;
+      align-items:center;
+      gap: .45rem;
+      padding: .25rem .35rem;
+      border-radius: 10px;
+      transition: color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out);
+    }
+    .footer__links a:hover{
+      color: var(--text);
+      background: color-mix(in oklab, var(--surface) 92%, transparent);
+    }
+    .footer__links i{ color: var(--accent); opacity: .95; }
+
+    .reveal{
+      opacity: 0;
+      transform: translateY(14px);
+      filter: blur(2px);
+      transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out), filter var(--dur-3) var(--ease-out);
+    }
+    .reveal.is-inview{
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    /* UI corners */
+    .icon-btn,
+    .chip-btn,
+    .btn,
+    .btnBadge,
+    .headerPill,
+    .popMenu,
+    .scrollCue__arrow,
+    .dot,
+    .contactCard,
+    .contactCard__right,
+    .contactCard__left,
+    .footer__links a{
+      border-radius: var(--r-ui) !important;
+    }
+
+    /* Hero MP4 support */
+    .heroVideo__mp4{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      opacity: .92;
+      filter: saturate(1.02) contrast(1.02);
+      pointer-events:none;
+    }
+
+    /* Markdown (Eventi) */
+    .eventsCard{
+      margin-top: var(--s-3);
+      border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
+      background: color-mix(in oklab, var(--surface) 92%, transparent);
+      box-shadow: 0 28px 120px var(--shadow);
+      padding: var(--s-4);
+    }
+    .md{ max-width: 78ch; }
+    .md :is(h1,h2,h3){ font-family: var(--font-display); letter-spacing: .02em; margin: 1.2rem 0 .6rem; }
+    .md h1{ font-size: clamp(1.6rem, 2.2vw, 2.1rem); }
+    .md h2{ font-size: clamp(1.35rem, 2.0vw, 1.85rem); }
+    .md h3{ font-size: clamp(1.15rem, 1.6vw, 1.45rem); }
+    .md p{ margin: 0 0 .9rem; color: var(--muted); }
+    .md a{ color: var(--text); text-decoration: underline; text-underline-offset: .16em; }
+    .md a:hover{ color: var(--accent); }
+    .md :is(ul,ol){ margin: .3rem 0 1rem; padding-left: 1.15rem; }
+    .md li{ margin: .35rem 0; color: var(--muted); }
+    .md strong{ color: var(--text); }
+    .md hr{ border:0; border-top: 1px solid color-mix(in oklab, var(--border) 85%, transparent); margin: 1.2rem 0; }
+    .md blockquote{
+      margin: 1rem 0;
+      padding: .75rem 1rem;
+      border-left: 3px solid color-mix(in oklab, var(--accent) 65%, transparent);
+      background: color-mix(in oklab, var(--surface) 85%, transparent);
+      color: var(--muted);
+    }
+    .md code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: .95em;
+      color: color-mix(in oklab, var(--text) 86%, transparent);
+      background: color-mix(in oklab, var(--surface) 88%, transparent);
+      padding: .15rem .35rem;
+      border: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+    }
+    .md pre{
+      overflow:auto;
+      padding: 1rem;
+      background: color-mix(in oklab, var(--surface) 88%, transparent);
+      border: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+    }
+    .md pre code{ background: transparent; border:0; padding:0; }
+    .md table{
+      width: 100%;
+      border-collapse: collapse;
+      margin: .6rem 0 1.2rem;
+      overflow: hidden;
+      border: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+    }
+    .md th, .md td{
+      padding: .65rem .75rem;
+      border-bottom: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+      text-align: left;
+      vertical-align: top;
+      color: var(--muted);
+    }
+    .md th{ color: var(--text); background: color-mix(in oklab, var(--surface) 88%, transparent); }
+    .md tr:last-child td{ border-bottom: 0; }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Vai al contenuto</a>
+
+  <header class="site-header" data-component="header">
+    <div class="wrap header__wrap">
+      <div class="headerPill" data-header-pill>
+        <button class="icon-btn" type="button" data-action="toggle-menu" aria-label="Menu" aria-expanded="false" title="Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="popMenu" data-popmenu aria-hidden="true">
+          <a class="icon-btn" href="#/" data-route="#/" aria-label="Home" title="Home">
+            <i class="fa-solid fa-house"></i>
+          </a>
+
+          <a class="icon-btn" href="#/tecniche" data-route="#/tecniche" aria-label="Come lo facciamo" title="Come lo facciamo">
+            <i class="fa-solid fa-layer-group"></i>
+          </a>
+
+          <a class="icon-btn" href="#/contatti" data-route="#/contatti" aria-label="Contatti" title="Contatti">
+            <i class="fa-solid fa-paper-plane"></i>
+          </a>
+
+          <button class="icon-btn" type="button" data-action="toggle-theme" aria-label="Cambia tema (dark/light)" title="Tema">
+            <i class="fa-solid fa-sun"></i>
+          </button>
+
+          <button class="chip-btn" type="button" data-action="toggle-language" title="Lingua">
+            <i class="fa-solid fa-globe"></i>
+            <span class="chip-label" data-lang-label>IT</span>
+          </button>
+        </div>
+
+        <a class="icon-btn headerHomeBtn" href="#/" data-route="#/" aria-label="Home" title="Home">
+          <i class="fa-solid fa-house"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="viewShell" data-view-shell aria-live="polite">
+      <div data-view="home" data-home-view>
+        <section class="hero" aria-label="Intro" data-hero>
+          <!-- Replace data-video-url with your trailer if needed -->
+          <div class="heroVideo" data-hero-video data-video-url="https://www.youtube.com/watch?v=nSSJRcRtqpo" data-video-start="8" data-video-autoplay="1" aria-hidden="true">
+            <div class="heroVideo__ph"></div>
+            <img class="heroVideo__thumb" alt="" data-thumb>
+            <div class="heroVideo__mount" data-video-mount></div>
+          </div>
+
+          <div class="wrap hero__wrap">
+            <div class="reveal">
+              <h1 class="sr-only">Opera Viva</h1>
+              <p class="sr-only">
+                <span lang="it">Progetto fotografico su marinai, portuali, navi e imbarcazioni.</span>
+                <span lang="en">A photographic project about sailors, dock workers, ships and vessels.</span>
+              </p>
+
+              <div class="hero__cta" aria-label="Azioni principali">
+                <a class="btn btn--primary" href="#opera-viva" data-route="#opera-viva">
+                  <i class="fa-solid fa-compass"></i>
+                  <span lang="it">Scopri</span><span lang="en">Discover</span>
+                </a>
+
+                <a class="btn btn--ghost" href="#/contatti" data-route="#/contatti">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span lang="it">Contatti</span><span lang="en">Contact</span>
+                </a>
+              </div>
+
+              <div class="scrollCue" aria-hidden="true">
+                <div><span lang="it">Scorri</span><span lang="en">Scroll</span></div>
+                <div class="scrollCue__arrow"><i class="fa-solid fa-arrow-down"></i></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="opera-viva" class="section" aria-label="Opera Viva">
+          <div class="wrap split">
+            <div class="reveal">
+              <p class="kicker">
+                <span lang="it">Progetto fotografico</span>
+                <span lang="en">Photographic project</span>
+              </p>
+
+              <h2 class="h2" style="margin-bottom: var(--s-3);">
+                <span lang="it">Opera Viva</span>
+                <span lang="en">Opera Viva</span>
+              </h2>
+
+              <p class="lead">
+                <span lang="it">Marinai, portuali, navi e imbarcazioni. Il mare come memoria, destino e materia. Una nuova epopea, nel presente.</span>
+                <span lang="en">Sailors, dock workers, ships and vessels. The sea as memory, fate and material. A new epic, in the present.</span>
+              </p>
+
+              <div aria-label="Testo ufficiale">
+                <p class="p"><span lang="it">«Il mare è da sempre un luogo dove l’uomo si misura con sé stesso, con la bellezza e con il tempo. Ogni nave che lo attraversa porta con sé una storia, un carattere, un’anima: è molto più di un mezzo, è un essere vivo, un testimone del viaggio e delle mani che l’hanno costruita.</span><span lang="en">“The sea has always been a place where people measure themselves against beauty and time. Every ship that crosses it carries a story, a character, a soul: it is far more than a vehicle, it is a living being, a witness to the journey and to the hands that built it.”</span></p>
+
+                <p class="p"><span lang="it">Da sempre il mare custodisce miti e leggende, rotte reali e immaginarie. Galeoni, caravelle e bastimenti hanno attraversato i secoli portando sogni di conquista, libertà e destino. Con questo progetto vogliamo riportare quella stessa aura nel presente, raccontando navi ed equipaggi come protagonisti di una nuova epopea: figure sospese tra la forza del ferro e la fragilità del tempo.</span><span lang="en">“The sea has always guarded myths and legends, real and imaginary routes. Galleons, caravels and great vessels have crossed centuries carrying dreams of conquest, freedom and destiny. With this project we want to bring that aura into the present, portraying ships and crews as protagonists of a new epic: figures suspended between the strength of iron and the fragility of time.”</span></p>
+
+                <p class="p"><span lang="it">Attraverso tecniche fotografiche antiche, come il collodio umido, e sguardi infrarossi che rivelano ciò che normalmente resta invisibile, cerchiamo di trasformare ogni imbarcazione in un’opera senza tempo. Ogni scafo, ogni volto, ogni superficie diventa una traccia di luce, un’eco dei grandi racconti di mare che ancora ci accompagnano.</span><span lang="en">“Through historic photographic techniques, such as wet plate collodion, and infrared views that reveal what usually remains invisible, we try to turn each vessel into a timeless work. Every hull, every face, every surface becomes a trace of light, an echo of the great sea stories that still accompany us.”</span></p>
+
+                <p class="p"><span lang="it">Da Ulisse ai diari dei capitani, dalle leggende dei pirati alle visioni romantiche di Turner. Le navi non sono solo strumenti di navigazione: sono creature simboliche, custodi di memorie e destini. Nel nostro lavoro diventano monumenti di luce, fissati in un istante che non conosce corrosione né oblio.»</span><span lang="en">“From Odysseus to captains’ logs, from pirate legends to Turner’s romantic visions. Ships are not only instruments of navigation: they are symbolic creatures, keepers of memories and destinies. In our work they become monuments of light, fixed in an instant that knows neither corrosion nor oblivion.”</span></p>
+              </div>
+            </div>
+
+            <div class="reveal">
+              <div class="hScroll" data-hscroll aria-label="Estratti in evidenza">
+                <div class="hScroll__rail" data-hscroll-rail>
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-1.jpg" data-gallery="estratti" data-type="image" aria-label="Apri immagine 1">
+                      <div class="media__ph" aria-hidden="true"></div>
+                      <img class="media__img" data-src="img/opera-viva-1.jpg" alt="Opera Viva, estratto 01" decoding="async" loading="lazy">
+                    </a>
+                  </div>
+
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-2.jpg" data-gallery="estratti" data-type="image" aria-label="Apri immagine 2">
+                      <div class="media__ph" aria-hidden="true"></div>
+                      <img class="media__img" data-src="img/opera-viva-2.jpg" alt="Opera Viva, estratto 02" decoding="async" loading="lazy">
+                    </a>
+                  </div>
+
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-3.jpg" data-gallery="estratti" data-type="image" aria-label="Apri immagine 3">
+                      <div class="media__ph" aria-hidden="true"></div>
+                      <img class="media__img" data-src="img/opera-viva-3.jpg" alt="Opera Viva, estratto 03" decoding="async" loading="lazy">
+                    </a>
+                  </div>
+
+                  <div class="hScroll__item">
+                    <a class="media glightbox" href="img/opera-viva-4.jpg" data-gallery="estratti" data-type="image" aria-label="Apri immagine 4">
+                      <div class="media__ph" aria-hidden="true"></div>
+                      <img class="media__img" data-src="img/opera-viva-4.jpg" alt="Opera Viva, estratto 04" decoding="async" loading="lazy">
+                    </a>
+                  </div>
+                </div>
+
+                <div class="hScroll__meta">
+                  <div class="dots" aria-label="Navigazione estratti" data-hscroll-dots>
+                    <button class="dot is-active" type="button" data-dot="0" aria-label="Vai a foto 1"></button>
+                    <button class="dot" type="button" data-dot="1" aria-label="Vai a foto 2"></button>
+                    <button class="dot" type="button" data-dot="2" aria-label="Vai a foto 3"></button>
+                    <button class="dot" type="button" data-dot="3" aria-label="Vai a foto 4"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="cosa-facciamo" class="section" aria-label="Cosa facciamo">
+          <div class="wrap">
+            <div class="reveal">
+              <p class="kicker">
+                <span lang="it">Cosa facciamo</span>
+                <span lang="en">What we do</span>
+              </p>
+
+              <h2 class="h2">
+                <span lang="it">Opere, ritratti e storie di mare</span>
+                <span lang="en">Works, portraits and sea stories</span>
+              </h2>
+
+              <p class="lead" style="max-width: 72ch;">
+                <span lang="it">Realizziamo lavori su misura, oggetti fotografici unici e serie pensate per durare. Dal singolo scafo alla storia di un viaggio.</span>
+                <span lang="en">We create custom works, one of a kind photographic objects and series designed to last. From a single hull to the story of a journey.</span>
+              </p>
+
+              <div class="pillRow" aria-label="Servizi principali">
+                <article class="pill reveal">
+                  <h3 class="pill__title"><i class="fa-solid fa-ruler-combined"></i><span lang="it">Opere su misura per pareti</span><span lang="en">Custom wall works</span></h3>
+                  <p class="pill__text"><span lang="it">Formati, supporti e finiture pensati per uno spazio reale, con presenza fisica e ritmo.</span><span lang="en">Sizes, materials and finishes designed for real spaces, with physical presence and rhythm.</span></p>
+                </article>
+
+                <article class="pill reveal">
+                  <h3 class="pill__title"><i class="fa-solid fa-camera-retro"></i><span lang="it">Tintype, ambrotype e pellicola</span><span lang="en">Tintype, ambrotype and film</span></h3>
+                  <p class="pill__text"><span lang="it">Processi storici e analogici per ottenere materia, unicità e imperfezioni che diventano firma.</span><span lang="en">Historic and analog processes for materiality, uniqueness and imperfections that become a signature.</span></p>
+                </article>
+
+                <article class="pill reveal">
+                  <h3 class="pill__title"><i class="fa-solid fa-eye"></i><span lang="it">Stampe fine art da infrarossi digitale</span><span lang="en">Infrared fine art prints</span></h3>
+                  <p class="pill__text"><span lang="it">Una lettura diversa della luce, per far emergere superfici e dettagli oltre l’evidenza.</span><span lang="en">A different reading of light, to reveal surfaces and details beyond the obvious.</span></p>
+                </article>
+
+                <article class="pill reveal">
+                  <h3 class="pill__title"><i class="fa-solid fa-ship"></i><span lang="it">Opere singole: ritratti o imbarcazioni</span><span lang="en">Single works: portraits or vessels</span></h3>
+                  <p class="pill__text"><span lang="it">Un’immagine come oggetto, finita e definitiva. Un volto o uno scafo, con la stessa dignità.</span><span lang="en">An image as an object, finished and definitive. A face or a hull, with the same dignity.</span></p>
+                </article>
+
+                <article class="pill reveal">
+                  <h3 class="pill__title"><i class="fa-solid fa-compass"></i><span lang="it">Imbarco per raccontare un viaggio</span><span lang="en">Boarding to tell a journey</span></h3>
+                  <p class="pill__text"><span lang="it">Più giorni a bordo per seguire ritmo, lavoro e silenzi, trasformandoli in narrazione visiva.</span><span lang="en">Multiple days onboard to follow rhythm, work and silence, turning them into visual narrative.</span></p>
+                </article>
+
+                <article class="pill reveal">
+                  <h3 class="pill__title"><i class="fa-solid fa-book-open"></i><span lang="it">Storia su fotolibro stampato</span><span lang="en">A story as a printed photo book</span></h3>
+                  <p class="pill__text"><span lang="it">Un racconto sequenziale che diventa oggetto, memoria e traccia: dalla selezione alla stampa.</span><span lang="en">A sequential narrative that becomes an object, memory and trace: from edit to print.</span></p>
+                </article>
+              </div>
+            </div>
+
+            <div class="reveal" style="margin-top: var(--s-3);">
+              <a class="btn btn--primary" href="#/cosa" data-route="#/cosa" aria-label="Approfondisci cosa facciamo">
+                <i class="fa-solid fa-circle-info"></i>
+                <span lang="it">Approfondisci</span><span lang="en">Learn more</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="come-lo-facciamo" class="section" aria-label="Come lo facciamo">
+          <div class="wrap">
+            <div class="split">
+            <div class="reveal">
+              <p class="kicker">
+                <span lang="it">Come lo facciamo</span>
+                <span lang="en">How we do it</span>
+              </p>
+
+              <h2 class="h2">
+                <span lang="it">Tre strade, un solo linguaggio</span>
+                <span lang="en">Three paths, one language</span>
+              </h2>
+
+              <p class="lead" style="max-width: 72ch;">
+                <span lang="it">Collodio umido, pellicola e infrarossi digitale non sono alternative estetiche: sono scelte di materia, tempo e verità.</span>
+                <span lang="en">Wet plate collodion, film and digital infrared are not aesthetic alternatives: they are choices of matter, time and truth.</span>
+              </p>
+            </div>
+            <div class="reveal">
+              <figure class="gridItem" style="max-width: 520px; margin-left: auto; aspect-ratio: 4 / 5;">
+                <a class="media glightbox" href="img/opera-viva-8.jpg" data-gallery="come-lo-facciamo" data-type="image" aria-label="Apri immagine">
+                  <div class="media__ph" aria-hidden="true"></div>
+                  <img class="media__img" data-src="img/opera-viva-8.jpg" alt="Opera Viva, dettaglio" decoding="async" loading="lazy">
+                </a>
+              </figure>
+            </div>
+          </div>
+
+            
+
+            <div class="pillRow" aria-label="Sintesi tecniche">
+              <article class="pill reveal">
+                <h3 class="pill__title"><i class="fa-solid fa-flask"></i><span lang="it">Collodio: tintype e ambrotype</span><span lang="en">Collodion: tintype and ambrotype</span></h3>
+                <p class="pill__text"><span lang="it">Un rito breve e preciso. L’immagine nasce su metallo o vetro, come pezzo unico.</span><span lang="en">A short, precise ritual. The image is born on metal or glass, as a one of a kind object.</span></p>
+              </article>
+
+              <article class="pill reveal">
+                <h3 class="pill__title"><i class="fa-solid fa-film"></i><span lang="it">Pellicola</span><span lang="en">Film</span></h3>
+                <p class="pill__text"><span lang="it">Grana, transizioni morbide e decisioni in ripresa. Ogni fotogramma conta.</span><span lang="en">Grain, soft transitions and capture decisions. Every frame matters.</span></p>
+              </article>
+
+              <article class="pill reveal">
+                <h3 class="pill__title"><i class="fa-solid fa-sun"></i><span lang="it">Infrarossi digitale</span><span lang="en">Digital infrared</span></h3>
+                <p class="pill__text"><span lang="it">La luce cambia regole: superfici e atmosfere emergono come un’altra pelle del reale.</span><span lang="en">Light changes its rules: surfaces and atmospheres emerge like another skin of reality.</span></p>
+              </article>
+
+              <article class="pill reveal">
+                <h3 class="pill__title"><i class="fa-solid fa-print"></i><span lang="it">Stampa e permanenza</span><span lang="en">Print and permanence</span></h3>
+                <p class="pill__text"><span lang="it">Dalla scelta del supporto alla finitura, l’opera è pensata per durare e abitare uno spazio.</span><span lang="en">From paper choice to finishing, the work is designed to last and live in a space.</span></p>
+              </article>
+            </div>
+
+            <div class="reveal" style="margin-top: var(--s-3);">
+              <a class="btn btn--primary" href="#/tecniche" data-route="#/tecniche" aria-label="Approfondisci come lo facciamo">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span lang="it">Approfondisci</span><span lang="en">Explore</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="eventi" class="section" aria-label="Eventi" data-events-section hidden>
+          <div class="wrap">
+            <div class="reveal">
+              <p class="kicker">
+                <span lang="it">Eventi</span>
+                <span lang="en">Events</span>
+              </p>
+
+              <h2 class="h2">
+                <span lang="it">Mostra itinerante</span>
+                <span lang="en">Traveling exhibition</span>
+              </h2>
+
+              <p class="lead" style="max-width: 72ch;">
+                <span lang="it">Opera Viva si muove tra porti, città e incontri.</span>
+                <span lang="en">Opera Viva moves across ports, cities and encounters.</span>
+              </p>
+            </div>
+
+            <div class="eventsCard reveal" aria-label="Calendario eventi">
+              <div class="md" data-events-content></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="galleria" class="section" aria-label="Galleria">
+          <div class="wrap">
+            <div class="reveal">
+              <p class="kicker">
+                <span lang="it">Galleria</span>
+                <span lang="en">Gallery</span>
+              </p>
+
+              <h2 class="h2">
+                <span lang="it">Estratti</span>
+                <span lang="en">Selections</span>
+              </h2>
+
+              <p class="lead" style="max-width: 72ch;">
+                <span lang="it">Una selezione di immagini dal progetto. Clicca per aprire in alta definizione.</span>
+                <span lang="en">A selection from the project. Click to open in high resolution.</span>
+              </p>
+            </div>
+
+            <div class="grid3" aria-label="Galleria immagini" data-gallery-grid>
+              <figure class="gridItem reveal">
+                <a class="media glightbox" href="img/opera-viva-1.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 1">
+                  <div class="media__ph" aria-hidden="true"></div>
+                  <img class="media__img" data-src="img/opera-viva-1.jpg" alt="Opera Viva, foto 01" decoding="async" loading="lazy">
+                </a>
+              </figure>
+
+              <figure class="gridItem reveal">
+                <a class="media glightbox" href="img/opera-viva-2.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 2">
+                  <div class="media__ph" aria-hidden="true"></div>
+                  <img class="media__img" data-src="img/opera-viva-2.jpg" alt="Opera Viva, foto 02" decoding="async" loading="lazy">
+                </a>
+              </figure>
+
+              <figure class="gridItem reveal">
+                <a class="media glightbox" href="img/opera-viva-3.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 3">
+                  <div class="media__ph" aria-hidden="true"></div>
+                  <img class="media__img" data-src="img/opera-viva-3.jpg" alt="Opera Viva, foto 03" decoding="async" loading="lazy">
+                </a>
+              </figure>
+
+              <figure class="gridItem reveal">
+                <a class="media glightbox" href="img/opera-viva-4.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 4">
+                  <div class="media__ph" aria-hidden="true"></div>
+                  <img class="media__img" data-src="img/opera-viva-4.jpg" alt="Opera Viva, foto 04" decoding="async" loading="lazy">
+                </a>
+              </figure>
+
+              <figure class="gridItem reveal">
+                <a class="media glightbox" href="img/opera-viva-5.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 5">
+                  <div class="media__ph" aria-hidden="true"></div>
+                  <img class="media__img" data-src="img/opera-viva-5.jpg" alt="Opera Viva, foto 05" decoding="async" loading="lazy">
+                </a>
+              </figure>
+
+              <figure class="gridItem reveal">
+                <a class="media glightbox" href="img/opera-viva-6.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 6">
+                  <div class="media__ph" aria-hidden="true"></div>
+                  <img class="media__img" data-src="img/opera-viva-6.jpg" alt="Opera Viva, foto 06" decoding="async" loading="lazy">
+                </a>
+              </figure>
+
+              <figure class="gridItem reveal">
+                <a class="media glightbox" href="img/opera-viva-7.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 7">
+                  <div class="media__ph" aria-hidden="true"></div>
+                  <img class="media__img" data-src="img/opera-viva-7.jpg" alt="Opera Viva, foto 07" decoding="async" loading="lazy">
+                </a>
+              </figure>
+
+              <figure class="gridItem reveal">
+                <a class="media glightbox" href="img/opera-viva-8.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 8">
+                  <div class="media__ph" aria-hidden="true"></div>
+                  <img class="media__img" data-src="img/opera-viva-8.jpg" alt="Opera Viva, foto 08" decoding="async" loading="lazy">
+                </a>
+              </figure>
+
+              <figure class="gridItem reveal">
+                <a class="media glightbox" href="img/opera-viva-9.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 9">
+                  <div class="media__ph" aria-hidden="true"></div>
+                  <img class="media__img" data-src="img/opera-viva-9.jpg" alt="Opera Viva, foto 09" decoding="async" loading="lazy">
+                </a>
+              </figure>
+
+              <figure class="gridItem reveal">
+                <a class="media glightbox" href="img/opera-viva-10.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 10">
+                  <div class="media__ph" aria-hidden="true"></div>
+                  <img class="media__img" data-src="img/opera-viva-10.jpg" alt="Opera Viva, foto 10" decoding="async" loading="lazy">
+                </a>
+              </figure>
+            </div>
+
+            <div class="reveal" style="margin-top: var(--s-3);">
+              <a class="btn btn--ghost" href="#/contatti" data-route="#/contatti">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span lang="it">Contatti</span><span lang="en">Contact</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <template id="tpl-contact">
+      <div data-view="contact" data-contact-view>
+        <section class="contactPage" aria-label="Contatti">
+          <div class="wrap">
+            <div class="reveal">
+              <p class="kicker"><span lang="it">Contatti</span><span lang="en">Contact</span></p>
+              <h1 class="h2" style="margin-bottom: var(--s-2);">
+                <span lang="it">Scrivici per opere, eventi e collaborazioni</span>
+                <span lang="en">Reach out for works, events and collaborations</span>
+              </h1>
+
+              <p class="lead" style="margin-bottom: 0; color: var(--muted);">
+                <span lang="it">Se vuoi portare Opera Viva in un luogo, commissionare un’opera o raccontare una storia di mare, scrivici.</span>
+                <span lang="en">If you want to bring Opera Viva somewhere, commission a work, or tell a sea story, write us.</span>
+              </p>
+
+              <p class="micro" style="margin-top: .75rem;">
+                <span lang="it">Italia</span>
+                <span lang="en">Italy</span>
+              </p>
+            </div>
+
+            <div class="contactCard reveal">
+              <div style="max-width: 72ch;">
+                <p class="lead" style="margin:0;">
+                  <span lang="it"><span class="emph">Email</span> e <span class="emph">Instagram</span> sono i canali più veloci. Rispondiamo appena possibile.</span>
+                  <span lang="en"><span class="emph">Email</span> and <span class="emph">Instagram</span> are the fastest channels. We reply as soon as possible.</span>
+                </p>
+              </div>
+
+              <div class="contactCard__right" aria-label="Azioni contatto">
+                <button class="btn btn--primary btnEmail" type="button" data-action="copy-email" aria-label="Vedi email e copia">
+                  <span class="btnBadge" aria-hidden="true" data-email-badge>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span lang="it">Copiata</span><span lang="en">Copied</span>
+                  </span>
+
+                  <span class="btnEmail__shell">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span class="btnEmail__labelText"><span lang="it">Vedi email</span><span lang="en">View email</span></span>
+                    <span class="btnEmail__email">info@operaviva.example</span>
+                  </span>
+                </button>
+
+                <a class="btn btn--ghost" href="https://instagram.com/" rel="noopener" target="_blank" aria-label="Apri Instagram (placeholder)">
+                  <i class="fa-brands fa-instagram"></i>
+                  <span>Instagram</span>
+                </a>
+
+                <a class="btn btn--ghost" href="#/" data-route="#/" aria-label="Torna alla home">
+                  <i class="fa-solid fa-house"></i>
+                  <span lang="it">Home</span><span lang="en">Home</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </template>
+
+    <template id="tpl-offer">
+      <div data-view="offer" data-offer-view>
+        <section class="techStack" aria-label="Approfondimento Cosa facciamo">
+          <div class="wrap">
+            <div class="techStack__head">
+              <p class="kicker techAnim" data-tech-anim>
+                <span lang="it">Approfondisci</span><span lang="en">Learn more</span>
+              </p>
+              <h1 class="h2 techAnim" data-tech-anim>
+                <span lang="it">Cosa facciamo</span><span lang="en">What we do</span>
+              </h1>
+              <p class="lead techAnim" data-tech-anim style="max-width:72ch;">
+                <span lang="it">Dal singolo scatto all’opera finita: progettiamo fotografia come oggetto, storia e presenza nello spazio.</span>
+                <span lang="en">From a single frame to the finished work: we design photography as object, story and presence in space.</span>
+              </p>
+
+              <div class="techAnim" data-tech-anim style="margin-top: var(--s-3);">
+                <a class="btn btn--ghost" href="#cosa-facciamo" data-route="#cosa-facciamo" aria-label="Torna alla sezione cosa facciamo">
+                  <i class="fa-solid fa-arrow-left"></i>
+                  <span lang="it">Torna alla pagina</span><span lang="en">Back to page</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="techStack__sections">
+
+            <section class="techSection" id="off-wall">
+              <div class="wrap techSection__grid">
+                <div class="techSection__media techAnim" data-tech-anim>
+                  <div class="techMedia" data-component="smart-media">
+                    <div class="media__ph"></div>
+                    <img data-src="img/opera-viva-6.jpg" alt="Opere su misura per pareti">
+                  </div>
+                </div>
+                <div class="techSection__copy">
+                  <h2 class="techSection__title techAnim" data-tech-anim>
+                    <span lang="it">Opere su misura per pareti</span><span lang="en">Custom wall works</span>
+                  </h2>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">Ogni spazio ha un ritmo: luce, distanza, silenzi. Progettiamo formati e supporti per far sì che l’immagine non sia decorazione, ma presenza.</span>
+                    <span lang="en">Every space has a rhythm: light, distance, silence. We design formats and materials so the image is not decoration, but presence.</span>
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">Dalla selezione alla stampa, curiamo proporzioni, resa dei neri, protezione e finitura, con una logica da oggetto che deve durare.</span>
+                    <span lang="en">From edit to print, we manage proportions, black depth, protection and finishing with the mindset of an object made to last.</span>
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="techSection" id="off-plates">
+              <div class="wrap techSection__grid techSection__grid--flip">
+                <div class="techSection__media techAnim" data-tech-anim>
+                  <div class="techMedia" data-component="smart-media">
+                    <div class="media__ph"></div>
+                    <img data-src="img/opera-viva-2.jpg" alt="Tintype, ambrotype e pellicola">
+                  </div>
+                </div>
+                <div class="techSection__copy">
+                  <h2 class="techSection__title techAnim" data-tech-anim>
+                    <span lang="it">Tintype, ambrotype e pellicola</span><span lang="en">Tintype, ambrotype and film</span>
+                  </h2>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">Tecniche che obbligano a stare dentro il tempo. Preparare, esporre, sviluppare: il processo diventa parte della storia che l’immagine contiene.</span>
+                    <span lang="en">Techniques that force you to stay inside time. Prepare, expose, develop: the process becomes part of the story the image holds.</span>
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">Il risultato è materia: metallo, vetro, emulsione. Oggetti unici o serie analogiche con una coerenza fatta di gesti, non di preset.</span>
+                    <span lang="en">The result is matter: metal, glass, emulsion. Unique objects or analog series with coherence made of gestures, not presets.</span>
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="techSection" id="off-ir">
+              <div class="wrap techSection__grid">
+                <div class="techSection__media techAnim" data-tech-anim>
+                  <div class="techMedia" data-component="smart-media">
+                    <div class="media__ph"></div>
+                    <img data-src="img/opera-viva-8.jpg" alt="Stampe fine art da infrarossi digitale">
+                  </div>
+                </div>
+                <div class="techSection__copy">
+                  <h2 class="techSection__title techAnim" data-tech-anim>
+                    <span lang="it">Stampe fine art da infrarossi digitale</span><span lang="en">Infrared fine art prints</span>
+                  </h2>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">L’infrarosso cambia la lettura della materia: superfici, cieli e atmosfere si spostano di tono e rivelano una dimensione inattesa.</span>
+                    <span lang="en">Infrared changes how matter reads: surfaces, skies and atmospheres shift in tone and reveal an unexpected dimension.</span>
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">La stampa è il punto d’arrivo: carta, inchiostri e finitura restituiscono profondità e permanenza, con un controllo preciso e ripetibile.</span>
+                    <span lang="en">Printing is the destination: paper, inks and finishing return depth and permanence with precise, repeatable control.</span>
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="techSection" id="off-single">
+              <div class="wrap techSection__grid techSection__grid--flip">
+                <div class="techSection__media techAnim" data-tech-anim>
+                  <div class="techMedia" data-component="smart-media">
+                    <div class="media__ph"></div>
+                    <img data-src="img/opera-viva-1.jpg" alt="Opere singole: ritratti o imbarcazioni">
+                  </div>
+                </div>
+                <div class="techSection__copy">
+                  <h2 class="techSection__title techAnim" data-tech-anim>
+                    <span lang="it">Opere singole: ritratti o imbarcazioni</span><span lang="en">Single works: portraits or vessels</span>
+                  </h2>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">Un’opera può essere un volto o uno scafo: cambiano le forme, non la dignità. Cerchiamo carattere, segni, storia e presenza.</span>
+                    <span lang="en">A work can be a face or a hull: the form changes, not the dignity. We look for character, marks, history and presence.</span>
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">Consegniamo un’immagine finita, pronta a vivere nello spazio, con una cura da oggetto che deve attraversare anni.</span>
+                    <span lang="en">We deliver a finished image, ready to live in space, with the care of an object meant to cross years.</span>
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="techSection" id="off-boarding">
+              <div class="wrap techSection__grid">
+                <div class="techSection__media techAnim" data-tech-anim>
+                  <div class="techMedia" data-component="smart-media">
+                    <div class="media__ph"></div>
+                    <img data-src="img/opera-viva-5.jpg" alt="Imbarco per raccontare un viaggio">
+                  </div>
+                </div>
+                <div class="techSection__copy">
+                  <h2 class="techSection__title techAnim" data-tech-anim>
+                    <span lang="it">Imbarco per raccontare un viaggio</span><span lang="en">Boarding to tell a journey</span>
+                  </h2>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">Quando la storia richiede tempo, ci imbarchiamo. Seguiamo turni, gesti e meteo: l’opera nasce da una convivenza reale con il mare.</span>
+                    <span lang="en">When the story needs time, we board. We follow shifts, gestures and weather: the work comes from real cohabitation with the sea.</span>
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">È un lavoro di ascolto: non solo immagini, ma sequenze, contesto e continuità, per far emergere una narrazione completa.</span>
+                    <span lang="en">It is a work of listening: not only images, but sequences, context and continuity to let a complete narrative emerge.</span>
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="techSection" id="off-book">
+              <div class="wrap techSection__grid techSection__grid--flip">
+                <div class="techSection__media techAnim" data-tech-anim>
+                  <div class="techMedia" data-component="smart-media">
+                    <div class="media__ph"></div>
+                    <img data-src="img/opera-viva-9.jpg" alt="Racconto su fotolibro stampato">
+                  </div>
+                </div>
+                <div class="techSection__copy">
+                  <h2 class="techSection__title techAnim" data-tech-anim>
+                    <span lang="it">Racconto su fotolibro stampato</span><span lang="en">A story as a printed photo book</span>
+                  </h2>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">Il fotolibro è una rotta. Editiamo il materiale come un diario: inizio, svolta, ritorno. Una storia che si può tenere in mano.</span>
+                    <span lang="en">A photo book is a route. We edit material like a logbook: start, turning point, return. A story you can hold.</span>
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">Dalla progettazione alla stampa, curiamo ritmo, sequenza e materia della carta, perché l’oggetto finale porti memoria.</span>
+                    <span lang="en">From design to print, we care for rhythm, sequence and paper material so the final object carries memory.</span>
+                  </p>
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </section>
+      </div>
+    </template>
+
+    <template id="tpl-techniques">
+      <div data-view="techniques" data-techniques-view>
+        <section class="techStack" aria-label="Come lo facciamo">
+          <div class="wrap">
+            <div class="techStack__head">
+              <p class="kicker techAnim" data-tech-anim>
+                <span lang="it">Come lo facciamo</span><span lang="en">How we do it</span>
+              </p>
+              <h1 class="h2 techAnim" data-tech-anim>
+                <span lang="it">Differenze reali, materia e tempo</span><span lang="en">Real differences, matter and time</span>
+              </h1>
+              <p class="lead techAnim" data-tech-anim style="max-width:72ch;">
+                <span lang="it">Qui non si tratta di “look”: cambia come nasce la fotografia, che cosa rimane e che tipo di oggetto diventa.</span>
+                <span lang="en">This is not about a “look”: it changes how the photograph is born, what remains, and what kind of object it becomes.</span>
+              </p>
+
+              <div class="techAnim" data-tech-anim style="margin-top: var(--s-3);">
+                <a class="btn btn--ghost" href="#come-lo-facciamo" data-route="#come-lo-facciamo" aria-label="Torna alla sezione come lo facciamo">
+                  <i class="fa-solid fa-arrow-left"></i>
+                  <span lang="it">Torna alla pagina</span><span lang="en">Back to page</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="techStack__sections">
+
+            <section class="techSection" id="collodio">
+              <div class="wrap techSection__grid">
+                <div class="techSection__media techAnim" data-tech-anim>
+                  <div class="techMedia" data-component="smart-media">
+                    <div class="media__ph"></div>
+                    <img data-src="img/opera-viva-2.jpg" alt="Collodio umido: tintype e ambrotype">
+                  </div>
+                </div>
+                <div class="techSection__copy">
+                  <h2 class="techSection__title techAnim" data-tech-anim>
+                    <span lang="it">Collodio umido: tintype e ambrotype</span><span lang="en">Wet plate collodion: tintype and ambrotype</span>
+                  </h2>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">La lastra viene preparata, sensibilizzata, esposta e sviluppata in una finestra di tempo breve. È fotografia come rito: gesto, chimica e decisione.</span>
+                    <span lang="en">The plate is prepared, sensitized, exposed and developed within a short time window. It is photography as ritual: gesture, chemistry and decision.</span>
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">La differenza tra tintype e ambrotype è il supporto: metallo o vetro. In entrambi i casi il risultato è un pezzo unico, con segni e imperfezioni che raccontano come è nato.</span>
+                    <span lang="en">The difference between tintype and ambrotype is the support: metal or glass. In both cases the result is one of a kind, with marks and imperfections that tell how it was made.</span>
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">È un linguaggio fisico: profondità, micro-contrasto e bordi non sono effetti. Sono materia che porta memoria.</span>
+                    <span lang="en">It is a physical language: depth, micro-contrast and edges are not effects. They are matter that carries memory.</span>
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="techSection" id="pellicola">
+              <div class="wrap techSection__grid techSection__grid--flip">
+                <div class="techSection__media techAnim" data-tech-anim>
+                  <div class="techMedia" data-component="smart-media">
+                    <div class="media__ph"></div>
+                    <img data-src="img/opera-viva-5.jpg" alt="Pellicola">
+                  </div>
+                </div>
+                <div class="techSection__copy">
+                  <h2 class="techSection__title techAnim" data-tech-anim>
+                    <span lang="it">Pellicola</span><span lang="en">Film</span>
+                  </h2>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">La pellicola introduce grana, micro-variazioni e una risposta organica alla luce. Le transizioni tra luci e ombre diventano spesso più morbide e profonde.</span>
+                    <span lang="en">Film introduces grain, micro-variation and an organic response to light. Highlight to shadow transitions often become softer and deeper.</span>
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">Qui contano le decisioni in ripresa: esposizione, lente, tipo di luce e sviluppo. Ogni fotogramma è una scelta.</span>
+                    <span lang="en">Here capture decisions matter: exposure, lens, light quality and development. Every frame is a choice.</span>
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">Il risultato porta carattere. Piccole imperfezioni diventano parte del racconto e rendono l’immagine meno sterile e più umana.</span>
+                    <span lang="en">The result carries character. Small imperfections become part of the story and make the image less sterile and more human.</span>
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="techSection" id="infrarossi">
+              <div class="wrap techSection__grid">
+                <div class="techSection__media techAnim" data-tech-anim>
+                  <div class="techMedia" data-component="smart-media">
+                    <div class="media__ph"></div>
+                    <img data-src="img/opera-viva-8.jpg" alt="Infrarossi digitale">
+                  </div>
+                </div>
+                <div class="techSection__copy">
+                  <h2 class="techSection__title techAnim" data-tech-anim>
+                    <span lang="it">Infrarossi digitale</span><span lang="en">Digital infrared</span>
+                  </h2>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">L’infrarosso rivela una parte della luce normalmente invisibile. Superfici e atmosfere cambiano gerarchia, come se il mondo avesse un’altra pelle.</span>
+                    <span lang="en">Infrared reveals a part of light that is normally invisible. Surfaces and atmospheres shift in hierarchy, as if the world had another skin.</span>
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">È un processo controllabile e ripetibile, utile quando serve coerenza tra immagini e serie. La stampa fine art definisce texture e permanenza.</span>
+                    <span lang="en">It is a controllable, repeatable process, useful when consistency across images and series is needed. Fine art printing defines texture and permanence.</span>
+                  </p>
+                  <p class="techSection__p techAnim" data-tech-anim>
+                    <span lang="it">Non è “effetto”: è una scelta di sguardo. Una forma di lettura che trasforma il soggetto senza tradirlo.</span>
+                    <span lang="en">It is not an “effect”: it is a choice of gaze. A way of reading that transforms the subject without betraying it.</span>
+                  </p>
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </section>
+      </div>
+    </template>
+  </main>
+
+  <footer class="site-footer" data-component="footer">
+    <div class="wrap footer__wrap">
+      <p class="micro">© <span data-year></span> Opera Viva</p>
+      <div class="footer__links">
+        <a href="#/" data-route="#/" data-action="back-to-top"><i class="fa-solid fa-arrow-up"></i><span lang="it">Top</span><span lang="en">Top</span></a>
+        <a href="#/tecniche" data-route="#/tecniche"><i class="fa-solid fa-layer-group"></i><span lang="it">Come lo facciamo</span><span lang="en">How we do it</span></a>
+        <a href="#/contatti" data-route="#/contatti"><i class="fa-solid fa-paper-plane"></i><span lang="it">Contatti</span><span lang="en">Contact</span></a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sr-only" aria-live="polite" aria-atomic="true" data-announcer></div>
+
+  <!-- Lightbox JS (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+  <script>
+    (function(){
+      "use strict";
+
+      const root = document.documentElement;
+      const header = document.querySelector('[data-component="header"]');
+      const announcer = document.querySelector('[data-announcer]');
+      const viewShell = document.querySelector('[data-view-shell]');
+      const tplContact = document.getElementById('tpl-contact');
+      const tplTechniques = document.getElementById('tpl-techniques');
+      const tplOffer = document.getElementById('tpl-offer');
+
+      const popMenu = document.querySelector('[data-popmenu]');
+      const menuToggle = document.querySelector('[data-action="toggle-menu"]');
+
+      const emailValue = "info@operaviva.example";
+      let HOME_HTML = "";
+      let heroIO = null;
+      let cleanupView = null;
+
+      const initTechniquesDeck = (scope) => {
+        const rootEl = scope || document;
+        const items = Array.from(rootEl.querySelectorAll('[data-tech-anim]'));
+        if(items.length === 0) return () => {};
+
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if(e.isIntersecting){
+              e.target.classList.add('is-in');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+        items.forEach((el) => io.observe(el));
+
+        return () => {
+          try{ io.disconnect(); }catch{}
+        };
+      };
+
+      let lightbox = null;
+
+      const GITHUB_REPO = "opera-viva";
+      const isGithubHost = window.location.hostname.toLowerCase().endsWith(".github.io");
+      const BASE_PATH = isGithubHost ? ("/" + GITHUB_REPO) : "";
+
+      const resolveAssetUrl = (u) => {
+        const s = (u || '').trim();
+        if(!s) return s;
+        if(/^([a-z]+:)?\/\//i.test(s) || s.startsWith('data:') || s.startsWith('blob:')) return s;
+        const clean = s.replace(/^\.\//, '');
+        if(clean.startsWith('img/') || clean.startsWith('videos/') || clean.startsWith('assets/') || clean.startsWith('fonts/')){
+          return (BASE_PATH || '') + '/' + clean;
+        }
+        return s;
+      };
+
+      const fixRelativeImgs = (scope) => {
+        const rootEl = scope || document;
+        rootEl.querySelectorAll('img[src]').forEach((img) => {
+          const src = img.getAttribute('src');
+          const fixed = resolveAssetUrl(src);
+          if(fixed && fixed !== src) img.setAttribute('src', fixed);
+        });
+      };
+
+      const prefersReducedMotion = () =>
+        window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const safeStorage = {
+        get(key){ try{ return localStorage.getItem(key); }catch{ return null; } },
+        set(key,val){ try{ localStorage.setItem(key,val); }catch{ } }
+      };
+
+      const announce = (msg) => { if(announcer) announcer.textContent = msg; };
+
+      const normalizeRoute = (p) => {
+        let s = (p || '/');
+        s = s.replace(/\/+$/, '');
+        if(s === '') s = '/';
+        if(!s.startsWith('/')) s = '/' + s;
+        return s;
+      };
+
+      const routeFromLocation = () => {
+        const h = String(window.location.hash || '');
+        if(h.startsWith('#/')){
+          return normalizeRoute(h.slice(1));
+        }
+        return '/';
+      };
+
+      const isMenuOpen = () => popMenu && popMenu.classList.contains('is-open');
+
+      const openMenu = () => {
+        if(!popMenu || !menuToggle) return;
+        popMenu.classList.add('is-open');
+        popMenu.setAttribute('aria-hidden', 'false');
+        menuToggle.classList.add('is-active');
+        menuToggle.setAttribute('aria-expanded', 'true');
+      };
+
+      const closeMenu = () => {
+        if(!popMenu || !menuToggle) return;
+        popMenu.classList.remove('is-open');
+        popMenu.setAttribute('aria-hidden', 'true');
+        menuToggle.classList.remove('is-active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      };
+
+      const toggleMenu = () => { isMenuOpen() ? closeMenu() : openMenu(); };
+
+      const THEME_KEY = 'ov_theme';
+      const applyTheme = (theme) => {
+        const t = theme === 'light' ? 'light' : 'dark';
+        root.setAttribute('data-theme', t);
+        safeStorage.set(THEME_KEY, t);
+        document.querySelectorAll('[data-action="toggle-theme"] i').forEach((icon) => {
+          icon.className = (t === 'dark') ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        });
+      };
+      const initTheme = () => {
+        const saved = safeStorage.get(THEME_KEY);
+        if(saved){ applyTheme(saved); return; }
+        applyTheme('dark');
+      };
+
+      const LANG_KEY = 'ov_lang';
+
+      const updateLangToggleUI = () => {
+        const l = (root.getAttribute('data-language') === 'en') ? 'en' : 'it';
+        const next = (l === 'it') ? 'en' : 'it';
+
+        document.querySelectorAll('[data-lang-label]').forEach(el => {
+          el.textContent = l.toUpperCase();
+        });
+
+        document.querySelectorAll('[data-action="toggle-language"]').forEach(btn => {
+          const aria = (next === 'en') ? 'Cambia lingua in inglese' : 'Switch language to Italian';
+          btn.setAttribute('aria-label', aria);
+          btn.setAttribute('title', (next === 'en') ? 'EN' : 'IT');
+        });
+      };
+
+      const applyLanguage = (lang) => {
+        const l = lang === 'en' ? 'en' : 'it';
+        root.setAttribute('data-language', l);
+        safeStorage.set(LANG_KEY, l);
+        document.documentElement.setAttribute('lang', l);
+        updateLangToggleUI();
+        announce(l === 'it' ? 'Lingua impostata su Italiano' : 'Language set to English');
+      };
+
+      const initLanguage = () => {
+        const params = new URLSearchParams(window.location.search);
+        const urlLang = params.get('lang');
+        const saved = safeStorage.get(LANG_KEY);
+        applyLanguage(urlLang || saved || 'it');
+      };
+
+      const initHeaderScroll = () => {
+        if(!header) return;
+        let ticking = false;
+
+        const onScroll = () => {
+          header.classList.toggle('is-scrolled', window.scrollY > 12);
+          ticking = false;
+        };
+
+        window.addEventListener('scroll', () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(onScroll);
+        }, { passive: true });
+
+        onScroll();
+      };
+
+      const initHeaderHeroSense = () => {
+        if(!header) return;
+
+        header.classList.remove('is-over-hero');
+        if(heroIO){ try{ heroIO.disconnect(); }catch{} heroIO = null; }
+
+        const hero = document.querySelector('[data-hero]');
+        if(!hero) return;
+
+        if('IntersectionObserver' in window){
+          heroIO = new IntersectionObserver((entries) => {
+            const entry = entries[0];
+            if(!entry) return;
+            header.classList.toggle('is-over-hero', !!entry.isIntersecting);
+          }, { threshold: 0.15 });
+
+          heroIO.observe(hero);
+        } else {
+          header.classList.add('is-over-hero');
+        }
+      };
+
+      const revealIn = (scope) => {
+        const rootEl = scope || document;
+        const els = Array.from(rootEl.querySelectorAll('.reveal'));
+        if(!els.length) return;
+
+        if(prefersReducedMotion()){
+          els.forEach(el => el.classList.add('is-inview'));
+          return;
+        }
+
+        if('IntersectionObserver' in window){
+          const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if(!entry.isIntersecting) return;
+              entry.target.classList.add('is-inview');
+              io.unobserve(entry.target);
+            });
+          }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+
+          els.forEach(el => io.observe(el));
+        } else {
+          els.forEach(el => el.classList.add('is-inview'));
+        }
+      };
+
+      const smartMediaIn = (scope) => {
+        const rootEl = scope || document;
+        const imgs = Array.from(rootEl.querySelectorAll('img[data-src]'));
+        if(!imgs.length) return;
+
+        const loadImg = (img) => {
+          const src = img.getAttribute('data-src');
+          if(!src) return;
+
+          const holder = img.closest('[data-component="smart-media"]') || img.parentElement;
+          const onLoad = () => holder && holder.classList.add('is-loaded');
+          const onError = () => holder && holder.classList.add('has-error');
+
+          img.addEventListener('load', onLoad, { once: true });
+          img.addEventListener('error', onError, { once: true });
+
+          img.setAttribute('src', resolveAssetUrl(src));
+          img.removeAttribute('data-src');
+        };
+
+        if('IntersectionObserver' in window){
+          const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if(!entry.isIntersecting) return;
+              io.unobserve(entry.target);
+              loadImg(entry.target);
+            });
+          }, { rootMargin: '0px', threshold: 0.01 });
+
+          imgs.forEach(img => io.observe(img));
+        } else {
+          imgs.forEach(loadImg);
+        }
+      };
+
+      const initLightbox = () => {
+        if(!window.GLightbox) return;
+        if(lightbox){
+          try{ lightbox.destroy(); }catch{}
+          lightbox = null;
+        }
+        lightbox = window.GLightbox({
+          selector: '.glightbox',
+          touchNavigation: true,
+          keyboardNavigation: true,
+          closeButton: true,
+          loop: true,
+          zoomable: false,
+          draggable: true,
+          openEffect: 'fade',
+          closeEffect: 'fade',
+          slideEffect: 'slide',
+          skin: 'clean'
+        });
+      };
+
+      const initHeroVideo = () => {
+        const heroVideo = document.querySelector('[data-hero-video]');
+        if(!heroVideo) return;
+
+        const videoUrl = (heroVideo.getAttribute('data-video-url') || '').trim();
+        const startAt = Number(heroVideo.getAttribute('data-video-start') || '0') || 0;
+        const autoplay = String(heroVideo.getAttribute('data-video-autoplay') || '0') === '1';
+
+        const img = heroVideo.querySelector('[data-thumb]');
+        const mount = heroVideo.querySelector('[data-video-mount]');
+        if(!videoUrl || !img || !mount) return;
+
+        const reduce = prefersReducedMotion();
+        const isYouTube = /youtube\.com|youtu\.be/i.test(videoUrl);
+
+        const getYouTubeId = (url) => {
+          try{
+            const u = new URL(url);
+            if(u.hostname.includes('youtu.be')) return u.pathname.replace('/', '') || '';
+            if(u.searchParams.get('v')) return u.searchParams.get('v') || '';
+            const m = u.pathname.match(/\/embed\/([^/]+)/);
+            return m ? (m[1] || '') : '';
+          }catch{
+            const m = String(url).match(/(?:v=|youtu\.be\/|\/embed\/)([A-Za-z0-9_-]{6,})/);
+            return m ? m[1] : '';
+          }
+        };
+
+        const mountYouTube = (videoId) => {
+          if(heroVideo.classList.contains('is-mounted')) return;
+
+          const cover = document.createElement('div');
+          cover.className = 'heroVideo__cover';
+
+          const iframe = document.createElement('iframe');
+          iframe.title = "Hero video";
+          iframe.loading = "eager";
+          iframe.allowFullscreen = false;
+          iframe.referrerPolicy = "strict-origin-when-cross-origin";
+          iframe.allow = "autoplay; encrypted-media; picture-in-picture; web-share";
+
+          const params = new URLSearchParams({
+            autoplay: (autoplay && !reduce) ? "1" : "0",
+            mute: "1",
+            playsinline: "1",
+            rel: "0",
+            modestbranding: "1",
+            controls: "0",
+            disablekb: "1",
+            fs: "0",
+            iv_load_policy: "3",
+            start: String(Math.max(0, startAt)),
+            loop: "1",
+            playlist: videoId
+          });
+
+          iframe.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(videoId) + "?" + params.toString();
+
+          cover.appendChild(iframe);
+          mount.appendChild(cover);
+          heroVideo.classList.add('is-mounted');
+        };
+
+        const mountMP4 = (srcUrl) => {
+          if(heroVideo.classList.contains('is-mounted')) return;
+
+          const v = document.createElement('video');
+          v.className = 'heroVideo__mp4';
+          v.autoplay = autoplay && !reduce;
+          v.muted = true;
+          v.loop = true;
+          v.playsInline = true;
+          v.preload = 'metadata';
+
+          const s = document.createElement('source');
+          s.src = srcUrl;
+          s.type = 'video/mp4';
+          v.appendChild(s);
+
+          v.addEventListener('loadedmetadata', () => {
+            if(startAt > 0 && Number.isFinite(startAt)){
+              try{ v.currentTime = Math.max(0, startAt); }catch{}
+            }
+            if(autoplay && !reduce){
+              v.play().catch(() => {});
+            }
+          }, { once: true });
+
+          mount.appendChild(v);
+          heroVideo.classList.add('is-mounted');
+        };
+
+        const enableClickToPlay = (fn) => {
+          const onClick = () => {
+            fn();
+            heroVideo.removeEventListener('click', onClick);
+            heroVideo.classList.remove('is-clickable');
+          };
+          heroVideo.classList.add('is-clickable');
+          heroVideo.addEventListener('click', onClick, { once: true });
+        };
+
+        if(isYouTube){
+          const id = getYouTubeId(videoUrl);
+          if(!id) return;
+
+          const candidates = [
+            `https://i.ytimg.com/vi/${encodeURIComponent(id)}/maxresdefault.jpg`,
+            `https://i.ytimg.com/vi/${encodeURIComponent(id)}/hqdefault.jpg`
+          ];
+
+          let idx = 0;
+          const tryLoad = () => {
+            img.onload = () => heroVideo.classList.add('is-thumb-loaded');
+            img.onerror = () => { idx += 1; if(idx < candidates.length) tryLoad(); };
+            img.src = candidates[idx];
+          };
+          tryLoad();
+
+          if(autoplay && !reduce){
+            const delayed = () => window.setTimeout(() => mountYouTube(id), 260);
+            if('requestIdleCallback' in window){
+              window.requestIdleCallback(delayed, { timeout: 1200 });
+            } else {
+              delayed();
+            }
+          } else {
+            enableClickToPlay(() => mountYouTube(id));
+          }
+        } else {
+          heroVideo.classList.add('is-thumb-loaded');
+
+          if(autoplay && !reduce){
+            const delayed = () => window.setTimeout(() => mountMP4(videoUrl), 120);
+            if('requestIdleCallback' in window){
+              window.requestIdleCallback(delayed, { timeout: 1200 });
+            } else {
+              delayed();
+            }
+          } else {
+            enableClickToPlay(() => mountMP4(videoUrl));
+          }
+        }
+      };
+
+      const initHScroll = (scope) => {
+        const rootEl = scope || document;
+        const boxes = Array.from(rootEl.querySelectorAll('[data-hscroll]'));
+        if(!boxes.length) return;
+
+        boxes.forEach((box) => {
+          const rail = box.querySelector('[data-hscroll-rail]');
+          const dotsWrap = box.querySelector('[data-hscroll-dots]');
+          if(!rail || !dotsWrap) return;
+
+          const dots = Array.from(dotsWrap.querySelectorAll('.dot'));
+          const max = dots.length;
+          if(!max) return;
+
+          const setActive = (idx) => {
+            dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+          };
+
+          const snapWidth = () => rail.getBoundingClientRect().width || 1;
+
+          const goTo = (idx) => {
+            const w = snapWidth();
+            const target = Math.max(0, Math.min(max - 1, idx));
+            rail.scrollTo({
+              left: target * w,
+              behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+            });
+            setActive(target);
+          };
+
+          let autoIdx = 0;
+
+          const onScroll = () => {
+            const w = snapWidth();
+            const idx = Math.round(rail.scrollLeft / w);
+            autoIdx = Math.max(0, Math.min(max - 1, idx));
+            setActive(autoIdx);
+          };
+
+          rail.addEventListener('scroll', () => requestAnimationFrame(onScroll), { passive: true });
+
+          dotsWrap.addEventListener('click', (e) => {
+            const btn = e.target.closest('.dot[data-dot]');
+            if(!btn) return;
+            const idx = Number(btn.getAttribute('data-dot'));
+            if(Number.isFinite(idx)) goTo(idx);
+          });
+
+          // Auto-advance (every 5s) with pause on interaction
+          if(!prefersReducedMotion()){
+            const tick = () => { autoIdx = (autoIdx + 1) % max; goTo(autoIdx); };
+            let timer = window.setInterval(tick, 5000);
+
+            const pause = () => { if(!timer) return; window.clearInterval(timer); timer = null; };
+            const resume = () => { if(timer) return; timer = window.setInterval(tick, 5000); };
+
+            box.addEventListener('mouseenter', pause);
+            box.addEventListener('mouseleave', resume);
+            box.addEventListener('focusin', pause);
+            box.addEventListener('focusout', resume);
+            box.addEventListener('touchstart', pause, { passive: true });
+            box.addEventListener('touchend', resume, { passive: true });
+          }
+
+          autoIdx = 0;
+          setActive(0);
+        });
+      };
+
+      const copyToClipboard = async (text) => {
+        try{
+          if(navigator.clipboard && navigator.clipboard.writeText){
+            await navigator.clipboard.writeText(text);
+            return true;
+          }
+        }catch{}
+
+        try{
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.top = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+          return true;
+        }catch{
+          return false;
+        }
+      };
+
+      const showEmailBadge = (btn) => {
+        const badge = btn.querySelector('[data-email-badge]');
+        if(!badge) return;
+        badge.classList.add('is-show');
+        window.clearTimeout(badge._t);
+        badge._t = window.setTimeout(() => badge.classList.remove('is-show'), 1100);
+      };
+
+      const setDocForRoute = (route) => {
+        const lang = (root.getAttribute('data-language') === 'en') ? 'en' : 'it';
+
+        if(route === '/contatti'){
+          document.title = (lang === 'en')
+            ? "Contact | Opera Viva"
+            : "Contatti | Opera Viva";
+          return;
+        }
+
+        if(route === '/tecniche'){
+          document.title = (lang === 'en')
+            ? "How we do it | Opera Viva"
+            : "Come lo facciamo | Opera Viva";
+          return;
+        }
+
+        if(route === '/cosa'){
+          document.title = (lang === 'en')
+            ? "What we do | Opera Viva"
+            : "Cosa facciamo | Opera Viva";
+          return;
+        }
+
+        document.title = (lang === 'en')
+          ? "Opera Viva | Photographic project"
+          : "Opera Viva | Progetto fotografico";
+      };
+
+      const setRouteUI = (route) => {
+        const r = normalizeRoute(route || '/');
+        document.body.classList.toggle('is-home-route', r === '/' );
+      };
+
+      const urlWithHash = (hash) => {
+        const base = window.location.pathname + window.location.search;
+        return base + (hash || '');
+      };
+
+      const currentViewName = () => viewShell?.querySelector('[data-view]')?.getAttribute('data-view') || 'home';
+
+      const initEvents = async (scope) => {
+        const rootEl = scope || document;
+        const section = rootEl.querySelector('[data-events-section]');
+        const mount = rootEl.querySelector('[data-events-content]');
+        if(!section || !mount) return;
+
+        section.hidden = true;
+        mount.innerHTML = '';
+
+        try{
+          const res = await fetch('eventi.md', { cache: 'no-store' });
+          if(!res || !res.ok) return;
+
+          const txt = String(await res.text() || '').trim();
+          if(!txt) return;
+
+          const parser = window.marked && typeof window.marked.parse === 'function' ? window.marked.parse : null;
+          if(!parser) return;
+
+          const html = parser(txt, { mangle: false, headerIds: true });
+          if(!html || !String(html).trim()) return;
+
+          mount.innerHTML = html;
+
+          mount.querySelectorAll('a[href]').forEach(a => {
+            const href = a.getAttribute('href') || '';
+            if(/^https?:\/\//i.test(href)){
+              a.setAttribute('rel', 'noopener');
+              a.setAttribute('target', '_blank');
+            }
+          });
+
+          section.hidden = false;
+          revealIn(section);
+        }catch{
+          section.hidden = true;
+        }
+      };
+
+      const tryAppendOptionalImage11 = (scope) => {
+        const rootEl = scope || document;
+        const grid = rootEl.querySelector('[data-gallery-grid]');
+        if(!grid) return;
+        if(grid.querySelector('[data-extra-img="11"]')) return;
+
+        const test = new Image();
+        const src = resolveAssetUrl('img/opera-viva-11.jpg');
+
+        test.onload = () => {
+          const fig = document.createElement('figure');
+          fig.className = 'gridItem reveal is-inview';
+          fig.setAttribute('data-extra-img', '11');
+
+          fig.innerHTML =
+            '<a class="media glightbox" href="img/opera-viva-11.jpg" data-gallery="galleria" data-type="image" aria-label="Apri foto 11">' +
+              '<div class="media__ph" aria-hidden="true"></div>' +
+              '<img class="media__img" data-src="img/opera-viva-11.jpg" alt="Opera Viva, foto 11" decoding="async" loading="lazy">' +
+            '</a>';
+
+          grid.appendChild(fig);
+
+          smartMediaIn(fig);
+          initLightbox();
+        };
+        test.onerror = () => {};
+        test.decoding = 'async';
+        test.src = src;
+      };
+
+      const swapView = async (route, opts) => {
+        if(!viewShell) return;
+
+        const routeNorm = normalizeRoute(route || '/');
+        const current = currentViewName();
+        const target = (routeNorm === '/contatti')
+          ? 'contact'
+          : (routeNorm === '/tecniche' ? 'techniques' : (routeNorm === '/cosa' ? 'offer' : 'home'));
+        if(current === target){
+          if(opts && opts.scrollTo){
+            const el = document.querySelector(opts.scrollTo);
+            if(el) el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
+          }
+          return;
+        }
+
+        const reduce = prefersReducedMotion();
+        const doAnim = !reduce;
+
+        viewShell.classList.add('is-swapping');
+        if(doAnim){
+          viewShell.classList.add('is-leaving');
+          await new Promise(r => window.setTimeout(r, 220));
+        }
+
+        if(cleanupView){
+          try{ cleanupView(); }catch{}
+          cleanupView = null;
+        }
+
+        viewShell.innerHTML = '';
+
+        if(target === 'contact'){
+          const frag = tplContact.content.cloneNode(true);
+          viewShell.appendChild(frag);
+        } else if(target === 'techniques'){
+          const frag = tplTechniques.content.cloneNode(true);
+          viewShell.appendChild(frag);
+        } else if(target === 'offer'){
+          const frag = tplOffer.content.cloneNode(true);
+          viewShell.appendChild(frag);
+        } else {
+          viewShell.innerHTML = HOME_HTML;
+        }
+
+        setDocForRoute(routeNorm);
+        setRouteUI(routeNorm);
+
+        viewShell.classList.remove('is-leaving');
+        if(doAnim){
+          viewShell.classList.add('is-entering');
+          void viewShell.offsetHeight;
+          viewShell.classList.remove('is-entering');
+          viewShell.classList.add('is-entered');
+          window.setTimeout(() => viewShell.classList.remove('is-entered'), 740);
+        }
+
+        revealIn(viewShell);
+        smartMediaIn(viewShell);
+        fixRelativeImgs(viewShell);
+
+        if(target === 'techniques' || target === 'offer'){
+          cleanupView = initTechniquesDeck(viewShell);
+        }
+
+        if(target === 'home'){
+          initHScroll(viewShell);
+          initHeroVideo();
+          initEvents(viewShell);
+          tryAppendOptionalImage11(viewShell);
+        }
+
+        initLightbox();
+        initHeaderHeroSense();
+
+        if(opts && opts.scrollTo){
+          const id = opts.scrollTo;
+          const el = document.querySelector(id);
+          if(el) el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+        }
+
+        viewShell.classList.remove('is-swapping');
+      };
+
+      const navigate = async (to) => {
+        const dest = String(to || '#/').trim();
+        const isViewRoute = dest.startsWith('#/');
+
+        if(isViewRoute){
+          const route = normalizeRoute(dest.slice(1));
+          history.pushState({ route }, "", urlWithHash(dest));
+          closeMenu();
+          await swapView(route, {});
+          return;
+        }
+
+        if(dest.startsWith('#') && dest.length > 1){
+          history.pushState({ route: '/' }, "", urlWithHash(dest));
+          closeMenu();
+
+          if(currentViewName() !== 'home'){
+            await swapView('/', { scrollTo: dest });
+          } else {
+            const el = document.querySelector(dest);
+            if(el) el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
+          }
+          return;
+        }
+
+        history.pushState({ route: '/' }, "", urlWithHash('#/'));
+        closeMenu();
+        await swapView('/', {});
+      };
+
+      const initActions = () => {
+        document.addEventListener('click', async (e) => {
+          const routeLink = e.target.closest('[data-route]');
+          if(routeLink){
+            const to = routeLink.getAttribute('data-route');
+            const href = routeLink.getAttribute('href') || to || '';
+            const dest = (to || href || '').trim();
+
+            if(dest.startsWith('#/')){
+              e.preventDefault();
+              await navigate(dest);
+              return;
+            }
+
+            if(dest.startsWith('#') && dest.length > 1){
+              e.preventDefault();
+              await navigate(dest);
+              return;
+            }
+          }
+
+          const btn = e.target.closest('[data-action]');
+          if(!btn) return;
+          const action = btn.getAttribute('data-action');
+
+          if(action === 'toggle-menu'){
+            e.preventDefault();
+            toggleMenu();
+            return;
+          }
+
+          if(action === 'toggle-theme'){
+            const current = root.getAttribute('data-theme') || 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            announce(next === 'dark' ? 'Tema scuro attivo' : 'Tema chiaro attivo');
+            return;
+          }
+
+          if(action === 'toggle-language'){
+            const current = (root.getAttribute('data-language') === 'en') ? 'en' : 'it';
+            const next = (current === 'it') ? 'en' : 'it';
+            applyLanguage(next);
+            setDocForRoute(routeFromLocation());
+            return;
+          }
+
+          if(action === 'back-to-top'){
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+            return;
+          }
+
+          if(action === 'copy-email'){
+            const ok = await copyToClipboard(emailValue);
+            btn.classList.add('is-done');
+            announce(ok ? 'Email copiata' : 'Copia non riuscita');
+            if(ok) showEmailBadge(btn);
+            window.clearTimeout(btn._t);
+            btn._t = window.setTimeout(() => btn.classList.remove('is-done'), 2200);
+            return;
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if(e.key === 'Escape') closeMenu();
+        });
+
+        document.addEventListener('pointerdown', (e) => {
+          if(!isMenuOpen()) return;
+          const inside = e.target.closest('[data-popmenu]') || e.target.closest('[data-action="toggle-menu"]');
+          if(!inside) closeMenu();
+        }, { passive: true });
+
+        window.addEventListener('popstate', async () => {
+          closeMenu();
+          const h = String(window.location.hash || '');
+          if(h && !h.startsWith('#/')){
+            if(currentViewName() !== 'home'){
+              await swapView('/', { scrollTo: h });
+            } else {
+              const el = document.querySelector(h);
+              if(el) el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
+            }
+            setDocForRoute('/');
+            setRouteUI('/');
+            return;
+          }
+          await swapView(routeFromLocation());
+        });
+      };
+
+      const initYear = () => {
+        const el = document.querySelector('[data-year]');
+        if(el) el.textContent = String(new Date().getFullYear());
+      };
+
+      const initHomeSnapshot = () => {
+        if(!viewShell) return;
+        const home = viewShell.querySelector('[data-home-view]');
+        if(home) HOME_HTML = home.outerHTML;
+      };
+
+      const initFirstRoute = async () => {
+        const h = String(window.location.hash || '');
+        const r = routeFromLocation();
+        setDocForRoute(r);
+        setRouteUI(r);
+
+        if(h && !h.startsWith('#/') && h.length > 1){
+          if(currentViewName() !== 'home'){
+            await swapView('/', { scrollTo: h });
+          } else {
+            const el = document.querySelector(h);
+            if(el) el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
+          }
+          initHeaderHeroSense();
+          return;
+        }
+
+        if(r === '/contatti' || r === '/tecniche' || r === '/cosa'){
+          await swapView(r, {});
+          return;
+        }
+
+        initHeaderHeroSense();
+      };
+
+      const init = async () => {
+        initTheme();
+        initLanguage();
+
+        initHomeSnapshot();
+        initActions();
+        initHeaderScroll();
+        initYear();
+
+        revealIn(document);
+        smartMediaIn(document);
+        fixRelativeImgs(document);
+
+        initHScroll(document);
+        initHeroVideo();
+        initEvents(document);
+        tryAppendOptionalImage11(document);
+        initLightbox();
+        initHeaderHeroSense();
+
+        await initFirstRoute();
+      };
+
+      if(document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', init, { once: true });
+      } else {
+        init();
+      }
+    })();
+  </script>
+
+  <script>
+    (function(){
+      const prevent = (e) => { e.preventDefault(); };
+      document.addEventListener('gesturestart', prevent, { passive: false });
+      document.addEventListener('gesturechange', prevent, { passive: false });
+      document.addEventListener('gestureend', prevent, { passive: false });
+
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', (e) => {
+        const now = Date.now();
+        if(now - lastTouchEnd <= 300){
+          e.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, { passive: false });
+    })();
+  </script>
+</body>
+</html>
