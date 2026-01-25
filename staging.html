@@ -534,11 +534,14 @@
     .hero__wrap{
       position: relative;
       z-index: 3;
-      display:grid;
+      display: grid;
       grid-template-columns: 1fr;
       gap: var(--s-4);
-      align-items: start;
+      align-items: end;          /* spinge il blocco in basso */
+      min-height: 72vh;          /* o 70vh: regola quanto “basso” vuoi */
+      padding-bottom: var(--s-4); /* aria dal bordo */
     }
+
     .hero__cta{ display:flex; flex-wrap: wrap; gap: .75rem; align-items:center; }
 
     .scrollCue{
