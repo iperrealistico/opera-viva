@@ -8,6 +8,7 @@ import { useTheme } from 'next-themes';
 import { Menu, X, Globe, Sun, Moon, House } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { usePathname } from 'next/navigation';
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -19,6 +20,7 @@ export default function Header({ content }: { content: SiteContent }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         setMounted(true);
@@ -33,14 +35,17 @@ export default function Header({ content }: { content: SiteContent }) {
 
     const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
     const toggleLanguage = () => {
-        const nextLocale = locale === 'it' ? 'en' : 'it';
-        const path = window.location.pathname;
-        let newPath = '';
+        // Simple language toggle based on current path
+        const currentPath = window.location.pathname;
+        let newPath = '/';
 
         if (locale === 'it') {
-            newPath = `/en${path === '/' ? '' : path}`;
+            // Switch to English
+            if (currentPath === '/') newPath = '/en';
+            else newPath = `/en${currentPath}`;
         } else {
-            newPath = path.replace(/^\/en/, '') || '/';
+            // Switch to Italian
+            newPath = currentPath.replace(/^\/en/, '') || '/';
         }
 
         window.location.href = newPath;
@@ -76,7 +81,7 @@ export default function Header({ content }: { content: SiteContent }) {
                         )}
                         style={{ borderRadius: 'var(--r-ui)' }}
                     >
-                        {(typeof window !== 'undefined' && window.location.pathname !== '/' && window.location.pathname !== '/en') && (
+                        {(pathname !== '/' && pathname !== '/en') && (
                             <Link href={locale === 'it' ? "/" : "/en"} className="icon-btn w-[42px] h-[42px] rounded-[var(--r-ui)] border border-[color-mix(in_oklab,var(--border)_85%,transparent)] grid place-items-center hover:translate-y-[-1px] transition-all">
                                 <i className="fa-solid fa-house"></i>
                             </Link>
@@ -99,7 +104,7 @@ export default function Header({ content }: { content: SiteContent }) {
                         </button>
                     </div>
 
-                    {(typeof window !== 'undefined' && window.location.pathname !== '/' && window.location.pathname !== '/en') && (
+                    {(pathname !== '/' && pathname !== '/en') && (
                         <Link href={locale === 'it' ? "/" : "/en"} className="icon-btn headerHomeBtn w-[42px] h-[42px] rounded-[var(--r-ui)] border border-[color-mix(in_oklab,var(--border)_85%,transparent)] bg-[color-mix(in_oklab,var(--surface)_92%,transparent)] grid place-items-center hover:translate-y-[-1px] active:translate-y-0 transition-all ml-auto">
                             <i className="fa-solid fa-house"></i>
                         </Link>
@@ -119,6 +124,6 @@ export default function Header({ content }: { content: SiteContent }) {
           border-color: rgba(255,255,255,.18);
         }
       `}</style>
-        </header>
+        </header >
     );
 }

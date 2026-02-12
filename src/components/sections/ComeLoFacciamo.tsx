@@ -5,7 +5,6 @@ import { useLanguage } from '@/context/LanguageContext';
 import { SiteContent, getLocalizedValue } from '@/lib/content';
 import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
-import GLightbox from 'glightbox';
 import 'glightbox/dist/css/glightbox.min.css';
 
 export default function ComeLoFacciamo({ content }: { content: SiteContent }) {
@@ -42,13 +41,22 @@ export default function ComeLoFacciamo({ content }: { content: SiteContent }) {
 
     // GLightbox Setup
     useEffect(() => {
-        const lightbox = GLightbox({
-            selector: '.glightbox',
-            touchNavigation: true,
-            loop: true,
-            autoplayVideos: true
-        });
-        return () => lightbox.destroy();
+        let lightbox: any;
+        const initLightbox = async () => {
+            const GLightbox = (await import('glightbox')).default;
+            lightbox = GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                autoplayVideos: true
+            });
+        };
+
+        initLightbox();
+
+        return () => {
+            if (lightbox) lightbox.destroy();
+        };
     }, []);
 
     return (
