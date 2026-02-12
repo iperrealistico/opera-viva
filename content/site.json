@@ -1,0 +1,674 @@
+{
+  "seo": {
+    "title": "Opera Viva | Progetto fotografico",
+    "description": "Opera Viva è un progetto fotografico su marinai, portuali, navi e imbarcazioni: tecniche antiche, collodio umido e infrarossi per trasformare il mare in una nuova epopea.",
+    "ogImage": "/img/opera-viva-1.jpg",
+    "keywords": "fotografia, mare, marinai, collodio umido, infrarossi, navi"
+  },
+  "header": {
+    "nav": [
+      {
+        "label": {
+          "it": "Home",
+          "en": "Home"
+        },
+        "href": "/"
+      },
+      {
+        "label": {
+          "it": "Come lo facciamo",
+          "en": "How we do it"
+        },
+        "href": "/tecniche"
+      },
+      {
+        "label": {
+          "it": "Contatti",
+          "en": "Contact"
+        },
+        "href": "/contatti"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© {year} Opera Viva",
+    "links": [
+      {
+        "label": {
+          "it": "Top",
+          "en": "Top"
+        },
+        "href": "#top",
+        "action": "back-to-top"
+      },
+      {
+        "label": {
+          "it": "Come lo facciamo",
+          "en": "How we do it"
+        },
+        "href": "/tecniche"
+      },
+      {
+        "label": {
+          "it": "Contatti",
+          "en": "Contact"
+        },
+        "href": "/contatti"
+      }
+    ]
+  },
+  "sections": {
+    "hero": {
+      "videoUrl": "https://www.youtube.com/watch?v=nSSJRcRtqpo",
+      "videoStart": 8,
+      "videoAutoplay": true,
+      "title": {
+        "it": "Opera Viva",
+        "en": "Opera Viva"
+      },
+      "subtitle": {
+        "it": "Progetto fotografico su marinai, portuali, navi e imbarcazioni.",
+        "en": "A photographic project about sailors, dock workers, ships and vessels."
+      },
+      "cta": [
+        {
+          "label": {
+            "it": "Scopri",
+            "en": "Discover"
+          },
+          "href": "#opera-viva",
+          "type": "primary",
+          "icon": "compass"
+        },
+        {
+          "label": {
+            "it": "Contatti",
+            "en": "Contact"
+          },
+          "href": "/contatti",
+          "type": "ghost",
+          "icon": "paper-plane"
+        }
+      ],
+      "scrollLabel": {
+        "it": "Scorri",
+        "en": "Scroll"
+      }
+    },
+    "operaViva": {
+      "kicker": {
+        "it": "Progetto fotografico",
+        "en": "Photographic project"
+      },
+      "title": {
+        "it": "Opera Viva",
+        "en": "Opera Viva"
+      },
+      "lead": {
+        "it": "Marinai, portuali, navi e imbarcazioni. Il mare come memoria, destino e materia. Una nuova epopea, nel presente.",
+        "en": "Sailors, dock workers, ships and vessels. The sea as memory, fate and material. A new epic, in the present."
+      },
+      "paragraphs": [
+        {
+          "it": "«Il mare è da sempre un luogo dove l’uomo si misura con sé stesso, con la bellezza e con il tempo. Ogni nave che lo attraversa porta con sé una storia, un carattere, un’anima: è molto più di un mezzo, è un essere vivo, un testimone del viaggio e delle mani che l’hanno costruita.",
+          "en": "“The sea has always been a place where people measure themselves against beauty and time. Every ship that crosses it carries a story, a character, a soul: it is far more than a vehicle, it is a living being, a witness to the journey and to the hands that built it.”"
+        },
+        {
+          "it": "Da sempre il mare custodisce miti e leggende, rotte reali e immaginarie. Galeoni, caravelle e bastimenti hanno attraversato i secoli portando sogni di conquesta, libertà e destino. Con questo progetto vogliamo riportare quella stessa aura nel presente, raccontando navi ed equipaggi come protagonisti di una nuova epopea: figure sospese tra la forza del ferro e la fragilità del tempo.",
+          "en": "“The sea has always guarded myths and legends, real and imaginary routes. Galleons, caravels and great vessels have crossed centuries carrying dreams of conquest, freedom and destiny. With this project we want to bring that aura into the present, portraying ships and crews as protagonists of a new epic: figures suspended between the strength of iron and the fragility of time.”"
+        },
+        {
+          "it": "Attraverso tecniche fotografiche antiche, come il collodio umido, e sguardi infrarossi che rivelano ciò che normalmente resta invisibile, cerchiamo di trasformare ogni imbarcazione in un’opera senza tempo. Ogni scafo, ogni volto, ogni superficie diventa una traccia di luce, un’eco dei grandi racconti di mare che ancora ci accompagnano.",
+          "en": "“Through historic photographic techniques, such as wet plate collodion, and infrared views that reveal what usually remains invisible, we try to turn each vessel into a timeless work. Every hull, every face, every surface becomes a trace of light, an echo of the great sea stories that still accompany us.”"
+        },
+        {
+          "it": "Da Ulisse ai diari dei capitani, dalle leggende dei pirati alle visioni romantiche di Turner. Le navi non sono solo strumenti di navigazione: sono creature simboliche, custodi di memorie e destini. Nel nostro lavoro diventano monumenti di luce, fissati in un istante che non conosce corrosione né oblio.»",
+          "en": "“From Odysseus to captains’ logs, from pirate legends to Turner’s romantic visions. Ships are not only instruments of navigation: they are symbolic creatures, keepers of memories and destinies. In our work they become monuments of light, fixed in an instant that knows neither corrosion nor oblivion.”"
+        }
+      ],
+      "gallery": [
+        {
+          "src": "/img/opera-viva-1.jpg",
+          "alt": "Opera Viva, estratto 01"
+        },
+        {
+          "src": "/img/opera-viva-2.jpg",
+          "alt": "Opera Viva, estratto 02"
+        },
+        {
+          "src": "/img/opera-viva-3.jpg",
+          "alt": "Opera Viva, estratto 03"
+        },
+        {
+          "src": "/img/opera-viva-4.jpg",
+          "alt": "Opera Viva, estratto 04"
+        }
+      ]
+    },
+    "cosaFacciamo": {
+      "kicker": {
+        "it": "Cosa facciamo",
+        "en": "What we do"
+      },
+      "title": {
+        "it": "Opere, ritratti e storie di mare",
+        "en": "Works, portraits and sea stories"
+      },
+      "lead": {
+        "it": "Realizziamo lavori su misura, oggetti fotografici unici e serie pensate per durare. Dal singolo scafo alla storia di un viaggio.",
+        "en": "We create custom works, one of a kind photographic objects and series designed to last. From a single hull to the story of a journey."
+      },
+      "cta": {
+        "label": {
+          "it": "Approfondisci",
+          "en": "Learn more"
+        },
+        "href": "/cosa"
+      },
+      "items": [
+        {
+          "id": "off-wall",
+          "icon": "ruler-combined",
+          "title": {
+            "it": "Opere su misura per pareti",
+            "en": "Custom wall works"
+          },
+          "text": {
+            "it": "Formati, supporti e finiture pensati per uno spazio reale, con presenza fisica e ritmo.",
+            "en": "Sizes, materials and finishes designed for real spaces, with physical presence and rhythm."
+          }
+        },
+        {
+          "id": "off-plates",
+          "icon": "camera-retro",
+          "title": {
+            "it": "Tintype, ambrotype e pellicola",
+            "en": "Tintype, ambrotype and film"
+          },
+          "text": {
+            "it": "Processi storici e analogici per ottenere materia, unicità e imperfezioni che diventano firma.",
+            "en": "Historic and analog processes for materiality, uniqueness and imperfections that become a signature."
+          }
+        },
+        {
+          "id": "off-ir",
+          "icon": "eye",
+          "title": {
+            "it": "Stampe fine art da infrarossi digitale",
+            "en": "Infrared fine art prints"
+          },
+          "text": {
+            "it": "Una lettura diversa della luce, per far emergere superfici e dettagli oltre l’evidenza.",
+            "en": "A different reading of light, to reveal surfaces and details beyond the obvious."
+          }
+        },
+        {
+          "id": "off-single",
+          "icon": "ship",
+          "title": {
+            "it": "Opere singole: ritratti o imbarcazioni",
+            "en": "Single works: portraits or vessels"
+          },
+          "text": {
+            "it": "Un’immagine come oggetto, finita e definitiva. Un volto o uno scafo, con la stessa dignità.",
+            "en": "An image as an object, finished and definitive. A face or a hull, with the same dignity."
+          }
+        },
+        {
+          "id": "off-boarding",
+          "icon": "compass",
+          "title": {
+            "it": "Imbarco per raccontare un viaggio",
+            "en": "Boarding to tell a journey"
+          },
+          "text": {
+            "it": "Più giorni a bordo per seguire ritmo, lavoro e silenzi, trasformandoli in narrazione visiva.",
+            "en": "Multiple days onboard to follow rhythm, work and silence, turning them into visual narrative."
+          }
+        },
+        {
+          "id": "off-book",
+          "icon": "book-open",
+          "title": {
+            "it": "Storia su fotolibro stampato",
+            "en": "A story as a printed photo book"
+          },
+          "text": {
+            "it": "Un racconto sequenziale che diventa oggetto, memoria e traccia: dalla selezione alla stampa.",
+            "en": "A sequential narrative that becomes an object, memory and trace: from edit to print."
+          }
+        }
+      ]
+    },
+    "comeLoFacciamo": {
+      "kicker": {
+        "it": "Come lo facciamo",
+        "en": "How we do it"
+      },
+      "title": {
+        "it": "Tre strade, un solo linguaggio",
+        "en": "Three paths, one language"
+      },
+      "lead": {
+        "it": "Collodio umido, pellicola e infrarossi digitale non sono alternative estetiche: sono scelte di materia, tempo e verità.",
+        "en": "Wet plate collodion, film and digital infrared are not aesthetic alternatives: they are choices of matter, time and truth."
+      },
+      "cta": {
+        "label": {
+          "it": "Approfondisci",
+          "en": "Explore"
+        },
+        "href": "/tecniche"
+      },
+      "items": [
+        {
+          "id": "collodio",
+          "icon": "flask",
+          "title": {
+            "it": "Collodio: tintype e ambrotype",
+            "en": "Collodion: tintype and ambrotype"
+          },
+          "text": {
+            "it": "Un rito breve e preciso. L’immagine nasce su metallo o vetro, come pezzo unico.",
+            "en": "A short, precise ritual. The image is born on metal or glass, as a one of a kind object."
+          }
+        },
+        {
+          "id": "pellicola",
+          "icon": "film",
+          "title": {
+            "it": "Pellicola",
+            "en": "Film"
+          },
+          "text": {
+            "it": "Grana, transizioni morbide e decisioni in ripresa. Ogni fotogramma conta.",
+            "en": "Grain, soft transitions and capture decisions. Every frame matters."
+          }
+        },
+        {
+          "id": "infrarossi",
+          "icon": "sun",
+          "title": {
+            "it": "Infrarossi digitale",
+            "en": "Digital infrared"
+          },
+          "text": {
+            "it": "La luce cambia regole: superfici e atmosfere emergono come un’altra pelle del reale.",
+            "en": "Light changes its rules: surfaces and atmospheres emerge like another skin of reality."
+          }
+        },
+        {
+          "id": "stampa",
+          "icon": "print",
+          "title": {
+            "it": "Stampa e permanenza",
+            "en": "Print and permanence"
+          },
+          "text": {
+            "it": "Dalla scelta del supporto alla finitura, l’opera è pensata per durare e abitare uno spazio.",
+            "en": "From paper choice to finishing, the work is designed to last and live in a space."
+          }
+        }
+      ],
+      "gallery": [
+        {
+          "src": "/img/opera-viva-5.jpg",
+          "alt": "Tre strade, immagine 1"
+        },
+        {
+          "src": "/img/opera-viva-6.jpg",
+          "alt": "Tre strade, immagine 2"
+        },
+        {
+          "src": "/img/opera-viva-7.jpg",
+          "alt": "Tre strade, immagine 3"
+        },
+        {
+          "src": "/img/opera-viva-8.jpg",
+          "alt": "Tre strade, immagine 4"
+        }
+      ]
+    },
+    "eventi": {
+      "kicker": {
+        "it": "Eventi",
+        "en": "Events"
+      },
+      "title": {
+        "it": "Mostra itinerante",
+        "en": "Traveling exhibition"
+      },
+      "lead": {
+        "it": "Opera Viva si muove tra porti, città e incontri.",
+        "en": "Opera Viva moves across ports, cities and encounters."
+      }
+    },
+    "galleria": {
+      "kicker": {
+        "it": "Galleria",
+        "en": "Gallery"
+      },
+      "title": {
+        "it": "Estratti",
+        "en": "Selections"
+      },
+      "lead": {
+        "it": "Frammenti di luce, sospesi nel tempo.",
+        "en": "Fragments of light, suspended in time."
+      },
+      "items": [
+        {
+          "src": "/img/opera-viva-1.jpg",
+          "alt": "Opera Viva, foto 01"
+        },
+        {
+          "src": "/img/opera-viva-2.jpg",
+          "alt": "Opera Viva, foto 02"
+        },
+        {
+          "src": "/img/opera-viva-3.jpg",
+          "alt": "Opera Viva, foto 03"
+        },
+        {
+          "src": "/img/opera-viva-4.jpg",
+          "alt": "Opera Viva, foto 04"
+        },
+        {
+          "src": "/img/opera-viva-5.jpg",
+          "alt": "Opera Viva, foto 05"
+        },
+        {
+          "src": "/img/opera-viva-6.jpg",
+          "alt": "Opera Viva, foto 06"
+        },
+        {
+          "src": "/img/opera-viva-7.jpg",
+          "alt": "Opera Viva, foto 07"
+        },
+        {
+          "src": "/img/opera-viva-8.jpg",
+          "alt": "Opera Viva, foto 08"
+        },
+        {
+          "src": "/img/opera-viva-9.jpg",
+          "alt": "Opera Viva, foto 09"
+        },
+        {
+          "src": "/img/opera-viva-10.jpg",
+          "alt": "Opera Viva, foto 10"
+        },
+        {
+          "src": "/img/opera-viva-11.jpg",
+          "alt": "Opera Viva, foto 11"
+        }
+      ]
+    },
+    "contatti": {
+      "kicker": {
+        "it": "Contatti",
+        "en": "Contact"
+      },
+      "title": {
+        "it": "Scrivici per opere, eventi e collaborazioni",
+        "en": "Reach out for works, events and collaborations"
+      },
+      "lead": {
+        "it": "Se vuoi portare Opera Viva in un luogo, commissionare un’opera o raccontare una storia di mare, scrivici.",
+        "en": "If you want to bring Opera Viva somewhere, commission a work, or tell a sea story, write us."
+      },
+      "location": {
+        "it": "Italia",
+        "en": "Italy"
+      },
+      "cardLead": {
+        "it": "Email e Instagram sono i canali più veloci. Rispondiamo appena possibile.",
+        "en": "Email and Instagram are the fastest channels. We reply as soon as possible."
+      },
+      "email": "info@operaviva.example",
+      "instagram": "https://instagram.com/",
+      "homeLabel": {
+        "it": "Home",
+        "en": "Home"
+      }
+    }
+  },
+  "offer": {
+    "kicker": {
+      "it": "Approfondisci",
+      "en": "Learn more"
+    },
+    "title": {
+      "it": "Cosa facciamo",
+      "en": "What we do"
+    },
+    "lead": {
+      "it": "Dal singolo scatto all’opera finita: progettiamo fotografia come oggetto, storia e presenza nello spazio.",
+      "en": "From a single frame to the finished work: we design photography as object, story and presence in space."
+    },
+    "backLabel": {
+      "it": "Torna alla pagina",
+      "en": "Back to page"
+    },
+    "sections": [
+      {
+        "id": "off-wall",
+        "image": "/img/opera-viva-6.jpg",
+        "title": {
+          "it": "Opere su misura per pareti",
+          "en": "Custom wall works"
+        },
+        "paragraphs": [
+          {
+            "it": "Ogni spazio ha un ritmo: luce, distanza, silenzi. Progettiamo formati e supporti per far sì che l’immagine non sia decorazione, ma presenza.",
+            "en": "Every space has a rhythm: light, distance, silence. We design formats and materials so the image is not decoration, but presence."
+          },
+          {
+            "it": "Dalla selezione alla stampa, curiamo proporzioni, resa dei neri, protezione e finitura, con una logica da oggetto che deve durare.",
+            "en": "From edit to print, we manage proportions, black depth, protection and finishing with the mindset of an object made to last."
+          }
+        ]
+      },
+      {
+        "id": "off-plates",
+        "image": "/img/opera-viva-2.jpg",
+        "title": {
+          "it": "Tintype, ambrotype e pellicola",
+          "en": "Tintype, ambrotype and film"
+        },
+        "paragraphs": [
+          {
+            "it": "Tecniche che obbligano a stare dentro il tempo. Preparare, esporre, sviluppare: il processo diventa parte della storia che l’immagine contiene.",
+            "en": "Techniques that force you to stay inside time. Prepare, expose, develop: the process becomes part of the story the image holds."
+          },
+          {
+            "it": "Il risultato è materia: metallo, vetro, emulsione. Oggetti unici o serie analogiche con una coerenza fatta di gesti, non di preset.",
+            "en": "The result is matter: metal, glass, emulsion. Unique objects or analog series with coherence made of gestures, not presets."
+          }
+        ]
+      },
+      {
+        "id": "off-ir",
+        "image": "/img/opera-viva-8.jpg",
+        "title": {
+          "it": "Stampe fine art da infrarossi digitale",
+          "en": "Infrared fine art prints"
+        },
+        "paragraphs": [
+          {
+            "it": "L’infrarosso cambia la lettura della materia: superfici, cieli e atmosfere si spostano di tono e rivelano una dimensione inattesa.",
+            "en": "Infrared changes how matter reads: surfaces, skies and atmospheres shift in tone and reveal an unexpected dimension."
+          },
+          {
+            "it": "La stampa è il punto d’arrivo: carta, inchiostri e finitura restituiscono profondità e permanenza, con un controllo preciso e ripetibile.",
+            "en": "Printing is the destination: paper, inks and finishing return depth and permanence with precise, repeatable control."
+          }
+        ]
+      },
+      {
+        "id": "off-single",
+        "image": "/img/opera-viva-1.jpg",
+        "title": {
+          "it": "Opere singole: ritratti o imbarcazioni",
+          "en": "Single works: portraits or vessels"
+        },
+        "paragraphs": [
+          {
+            "it": "Un’opera può essere un volto o uno scafo: cambiano le forme, non la dignità. Cerchiamo carattere, segni, storia e presenza.",
+            "en": "A work can be a face or a hull: the form changes, not the dignity. We look for character, marks, history and presence."
+          },
+          {
+            "it": "Consegniamo un’immagine finita, pronta a vivere nello spazio, con una cura da oggetto che deve attraversare anni.",
+            "en": "We deliver a finished image, ready to live in space, with the care of an object meant to cross years."
+          }
+        ]
+      },
+      {
+        "id": "off-boarding",
+        "image": "/img/opera-viva-5.jpg",
+        "title": {
+          "it": "Imbarco per raccontare un viaggio",
+          "en": "Boarding to tell a journey"
+        },
+        "paragraphs": [
+          {
+            "it": "Quando la storia richiede tempo, ci imbarchiamo. Seguiamo turni, gesti e meteo: l’opera nasce da una convivenza reale con il mare.",
+            "en": "When the story needs time, we board. We follow shifts, gestures and weather: the work comes from real cohabitation with the sea."
+          },
+          {
+            "it": "È un lavoro di ascolto: non solo immagini, ma sequenze, contesto e continuità, per far emergere una narrazione completa.",
+            "en": "It is a work of listening: not only images, but sequences, context and continuity to let a complete narrative emerge."
+          }
+        ]
+      },
+      {
+        "id": "off-book",
+        "image": "/img/opera-viva-9.jpg",
+        "title": {
+          "it": "Racconto su fotolibro stampato",
+          "en": "A story as a printed photo book"
+        },
+        "paragraphs": [
+          {
+            "it": "Il fotolibro è una rotta. Editiamo il materiale come un diario: inizio, svolta, ritorno. Una storia che si può tenere in mano.",
+            "en": "A photo book is a route. We edit material like a logbook: start, turning point, return. A story you can hold."
+          },
+          {
+            "it": "Dalla progettazione alla stampa, curiamo ritmo, sequenza e materia della carta, perché l’oggetto finale porti memoria.",
+            "en": "From design to print, we care for rhythm, sequence and paper material so the final object carries memory."
+          }
+        ]
+      }
+    ]
+  },
+  "techniques": {
+    "kicker": {
+      "it": "Come lo facciamo",
+      "en": "How we do it"
+    },
+    "title": {
+      "it": "Differenze reali, materia e tempo",
+      "en": "Real differences, matter and time"
+    },
+    "lead": {
+      "it": "Qui non si tratta di “look”: cambia come nasce la fotografia, che cosa rimane e che tipo di oggetto diventa.",
+      "en": "This is not about a “look”: it changes how the photograph is born, what remains, and what kind of object it becomes."
+    },
+    "backLabel": {
+      "it": "Torna alla pagina",
+      "en": "Back to page"
+    },
+    "sections": [
+      {
+        "id": "collodio",
+        "image": "/img/opera-viva-2.jpg",
+        "title": {
+          "it": "Collodio umido: tintype e ambrotype",
+          "en": "Wet plate collodion: tintype and ambrotype"
+        },
+        "paragraphs": [
+          {
+            "it": "La lastra viene preparata, sensibilizzata, esposta e sviluppata in una finestra di tempo breve. È fotografia come rito: gesto, chimica e decisione.",
+            "en": "The plate is prepared, sensitized, exposed and developed within a short time window. It is photography as ritual: gesture, chemistry and decision."
+          },
+          {
+            "it": "La differenza tra tintype e ambrotype è il supporto: metallo o vetro. In entrambi i casi il risultato è un pezzo unico, con segni e imperfezioni che raccontano come è nato.",
+            "en": "The difference between tintype and ambrotype is the support: metal or glass. In both cases the result is one of a kind, with marks and imperfections that tell how it was made."
+          },
+          {
+            "it": "È un linguaggio fisico: profondità, micro-contrasto e bordi non sono effetti. Sono materia che porta memoria.",
+            "en": "It is a physical language: depth, micro-contrast and edges are not effects. They are matter that carries memory."
+          }
+        ]
+      },
+      {
+        "id": "pellicola",
+        "image": "/img/opera-viva-5.jpg",
+        "title": {
+          "it": "Pellicola",
+          "en": "Film"
+        },
+        "paragraphs": [
+          {
+            "it": "La pellicola introduce grana, micro-variazioni e una risposta organica alla luce. Le transizioni tra luci e ombre diventano spesso più morbide e profonde.",
+            "en": "Film introduces grain, micro-variation and an organic response to light. Highlight to shadow transitions often become softer and deeper."
+          },
+          {
+            "it": "Qui contano le decisioni in ripresa: esposizione, lente, tipo di luce e sviluppo. Ogni fotogramma è una scelta.",
+            "en": "Here capture decisions matter: exposure, lens, light quality and development. Every frame is a choice."
+          },
+          {
+            "it": "Il risultato porta carattere. Piccole imperfezioni diventano parte del racconto e rendono l’immagine meno sterile e più umana.",
+            "en": "The result carries character. Small imperfections become part of the story and make the image less sterile and more human."
+          }
+        ]
+      },
+      {
+        "id": "infrarossi",
+        "image": "/img/opera-viva-8.jpg",
+        "title": {
+          "it": "Infrarossi digitale",
+          "en": "Digital infrared"
+        },
+        "paragraphs": [
+          {
+            "it": "L’infrarosso rivela una parte della luce normalmente invisibile. Superfici e atmosfere cambiano gerarchia, come se il mondo avesse un’altra pelle del reale.",
+            "en": "Infrared reveals a part of light that is normally invisible. Surfaces and atmospheres shift in hierarchy, as if the world had another skin."
+          },
+          {
+            "it": "È un processo controllabile e ripetibile, utile quando serve coerenza tra immagini e serie. La stampa fine art definisce texture e permanenza.",
+            "en": "It is a controllable, repeatable process, useful when consistency across images and series is needed. Fine art printing defines texture and permanence."
+          },
+          {
+            "it": "Non è “effetto”: è una scelta di sguardo. Una forma di lettura che trasforma il soggetto senza tradirlo.",
+            "en": "It is not an “effect”: it is a choice of gaze. A way of reading that transforms the subject without betraying it."
+          }
+        ]
+      }
+    ]
+  },
+  "events": [
+    {
+      "title": {
+        "it": "Mostra a Genova",
+        "en": "Exhibition in Genoa"
+      },
+      "date": "2024-05-20",
+      "description": {
+        "it": "Esposizione dei lavori al Museo del Mare.",
+        "en": "Exhibition of works at the Sea Museum."
+      },
+      "link": "https://example.com"
+    },
+    {
+      "title": {
+        "it": "Incontro con l'autore",
+        "en": "Meet the artist"
+      },
+      "date": "2024-06-15",
+      "description": {
+        "it": "Presentazione del libro fotografico.",
+        "en": "Photo book presentation."
+      }
+    }
+  ]
+}
