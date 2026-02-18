@@ -535,6 +535,48 @@ export default function AdminDashboard() {
                             <I18nField label="Details Button Label" value={(content as any).eventsTimeline.detailsLabel} onChange={(v) => update('eventsTimeline.detailsLabel', v)} />
                         </div>
 
+                        <div className="space-y-4">
+                            {(content.events || []).map((event: any, idx: number) => (
+                                <div key={idx} className="p-6 border border-[var(--border)] rounded-lg bg-[var(--bg-2)] relative">
+                                    <button onClick={() => {
+                                        const events = [...(content.events || [])];
+                                        events.splice(idx, 1);
+                                    }} className="absolute top-4 right-4 text-red-500 hover:bg-red-500/10 p-2 rounded" title="Remove">
+                                        <LogOut size={16} className="rotate-180" />
+                                    </button>
+
+                                    <div className="grid grid-cols-1 gap-6 pr-8">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <Field label="Date" value={event.date} onChange={(v) => update(`events.${idx}.date`, v)} />
+                                            <Field label="Link" value={event.link || ''} onChange={(v) => update(`events.${idx}.link`, v)} />
+                                        </div>
+                                        <I18nField label="Title" value={event.title} onChange={(v) => update(`events.${idx}.title`, v)} />
+                                        <I18nField label="Description" value={event.description} onChange={(v) => update(`events.${idx}.description`, v)} />
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </AdminSection>
+                )}
+
+                {activeTab === 'seo' && (
+                    <AdminSection title="SEO & Metadata" icon={<Type size={18} />} defaultOpen>
+                        <Field label="Site Title" value={content.seo.title} onChange={(v) => update('seo.title', v)} />
+                        <div className="h-6" />
+                        <Field label="Description" value={content.seo.description} onChange={(v) => update('seo.description', v)} textarea />
+                        <div className="h-6" />
+                        <div className="flex flex-col gap-2">
+                            <label className="micro">OG Image</label>
+                            <div className="flex items-center gap-4">
+                                <img src={content.seo.ogImage} alt="OG" className="h-24 w-40 object-cover border border-[var(--border)] rounded bg-[var(--bg-3)]" />
+                                <label className="btn bg-[var(--surface)] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest cursor-pointer flex items-center gap-2 hover:bg-[var(--bg-2)] border border-[var(--border)]">
+                                    Change Image
+                                    <input type="file" className="hidden" onChange={(e) => handleNestedUpload(e, 'seo.ogImage')} />
+                                </label>
+                            </div>
+                        </div>
+                        <div className="h-8" />
+
                         {/* Favicon Section */}
                         <div className="mb-8 p-6 border border-[var(--border)] bg-[var(--bg-2)]/30 rounded-lg">
                             <h4 className="micro mb-4 text-[var(--accent)]">Site Favicon</h4>
@@ -575,47 +617,6 @@ export default function AdminDashboard() {
                                         />
                                     </label>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div className="space-y-4">
-                            {(content.events || []).map((event: any, idx: number) => (
-                                <div key={idx} className="p-6 border border-[var(--border)] rounded-lg bg-[var(--bg-2)] relative">
-                                    <button onClick={() => {
-                                        const events = [...(content.events || [])];
-                                        events.splice(idx, 1);
-                                    }} className="absolute top-4 right-4 text-red-500 hover:bg-red-500/10 p-2 rounded" title="Remove">
-                                        <LogOut size={16} className="rotate-180" />
-                                    </button>
-
-                                    <div className="grid grid-cols-1 gap-6 pr-8">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <Field label="Date" value={event.date} onChange={(v) => update(`events.${idx}.date`, v)} />
-                                            <Field label="Link" value={event.link || ''} onChange={(v) => update(`events.${idx}.link`, v)} />
-                                        </div>
-                                        <I18nField label="Title" value={event.title} onChange={(v) => update(`events.${idx}.title`, v)} />
-                                        <I18nField label="Description" value={event.description} onChange={(v) => update(`events.${idx}.description`, v)} />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </AdminSection>
-                )}
-
-                {activeTab === 'seo' && (
-                    <AdminSection title="SEO & Metadata" icon={<Type size={18} />} defaultOpen>
-                        <Field label="Site Title" value={content.seo.title} onChange={(v) => update('seo.title', v)} />
-                        <div className="h-6" />
-                        <Field label="Description" value={content.seo.description} onChange={(v) => update('seo.description', v)} textarea />
-                        <div className="h-6" />
-                        <div className="flex flex-col gap-2">
-                            <label className="micro">OG Image</label>
-                            <div className="flex items-center gap-4">
-                                <img src={content.seo.ogImage} alt="OG" className="h-24 w-40 object-cover border border-[var(--border)] rounded bg-[var(--bg-3)]" />
-                                <label className="btn bg-[var(--surface)] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest cursor-pointer flex items-center gap-2 hover:bg-[var(--bg-2)] border border-[var(--border)]">
-                                    Change Image
-                                    <input type="file" className="hidden" onChange={(e) => handleNestedUpload(e, 'seo.ogImage')} />
-                                </label>
                             </div>
                         </div>
                     </AdminSection>
