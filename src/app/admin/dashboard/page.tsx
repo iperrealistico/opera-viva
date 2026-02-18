@@ -96,6 +96,14 @@ export default function AdminDashboard() {
     };
 
     const handleUpload = async (file: File, index: number): Promise<string | null> => {
+        // Enforce 4.5MB limit (Vercel Serverless Function Limit)
+        if (file.size > 4.5 * 1024 * 1024) {
+            alert(`File is too large (${(file.size / 1024 / 1024).toFixed(2)} MB). Vercel Serverless Function limit is 4.5 MB. Please compress the image before uploading.`);
+            return null;
+        }
+
+        console.log(`Uploading file: ${file.name}, Size: ${file.size} bytes, Type: ${file.type}`);
+
         const formData = new FormData();
         formData.append('file', file);
         try {
@@ -124,6 +132,14 @@ export default function AdminDashboard() {
     const handleNestedUpload = async (e: React.ChangeEvent<HTMLInputElement>, path: string) => {
         const file = e.target.files?.[0];
         if (!file) return;
+
+        // Enforce 4.5MB limit
+        if (file.size > 4.5 * 1024 * 1024) {
+            alert(`File is too large (${(file.size / 1024 / 1024).toFixed(2)} MB). Vercel Serverless Function limit is 4.5 MB.`);
+            return;
+        }
+
+        console.log(`Uploading nested file: ${file.name}, Size: ${file.size} bytes`);
 
         const formData = new FormData();
         formData.append('file', file);

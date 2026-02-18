@@ -16,6 +16,8 @@ const REPO = process.env.GITHUB_REPO_NAME || '';
 const BRANCH = process.env.GITHUB_BRANCH || 'main';
 
 export async function POST(req: NextRequest) {
+    const contentLength = req.headers.get('content-length');
+    console.log(`[Upload] Request started. Content-Length: ${contentLength}`);
     try {
         const session = await getSession();
         if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
