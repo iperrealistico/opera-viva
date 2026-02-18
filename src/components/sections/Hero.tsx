@@ -13,7 +13,7 @@ export default function Hero({ content }: { content: SiteContent }) {
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="/img/opera-viva-1.jpg"
+                    src={hero.backgroundImage || "/img/opera-viva-1.jpg"}
                     alt="Hero Background"
                     className="w-full h-full object-cover opacity-40"
                 />

@@ -3,25 +3,34 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { SiteContent } from '@/lib/content';
-import { Save, LogOut, Upload, Plus, Trash2, Globe, Type, Image as LucideImage, Film, Calendar } from 'lucide-react';
+import { Save, LogOut, Film, Image as LucideImage, Globe, Type, Calendar, LayoutTemplate, Camera, Lightbulb, Ship } from 'lucide-react';
+import { AdminSection } from './components/AdminSection';
+import { Field } from './components/Field';
+import { I18nField } from './components/I18nField';
+import { SortableGallery } from './components/SortableGallery';
 
 export default function AdminDashboard() {
     const [content, setContent] = useState<SiteContent | null>(null);
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
-    const [activeTab, setActiveTab] = useState('sections');
+    const [activeTab, setActiveTab] = useState('pages');
     const router = useRouter();
 
     useEffect(() => {
         async function fetchContent() {
-            const res = await fetch('/api/content');
-            if (res.ok) {
-                const data = await res.json();
-                setContent(data);
-            } else {
-                router.push('/admin');
+            try {
+                const res = await fetch('/api/content');
+                if (res.ok) {
+                    const data = await res.json();
+                    setContent(data);
+                } else {
+                    router.push('/admin');
+                }
+            } catch (e) {
+                console.error("Failed to fetch content", e);
+            } finally {
+                setLoading(false);
             }
-            setLoading(false);
         }
         fetchContent();
     }, [router]);
@@ -52,11 +61,12 @@ export default function AdminDashboard() {
         router.push('/admin');
     };
 
-    const updateNested = (path: string, value: any) => {
+    // Helper to update state deeply
+    const update = (path: string, value: any) => {
         if (!content) return;
-        const newContent = { ...content };
+        const newContent = JSON.parse(JSON.stringify(content)); // Deep clone
         const parts = path.split('.');
-        let current: any = newContent;
+        let current = newContent;
         for (let i = 0; i < parts.length - 1; i++) {
             current = current[parts[i]];
         }
@@ -64,7 +74,21 @@ export default function AdminDashboard() {
         setContent(newContent);
     };
 
-    const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>, path: string) => {
+    const handleUpload = async (file: File, index: number): Promise<string | null> => {
+        const formData = new FormData();
+        formData.append('file', file);
+        try {
+            const res = await fetch('/api/upload', { method: 'POST', body: formData });
+            const data = await res.json();
+            if (data.success) return data.url;
+            alert('Upload failed: ' + data.error);
+            return null;
+        } catch (err) {
+            alert('Upload error');
+            return null;
+        }
+    };
+    const handleNestedUpload = async (e: React.ChangeEvent<HTMLInputElement>, path: string) => {
         const file = e.target.files?.[0];
         if (!file) return;
 
@@ -78,7 +102,7 @@ export default function AdminDashboard() {
             });
             const data = await res.json();
             if (data.success) {
-                updateNested(path, data.url);
+                update(path, data.url);
             } else {
                 alert('Upload failed: ' + data.error);
             }
@@ -87,221 +111,222 @@ export default function AdminDashboard() {
         }
     };
 
+
     if (loading) return <div className="min-h-screen grid place-items-center bg-[var(--bg)]">Loading...</div>;
     if (!content) return null;
 
     return (
-        <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+        <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] pb-20">
             {/* Header */}
-            <header className="border-b border-[var(--border)] py-4 sticky top-0 bg-[var(--bg)] z-50">
+            <header className="border-b border-[var(--border)] py-4 sticky top-0 bg-[var(--bg)] z-50 shadow-sm">
                 <div className="wrap flex justify-between items-center">
-                    <div className="flex items-center gap-4">
-                        <h1 className="h2 m-0 text-xl font-black uppercase tracking-widest">Admin</h1>
-                        <nav className="flex items-center gap-2">
-                            <button onClick={() => setActiveTab('sections')} className={`px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-widest ${activeTab === 'sections' ? 'bg-[var(--accent)] text-[var(--bg)]' : 'hover:bg-[var(--surface)]'}`}>Sections</button>
-                            <button onClick={() => setActiveTab('events')} className={`px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-widest ${activeTab === 'events' ? 'bg-[var(--accent)] text-[var(--bg)]' : 'hover:bg-[var(--surface)]'}`}>Events</button>
-                            <button onClick={() => setActiveTab('seo')} className={`px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-widest ${activeTab === 'seo' ? 'bg-[var(--accent)] text-[var(--bg)]' : 'hover:bg-[var(--surface)]'}`}>SEO</button>
+                    <div className="flex items-center gap-6">
+                        <h1 className="h2 m-0 text-xl font-black uppercase tracking-widest hidden md:block">Admin</h1>
+                        <nav className="flex items-center gap-1 overflow-x-auto no-scrollbar">
+                            {['pages', 'global', 'events', 'seo'].map(tab => (
+                                <button
+                                    key={tab}
+                                    onClick={() => setActiveTab(tab)}
+                                    className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest whitespace-nowrap transition-colors ${activeTab === tab ? 'bg-[var(--accent)] text-[var(--bg)]' : 'hover:bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--text)]'
+                                        }`}
+                                >
+                                    {tab}
+                                </button>
+                            ))}
                         </nav>
                     </div>
                     <div className="flex items-center gap-3">
-                        <button onClick={handleSave} disabled={saving} className="btn bg-[var(--accent)] text-[var(--bg)] px-6 py-2 rounded-lg flex items-center gap-2 font-black uppercase tracking-widest text-xs">
+                        <button onClick={handleSave} disabled={saving} className={`btn px-6 py-2 rounded-lg flex items-center gap-2 font-black uppercase tracking-widest text-xs transition-all ${saving ? 'bg-yellow-500 text-white' : 'bg-[var(--accent)] text-[var(--bg)] hover:brightness-110'}`}>
                             <Save size={16} />
-                            {saving ? 'Publishing...' : 'Publish'}
+                            {saving ? 'Saving...' : 'Publish'}
                         </button>
-                        <button onClick={handleLogout} className="btn bg-red-900/20 text-red-500 border border-red-500/30 px-4 py-2 rounded-lg flex items-center gap-2 font-black uppercase tracking-widest text-xs">
+                        <button onClick={handleLogout} className="btn bg-[var(--bg-2)] text-red-500 border border-red-500/20 px-3 py-2 rounded-lg flex items-center gap-2 font-black uppercase tracking-widest text-xs hover:bg-red-500/10 transition-colors">
                             <LogOut size={16} />
-                            Logout
                         </button>
                     </div>
                 </div>
             </header>
 
-            <main className="py-8">
-                <div className="wrap grid grid-cols-1 gap-8">
-                    {activeTab === 'sections' && (
-                        <div className="grid grid-cols-1 gap-12">
-                            {/* Hero Section */}
-                            <section className="border border-[var(--border)] p-6 bg-[color-mix(in_oklab,var(--surface)_92%,transparent)] rounded-[var(--r-ui)]">
-                                <h3 className="h2 text-lg mb-6 flex items-center gap-2"><Film size={20} /> Hero</h3>
+            <main className="py-8 wrap max-w-5xl mx-auto">
+                {activeTab === 'pages' && (
+                    <div className="grid grid-cols-1 gap-8">
+                        {/* Hero */}
+                        <AdminSection title="Hero Section" icon={<Film size={18} />}>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <Field label="Video URL" value={content.sections.hero.videoUrl} onChange={(v) => update('sections.hero.videoUrl', v)} />
+                                <Field label="Video Start (s)" value={content.sections.hero.videoStart.toString()} onChange={(v) => update('sections.hero.videoStart', parseInt(v) || 0)} />
+                            </div>
+                            <div className="mb-6">
+                                <label className="micro mb-2 block">Background Image</label>
+                                <div className="flex items-center gap-4">
+                                    <img src={content.sections.hero.backgroundImage || "/img/opera-viva-1.jpg"} alt="Hero BG" className="h-24 w-40 object-cover border border-[var(--border)] rounded bg-[var(--bg-3)]" />
+                                    <label className="btn bg-[var(--surface)] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest cursor-pointer flex items-center gap-2 hover:bg-[var(--bg-2)] border border-[var(--border)]">
+                                        Change Image
+                                        <input type="file" className="hidden" onChange={(e) => handleNestedUpload(e, 'sections.hero.backgroundImage')} />
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-1 gap-6">
+                                <I18nField label="Title" value={content.sections.hero.title} onChange={(v) => update('sections.hero.title', v)} />
+                                <I18nField label="Subtitle" value={content.sections.hero.subtitle} onChange={(v) => update('sections.hero.subtitle', v)} />
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <Field label="Video URL" value={content.sections.hero.videoUrl} onChange={(v) => updateNested('sections.hero.videoUrl', v)} />
-                                    <Field label="Video Start (s)" value={content.sections.hero.videoStart.toString()} onChange={(v) => updateNested('sections.hero.videoStart', parseInt(v) || 0)} />
-                                    <I18nField label="Title" value={content.sections.hero.title} onChange={(v) => updateNested('sections.hero.title', v)} />
-                                    <I18nField label="Subtitle" value={content.sections.hero.subtitle} onChange={(v) => updateNested('sections.hero.subtitle', v)} />
+                                    <I18nField label="CTA 1 Label" value={content.sections.hero.cta[0].label} onChange={(v) => update('sections.hero.cta.0.label', v)} />
+                                    <I18nField label="CTA 2 Label" value={content.sections.hero.cta[1].label} onChange={(v) => update('sections.hero.cta.1.label', v)} />
                                 </div>
-                            </section>
+                            </div>
+                        </AdminSection>
 
-                            {/* Galleria Section */}
-                            <section className="border border-[var(--border)] p-6 bg-[color-mix(in_oklab,var(--surface)_92%,transparent)] rounded-[var(--r-ui)]">
-                                <h3 className="h2 text-lg mb-6 flex items-center gap-2"><LucideImage size={20} /> Galleria</h3>
-                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                                    {content.sections.galleria.items.map((item, idx) => (
-                                        <div key={idx} className="relative group aspect-[3/4] border border-[var(--border)] overflow-hidden rounded-lg bg-[var(--bg-2)]">
-                                            <img src={item.src} alt={item.alt} className="w-full h-full object-cover" />
-                                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-2 gap-2">
-                                                <label className="cursor-pointer bg-white text-black px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
-                                                    <Upload size={10} /> Change
-                                                    <input type="file" className="hidden" onChange={(e) => handleUpload(e, `sections.galleria.items.${idx}.src`)} />
-                                                </label>
-                                                <button onClick={() => {
-                                                    const items = [...content.sections.galleria.items];
-                                                    items.splice(idx, 1);
-                                                    updateNested('sections.galleria.items', items);
-                                                }} className="bg-red-500 text-white px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest flex items-center gap-1">
-                                                    <Trash2 size={10} /> Remove
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ))}
-                                    <button onClick={() => {
-                                        const items = [...content.sections.galleria.items, { src: '/img/placeholder.jpg', alt: 'Nuova foto' }];
-                                        updateNested('sections.galleria.items', items);
-                                    }} className="aspect-[3/4] border-2 border-dashed border-[var(--border)] rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-[var(--surface)] text-[var(--muted)]">
-                                        <Plus size={24} />
-                                        <span className="text-[10px] font-bold uppercase tracking-widest">Add Item</span>
-                                    </button>
-                                </div>
-                            </section>
+                        {/* Opera Viva */}
+                        <AdminSection title="Opera Viva Intro" icon={<Ship size={18} />}>
+                            <I18nField label="Kicker" value={content.sections.operaViva.kicker} onChange={(v) => update('sections.operaViva.kicker', v)} />
+                            <div className="h-4" />
+                            <I18nField label="Title" value={content.sections.operaViva.title} onChange={(v) => update('sections.operaViva.title', v)} />
+                            <div className="h-4" />
+                            <I18nField label="Lead Text" value={content.sections.operaViva.lead} onChange={(v) => update('sections.operaViva.lead', v)} textarea />
+                            <div className="h-6" />
+                            <label className="micro mb-2 block">Paragraphs</label>
+                            <div className="space-y-4">
+                                {content.sections.operaViva.paragraphs.map((_, idx) => (
+                                    <I18nField
+                                        key={idx}
+                                        label={`Paragraph ${idx + 1}`}
+                                        value={content.sections.operaViva.paragraphs[idx]}
+                                        onChange={(v) => update(`sections.operaViva.paragraphs.${idx}`, v)}
+                                        textarea
+                                    />
+                                ))}
+                            </div>
+                        </AdminSection>
 
-                            {/* Contatti Section */}
-                            <section className="border border-[var(--border)] p-6 bg-[color-mix(in_oklab,var(--surface)_92%,transparent)] rounded-[var(--r-ui)]">
-                                <h3 className="h2 text-lg mb-6 flex items-center gap-2"><Globe size={20} /> Contatti</h3>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <Field label="Email" value={content.sections.contatti.email} onChange={(v) => updateNested('sections.contatti.email', v)} />
-                                    <Field label="Instagram URL" value={content.sections.contatti.instagram} onChange={(v) => updateNested('sections.contatti.instagram', v)} />
-                                </div>
-                            </section>
+                        {/* Galleria (Grid) */}
+                        <AdminSection title="Grid Gallery" icon={<LucideImage size={18} />} defaultOpen>
+                            <div className="mb-6">
+                                <I18nField label="Title" value={content.sections.galleria.title} onChange={(v) => update('sections.galleria.title', v)} />
+                                <div className="h-4" />
+                                <I18nField label="Lead" value={content.sections.galleria.lead} onChange={(v) => update('sections.galleria.lead', v)} />
+                            </div>
+                            <SortableGallery
+                                items={content.sections.galleria.items}
+                                onUpdate={(items) => update('sections.galleria.items', items)}
+                                onUpload={handleUpload}
+                            />
+                        </AdminSection>
+
+                        {/* Come Lo Facciamo (Carousel) */}
+                        <AdminSection title="Come Lo Facciamo (Horizontal Gallery)" icon={<Camera size={18} />}>
+                            <I18nField label="Title" value={content.sections.comeLoFacciamo.title} onChange={(v) => update('sections.comeLoFacciamo.title', v)} />
+                            <div className="h-4" />
+                            <I18nField label="Lead" value={content.sections.comeLoFacciamo.lead} onChange={(v) => update('sections.comeLoFacciamo.lead', v)} />
+
+                            <div className="my-8 border-t border-[var(--border)]/50 pt-6">
+                                <h4 className="micro mb-4 text-[var(--accent)]">Horizontal Gallery Images</h4>
+                                <SortableGallery
+                                    items={content.sections.comeLoFacciamo.gallery}
+                                    onUpdate={(items) => update('sections.comeLoFacciamo.gallery', items)}
+                                    onUpload={handleUpload}
+                                />
+                            </div>
+                        </AdminSection>
+
+                        {/* Cosa Facciamo */}
+                        <AdminSection title="Cosa Facciamo (Offer)" icon={<LayoutTemplate size={18} />}>
+                            <I18nField label="Title" value={content.sections.cosaFacciamo.title} onChange={(v) => update('sections.cosaFacciamo.title', v)} />
+                            <div className="h-4" />
+                            <I18nField label="Lead" value={content.sections.cosaFacciamo.lead} onChange={(v) => update('sections.cosaFacciamo.lead', v)} textarea />
+                        </AdminSection>
+
+                        {/* Tecniche */}
+                        <AdminSection title="Tecniche" icon={<Lightbulb size={18} />}>
+                            <I18nField label="Title" value={content.techniques.title} onChange={(v) => update('techniques.title', v)} />
+                            <div className="h-4" />
+                            <I18nField label="Lead" value={content.techniques.lead} onChange={(v) => update('techniques.lead', v)} textarea />
+                        </AdminSection>
+
+                    </div>
+                )}
+
+                {activeTab === 'global' && (
+                    <AdminSection title="Contact Info" icon={<Globe size={18} />} defaultOpen>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <Field label="Email" value={content.sections.contatti.email} onChange={(v) => update('sections.contatti.email', v)} />
+                            <Field label="Instagram URL" value={content.sections.contatti.instagram} onChange={(v) => update('sections.contatti.instagram', v)} />
                         </div>
-                    )}
+                        <div className="h-4" />
+                        <I18nField label="Button Label" value={(content as any).contactsSection.buttonLabel} onChange={(v) => update('contactsSection.buttonLabel', v)} />
+                        <div className="h-6" />
+                        <I18nField label="Title" value={content.sections.contatti.title} onChange={(v) => update('sections.contatti.title', v)} />
+                        <div className="h-4" />
+                        <I18nField label="Lead" value={content.sections.contatti.lead} onChange={(v) => update('sections.contatti.lead', v)} />
+                    </AdminSection>
+                )}
 
-                    {activeTab === 'seo' && (
-                        <div className="grid grid-cols-1 gap-12">
-                            <section className="border border-[var(--border)] p-6 bg-[color-mix(in_oklab,var(--surface)_92%,transparent)] rounded-[var(--r-ui)]">
-                                <h3 className="h2 text-lg mb-6 flex items-center gap-2"><Type size={20} /> Site Metadata</h3>
-                                <div className="grid grid-cols-1 gap-6">
-                                    <Field label="Site Title" value={content.seo.title} onChange={(v) => updateNested('seo.title', v)} />
-                                    <Field label="Description" value={content.seo.description} onChange={(v) => updateNested('seo.description', v)} textarea />
-                                    <div className="flex flex-col gap-2">
-                                        <label className="micro">OG Image</label>
-                                        <div className="flex items-center gap-4">
-                                            <img src={content.seo.ogImage} alt="OG" className="h-20 w-32 object-cover border border-[var(--border)] rounded" />
-                                            <label className="btn bg-[var(--surface)] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest cursor-pointer flex items-center gap-2">
-                                                <Upload size={14} /> Change Image
-                                                <input type="file" className="hidden" onChange={(e) => handleUpload(e, 'seo.ogImage')} />
-                                            </label>
+                {activeTab === 'events' && (
+                    <AdminSection title="Events Management" icon={<Calendar size={18} />} defaultOpen>
+                        <button onClick={() => {
+                            const newEvent = {
+                                title: { it: 'Nuovo Evento', en: 'New Event' },
+                                date: new Date().toISOString().split('T')[0],
+                                description: { it: 'Descrizione...', en: 'Description...' },
+                                link: ''
+                            };
+                            const events = [...(content.events || []), newEvent];
+                            update('events', events);
+                        }} className="btn bg-[var(--surface)] text-[var(--text)] px-4 py-2 rounded-lg flex items-center gap-2 font-black uppercase tracking-widest text-xs border border-[var(--border)] hover:bg-[var(--bg-2)] mb-6">
+                            + Add Event
+                        </button>
+
+                        <div className="mb-8 p-6 border border-[var(--border)] bg-[var(--bg-2)]/30 rounded-lg">
+                            <h4 className="micro mb-4 text-[var(--accent)]">Events Section Texts</h4>
+                            <I18nField label="Section Title" value={(content as any).eventsTimeline.title} onChange={(v) => update('eventsTimeline.title', v)} />
+                            <div className="h-4" />
+                            <I18nField label="Section Lead" value={(content as any).eventsTimeline.lead} onChange={(v) => update('eventsTimeline.lead', v)} />
+                            <div className="h-4" />
+                            <I18nField label="Details Button Label" value={(content as any).eventsTimeline.detailsLabel} onChange={(v) => update('eventsTimeline.detailsLabel', v)} />
+                        </div>
+
+                        <div className="space-y-4">
+                            {(content.events || []).map((event: any, idx: number) => (
+                                <div key={idx} className="p-6 border border-[var(--border)] rounded-lg bg-[var(--bg-2)] relative">
+                                    <button onClick={() => {
+                                        const events = [...(content.events || [])];
+                                        events.splice(idx, 1);
+                                    }} className="absolute top-4 right-4 text-red-500 hover:bg-red-500/10 p-2 rounded" title="Remove">
+                                        <LogOut size={16} className="rotate-180" />
+                                    </button>
+
+                                    <div className="grid grid-cols-1 gap-6 pr-8">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <Field label="Date" value={event.date} onChange={(v) => update(`events.${idx}.date`, v)} />
+                                            <Field label="Link" value={event.link || ''} onChange={(v) => update(`events.${idx}.link`, v)} />
                                         </div>
+                                        <I18nField label="Title" value={event.title} onChange={(v) => update(`events.${idx}.title`, v)} />
+                                        <I18nField label="Description" value={event.description} onChange={(v) => update(`events.${idx}.description`, v)} />
                                     </div>
                                 </div>
-                            </section>
+                            ))}
                         </div>
-                    )}
+                    </AdminSection>
+                )}
 
-                    {activeTab === 'events' && (
-                        <div className="grid grid-cols-1 gap-12">
-                            <section className="border border-[var(--border)] p-6 bg-[color-mix(in_oklab,var(--surface)_92%,transparent)] rounded-[var(--r-ui)]">
-                                <div className="flex justify-between items-center mb-6">
-                                    <h3 className="h2 text-lg flex items-center gap-2"><Calendar size={20} /> Events</h3>
-                                    <button onClick={() => {
-                                        const newEvent = {
-                                            title: { it: 'Nuovo Evento', en: 'New Event' },
-                                            date: new Date().toISOString().split('T')[0],
-                                            description: { it: 'Descrizione...', en: 'Description...' },
-                                            link: ''
-                                        };
-                                        const events = [...(content.events || []), newEvent];
-                                        updateNested('events', events);
-                                    }} className="btn bg-[var(--surface)] text-[var(--text)] px-4 py-2 rounded-lg flex items-center gap-2 font-black uppercase tracking-widest text-xs border border-[var(--border)] hover:bg-[var(--bg-2)]">
-                                        <Plus size={16} /> Add Event
-                                    </button>
-                                </div>
-
-                                <div className="space-y-8">
-                                    {(content.events || []).map((event: any, idx: number) => (
-                                        <div key={idx} className="p-6 border border-[var(--border)] rounded-lg bg-[var(--bg-2)] relative group">
-                                            <button onClick={() => {
-                                                const events = [...(content.events || [])];
-                                                events.splice(idx, 1);
-                                                updateNested('events', events);
-                                            }} className="absolute top-4 right-4 text-red-500 hover:bg-red-500/10 p-2 rounded transition-colors" title="Remove Event">
-                                                <Trash2 size={18} />
-                                            </button>
-
-                                            <div className="grid grid-cols-1 gap-6 pr-12">
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                                    <Field label="Date (YYYY-MM-DD)" value={event.date} onChange={(v) => updateNested(`events.${idx}.date`, v)} />
-                                                    <Field label="Link (optional)" value={event.link || ''} onChange={(v) => updateNested(`events.${idx}.link`, v)} />
-                                                </div>
-                                                <I18nField label="Title" value={event.title} onChange={(v) => updateNested(`events.${idx}.title`, v)} />
-                                                <I18nField label="Description" value={event.description} onChange={(v) => updateNested(`events.${idx}.description`, v)} />
-                                            </div>
-                                        </div>
-                                    ))}
-
-                                    {(!content.events || content.events.length === 0) && (
-                                        <p className="text-[var(--muted)] text-center py-8">No events found. Click "Add Event" to create one.</p>
-                                    )}
-                                </div>
-                            </section>
+                {activeTab === 'seo' && (
+                    <AdminSection title="SEO & Metadata" icon={<Type size={18} />} defaultOpen>
+                        <Field label="Site Title" value={content.seo.title} onChange={(v) => update('seo.title', v)} />
+                        <div className="h-6" />
+                        <Field label="Description" value={content.seo.description} onChange={(v) => update('seo.description', v)} textarea />
+                        <div className="h-6" />
+                        <div className="flex flex-col gap-2">
+                            <label className="micro">OG Image</label>
+                            <div className="flex items-center gap-4">
+                                <img src={content.seo.ogImage} alt="OG" className="h-24 w-40 object-cover border border-[var(--border)] rounded bg-[var(--bg-3)]" />
+                                <label className="btn bg-[var(--surface)] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest cursor-pointer flex items-center gap-2 hover:bg-[var(--bg-2)] border border-[var(--border)]">
+                                    Change Image
+                                    <input type="file" className="hidden" onChange={(e) => handleNestedUpload(e, 'seo.ogImage')} />
+                                </label>
+                            </div>
                         </div>
-                    )}
-                </div>
+                    </AdminSection>
+                )}
             </main>
-
-            <style jsx global>{`
-        .h2 { opacity: 1 !important; transform: none !important; filter: none !important; }
-      `}</style>
-        </div>
-    );
-}
-
-// ... existing helper components ...
-
-function Field({ label, value, onChange, textarea }: { label: string, value: string, onChange: (v: string) => void, textarea?: boolean }) {
-    return (
-        <div className="flex flex-col gap-1.5">
-            <label className="micro">{label}</label>
-            {textarea ? (
-                <textarea
-                    value={value}
-                    onChange={(e) => onChange(e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg border border-[var(--border)] bg-[var(--bg-2)] text-[var(--text)] focus:outline-none focus:border-[var(--accent)] min-h-[100px]"
-                />
-            ) : (
-                <input
-                    type="text"
-                    value={value}
-                    onChange={(e) => onChange(e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg border border-[var(--border)] bg-[var(--bg-2)] text-[var(--text)] focus:outline-none focus:border-[var(--accent)]"
-                />
-            )}
-        </div>
-    );
-}
-
-function I18nField({ label, value, onChange }: { label: string, value: { it: string, en: string }, onChange: (v: { it: string, en: string }) => void }) {
-    return (
-        <div className="flex flex-col gap-3 p-4 border border-[var(--border)]/50 rounded-lg">
-            <label className="micro text-[var(--accent)] font-black">{label}</label>
-            <div className="grid grid-cols-1 gap-4">
-                <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-black uppercase text-[var(--muted)] w-6">IT</span>
-                    <input
-                        type="text"
-                        value={value.it}
-                        onChange={(e) => onChange({ ...value, it: e.target.value })}
-                        className="flex-1 px-3 py-2 rounded-md border border-[var(--border)] bg-[var(--bg-2)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)]"
-                    />
-                </div>
-                <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-black uppercase text-[var(--muted)] w-6">EN</span>
-                    <input
-                        type="text"
-                        value={value.en}
-                        onChange={(e) => onChange({ ...value, en: e.target.value })}
-                        className="flex-1 px-3 py-2 rounded-md border border-[var(--border)] bg-[var(--bg-2)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)]"
-                    />
-                </div>
-            </div>
         </div>
     );
 }

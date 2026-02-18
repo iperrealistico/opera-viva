@@ -9,6 +9,11 @@ export default function EventsTimeline({ content }: { content: SiteContent }) {
     // Use events from content (will need to add to schema) or fallback to empty array
     // CASTING to any for now until we update the SiteContent interface
     const events = (content as any).events || [];
+    const timelineData = (content as any).eventsTimeline || { // Fallback if old JSON
+        title: { it: 'Eventi', en: 'Events' },
+        lead: { it: 'Mostre, incontri e appuntamenti.', en: 'Exhibitions, meetings and appointments.' },
+        detailsLabel: { it: 'Dettagli', en: 'Details' }
+    };
 
     // Sort events by date descending
     const sortedEvents = [...events].sort((a: any, b: any) =>
@@ -22,10 +27,10 @@ export default function EventsTimeline({ content }: { content: SiteContent }) {
             <div className="wrap max-w-[75ch] mx-auto">
                 <div className="reveal text-center mb-12">
                     <h2 className="h2 mb-4">
-                        {locale === 'it' ? 'Eventi' : 'Events'}
+                        {getLocalizedValue(timelineData.title, locale)}
                     </h2>
                     <p className="lead opacity-80">
-                        {locale === 'it' ? 'Mostre, incontri e appuntamenti.' : 'Exhibitions, meetings and appointments.'}
+                        {getLocalizedValue(timelineData.lead, locale)}
                     </p>
                 </div>
 
@@ -61,7 +66,7 @@ export default function EventsTimeline({ content }: { content: SiteContent }) {
                                 </p>
                                 {event.link && (
                                     <a href={event.link} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-sm border-b border-[var(--border)] hover:border-[var(--text)] transition-colors">
-                                        {locale === 'it' ? 'Dettagli' : 'Details'}
+                                        {getLocalizedValue(timelineData.detailsLabel, locale)}
                                     </a>
                                 )}
                             </div>

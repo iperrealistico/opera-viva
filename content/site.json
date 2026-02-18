@@ -62,6 +62,7 @@
       "videoUrl": "https://www.youtube.com/watch?v=nSSJRcRtqpo",
       "videoStart": 8,
       "videoAutoplay": true,
+      "backgroundImage": "/img/opera-viva-1.jpg",
       "title": {
         "it": "Opera Viva",
         "en": "Opera Viva"
@@ -670,5 +671,25 @@
         "en": "Photo book presentation."
       }
     }
-  ]
+  ],
+  "eventsTimeline": {
+    "title": {
+      "it": "Eventi",
+      "en": "Events"
+    },
+    "lead": {
+      "it": "Mostre, incontri e appuntamenti.",
+      "en": "Exhibitions, meetings and appointments."
+    },
+    "detailsLabel": {
+      "it": "Dettagli",
+      "en": "Details"
+    }
+  },
+  "contactsSection": {
+    "buttonLabel": {
+      "it": "Contatti",
+      "en": "Contact"
+    }
+  }
 }

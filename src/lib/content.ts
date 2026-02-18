@@ -31,6 +31,7 @@ export interface SiteContent {
       videoUrl: string;
       videoStart: number;
       videoAutoplay: boolean;
+      backgroundImage: string;
       title: LocalizedString;
       subtitle: LocalizedString;
       cta: Array<{
@@ -125,6 +126,14 @@ export interface SiteContent {
     loginBtn: string;
   };
   events?: Event[];
+  eventsTimeline: {
+    title: LocalizedString;
+    lead: LocalizedString;
+    detailsLabel: LocalizedString;
+  };
+  contactsSection: {
+    buttonLabel: LocalizedString;
+  };
 };
 
 export interface Event {
