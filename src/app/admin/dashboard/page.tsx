@@ -192,7 +192,7 @@ export default function AdminDashboard() {
                     <div className="flex items-center gap-6">
                         <h1 className="h2 m-0 text-xl font-black uppercase tracking-widest hidden md:block">Admin</h1>
                         <nav className="flex items-center gap-1 overflow-x-auto no-scrollbar">
-                            {['pages', 'global', 'events', 'seo'].map(tab => (
+                            {['pages', 'techniques', 'global', 'events', 'seo'].map(tab => (
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
@@ -339,13 +339,122 @@ export default function AdminDashboard() {
                             <I18nField label="Lead" value={content.sections.cosaFacciamo.lead} onChange={(v) => update('sections.cosaFacciamo.lead', v)} textarea />
                         </AdminSection>
 
-                        {/* Tecniche */}
-                        <AdminSection title="Tecniche" icon={<Lightbulb size={18} />}>
-                            <I18nField label="Title" value={content.techniques.title} onChange={(v) => update('techniques.title', v)} />
-                            <div className="h-4" />
-                            <I18nField label="Lead" value={content.techniques.lead} onChange={(v) => update('techniques.lead', v)} textarea />
+                        {/* Tecniche - Moved to dedicated tab */}
+
+                    </div>
+                )}
+
+                {activeTab === 'techniques' && (
+                    <div className="grid grid-cols-1 gap-8">
+                        {/* Homepage Cards */}
+                        <AdminSection title="Homepage Cards (Techniques)" icon={<LayoutTemplate size={18} />}>
+                            <p className="text-sm text-[var(--muted)] mb-6">These cards appear on the Homepage under "Come lo facciamo".</p>
+                            <div className="grid grid-cols-1 gap-6">
+                                {content.sections.comeLoFacciamo.items.map((item: any, idx: number) => (
+                                    <div key={idx} className="p-6 border border-[var(--border)] rounded-lg bg-[var(--bg-2)]/50">
+                                        <div className="flex items-center gap-4 mb-4">
+                                            <div className="w-10 h-10 flex items-center justify-center bg-[var(--surface)] rounded border border-[var(--border)] text-[var(--text)]">
+                                                <i className={`fa-solid fa-${item.icon} text-lg`}></i>
+                                            </div>
+                                            <Field label="Icon Name (FontAwesome)" value={item.icon} onChange={(v) => update(`sections.comeLoFacciamo.items.${idx}.icon`, v)} />
+                                        </div>
+                                        <I18nField label="Card Title" value={item.title} onChange={(v) => update(`sections.comeLoFacciamo.items.${idx}.title`, v)} />
+                                        <div className="h-4" />
+                                        <I18nField label="Card Text" value={item.text} onChange={(v) => update(`sections.comeLoFacciamo.items.${idx}.text`, v)} textarea />
+                                    </div>
+                                ))}
+                            </div>
                         </AdminSection>
 
+                        {/* Techniques Page Content */}
+                        <AdminSection title="/tecniche/ Page Content" icon={<Lightbulb size={18} />} defaultOpen>
+                            <div className="mb-8 p-6 border border-[var(--border)] rounded-lg bg-[var(--bg-2)]/30">
+                                <h4 className="micro mb-4 text-[var(--accent)]">Page Header</h4>
+                                <I18nField label="Kicker" value={content.techniques.kicker} onChange={(v) => update('techniques.kicker', v)} />
+                                <div className="h-4" />
+                                <I18nField label="Title" value={content.techniques.title} onChange={(v) => update('techniques.title', v)} />
+                                <div className="h-4" />
+                                <I18nField label="Lead" value={content.techniques.lead} onChange={(v) => update('techniques.lead', v)} textarea />
+                                <div className="h-4" />
+                                <I18nField label="Back Button Label" value={content.techniques.backLabel} onChange={(v) => update('techniques.backLabel', v)} />
+                            </div>
+
+                            <div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <h4 className="micro text-[var(--accent)]">Detailed Sections</h4>
+                                    <button onClick={() => {
+                                        const newSection = {
+                                            id: `section-${Date.now()}`,
+                                            image: '',
+                                            title: { it: 'Nuova Sezione', en: 'New Section' },
+                                            paragraphs: [{ it: 'Paragrafo...', en: 'Paragraph...' }]
+                                        };
+                                        const sections = [...content.techniques.sections, newSection];
+                                        update('techniques.sections', sections);
+                                    }} className="btn bg-[var(--surface)] text-[var(--text)] px-3 py-1.5 rounded text-xs border border-[var(--border)] hover:bg-[var(--bg-2)] flex items-center gap-2">
+                                        <i className="fa-solid fa-plus"></i> Add Section
+                                    </button>
+                                </div>
+
+                                <div className="space-y-8">
+                                    {content.techniques.sections.map((section: any, idx: number) => (
+                                        <div key={section.id} className="p-6 border border-[var(--border)] rounded-lg bg-[var(--bg-2)] relative">
+                                            <button onClick={() => {
+                                                const sections = [...content.techniques.sections];
+                                                sections.splice(idx, 1);
+                                                update('techniques.sections', sections);
+                                            }} className="absolute top-4 right-4 text-red-500 hover:bg-red-500/10 p-2 rounded transition-colors" title="Remove Section">
+                                                <LogOut size={16} className="rotate-180" />
+                                            </button>
+
+                                            <div className="grid grid-cols-1 gap-6">
+                                                <div>
+                                                    <label className="micro mb-2 block">Section Image</label>
+                                                    <div className="flex items-center gap-4">
+                                                        <img src={section.image || '/placeholder.jpg'} alt="Preview" className="h-24 w-40 object-cover border border-[var(--border)] rounded bg-[var(--bg-3)]" />
+                                                        <label className="btn bg-[var(--surface)] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest cursor-pointer flex items-center gap-2 hover:bg-[var(--bg-2)] border border-[var(--border)]">
+                                                            Upload Image
+                                                            <input type="file" className="hidden" onChange={(e) => handleNestedUpload(e, `techniques.sections.${idx}.image`)} />
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <I18nField label="Section Title" value={section.title} onChange={(v) => update(`techniques.sections.${idx}.title`, v)} />
+
+                                                <div className="pt-4 border-t border-[var(--border)]/50">
+                                                    <div className="flex items-center justify-between mb-4">
+                                                        <label className="micro">Paragraphs</label>
+                                                        <button onClick={() => {
+                                                            const newPara = { it: 'Nuovo paragrafo', en: 'New paragraph' };
+                                                            const updatedSections = [...content.techniques.sections];
+                                                            updatedSections[idx].paragraphs.push(newPara);
+                                                            update('techniques.sections', updatedSections);
+                                                        }} className="text-[var(--accent)] text-xs font-bold uppercase tracking-wider hover:underline">+ Add Paragraph</button>
+                                                    </div>
+                                                    <div className="space-y-4 pl-4 border-l-2 border-[var(--border)]">
+                                                        {section.paragraphs.map((para: any, pIdx: number) => (
+                                                            <div key={pIdx} className="relative group">
+                                                                <I18nField
+                                                                    label={`Paragraph ${pIdx + 1}`}
+                                                                    value={para}
+                                                                    onChange={(v) => update(`techniques.sections.${idx}.paragraphs.${pIdx}`, v)}
+                                                                    textarea
+                                                                />
+                                                                <button onClick={() => {
+                                                                    const updatedSections = [...content.techniques.sections];
+                                                                    updatedSections[idx].paragraphs.splice(pIdx, 1);
+                                                                    update('techniques.sections', updatedSections);
+                                                                }} className="absolute top-0 right-0 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity text-xs p-1 font-bold" title="Remove Paragraph">✕</button>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </AdminSection>
                     </div>
                 )}
 
