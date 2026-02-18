@@ -100,12 +100,24 @@ export default function AdminDashboard() {
         formData.append('file', file);
         try {
             const res = await fetch('/api/upload', { method: 'POST', body: formData });
-            const data = await res.json();
-            if (data.success) return data.url;
-            alert('Upload failed: ' + data.error);
+
+            let data;
+            const text = await res.text();
+            try {
+                data = JSON.parse(text);
+            } catch (e) {
+                // Not JSON, probably an HTML error page from Vercel/Next
+                alert(`Upload failed (Server Error): ${res.status} ${res.statusText}\n${text.substring(0, 100)}...`);
+                return null;
+            }
+
+            if (res.ok && data.success) return data.url;
+
+            alert(`Upload failed: ${data.error || 'Unknown error'}`);
             return null;
-        } catch (err) {
-            alert('Upload error');
+        } catch (err: any) {
+            console.error(err);
+            alert(`Upload Client Error: ${err.message}`);
             return null;
         }
     };
@@ -121,14 +133,24 @@ export default function AdminDashboard() {
                 method: 'POST',
                 body: formData,
             });
-            const data = await res.json();
-            if (data.success) {
+
+            let data;
+            const text = await res.text();
+            try {
+                data = JSON.parse(text);
+            } catch (e) {
+                alert(`Upload failed (Server Error): ${res.status} ${res.statusText}\n${text.substring(0, 100)}...`);
+                return;
+            }
+
+            if (res.ok && data.success) {
                 update(path, data.url);
             } else {
-                alert('Upload failed: ' + data.error);
+                alert(`Upload failed: ${data.error || 'Unknown error'}`);
             }
-        } catch (err) {
-            alert('Upload error');
+        } catch (err: any) {
+            console.error(err);
+            alert(`Upload Client Error: ${err.message}`);
         }
     };
 
