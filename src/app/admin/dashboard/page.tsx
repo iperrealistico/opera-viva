@@ -192,7 +192,7 @@ export default function AdminDashboard() {
                     <div className="flex items-center gap-6">
                         <h1 className="h2 m-0 text-xl font-black uppercase tracking-widest hidden md:block">Admin</h1>
                         <nav className="flex items-center gap-1 overflow-x-auto no-scrollbar">
-                            {['pages', 'techniques', 'global', 'events', 'seo'].map(tab => (
+                            {['pages', 'techniques', 'global', 'events', 'seo', 'advanced'].map(tab => (
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
@@ -578,6 +578,49 @@ export default function AdminDashboard() {
                                     Change Image
                                     <input type="file" className="hidden" onChange={(e) => handleNestedUpload(e, 'seo.ogImage')} />
                                 </label>
+                            </div>
+                        </div>
+                    </AdminSection>
+                )}
+
+                {activeTab === 'advanced' && (
+                    <AdminSection title="Advanced Settings" icon={<div className="w-[18px] text-center"><i className="fa-solid fa-gear"></i></div>} defaultOpen>
+                        <div className="bg-[var(--bg-2)]/30 p-6 rounded-lg border border-[var(--border)] mb-8">
+                            <h4 className="micro mb-4 text-[var(--accent)]">Storage Configuration</h4>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="space-y-1">
+                                    <label className="micro block">Storage Provider</label>
+                                    <select
+                                        value={content.adminConfig?.storage || 'vercel-blob'}
+                                        onChange={(e) => update('adminConfig.storage', e.target.value)}
+                                        className="w-full bg-[var(--bg)] border border-[var(--border)] rounded-lg px-4 py-3 text-[var(--text)] focus:border-[var(--accent)] outline-none appearance-none"
+                                    >
+                                        <option value="vercel-blob">Vercel Blob (Recommended)</option>
+                                        <option value="github">GitHub Repository</option>
+                                    </select>
+                                    <p className="text-xs text-[var(--muted)] mt-2">
+                                        Vercel Blob is faster and supports larger files. GitHub storage commits files to the repo (repo size limits apply).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-[var(--bg-2)]/30 p-6 rounded-lg border border-[var(--border)]">
+                            <h4 className="micro mb-4 text-[var(--accent)]">Image Optimization Limits</h4>
+                            <p className="text-sm text-[var(--muted)] mb-6">
+                                Images larger than these limits will be automatically resized and compressed during upload.
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <Field
+                                    label="Max Dimension (px)"
+                                    value={(content.adminConfig?.maxDimension || 1920).toString()}
+                                    onChange={(v) => update('adminConfig.maxDimension', parseInt(v) || 1920)}
+                                />
+                                <Field
+                                    label="Max File Size (KB)"
+                                    value={(content.adminConfig?.maxSizeKB || 700).toString()}
+                                    onChange={(v) => update('adminConfig.maxSizeKB', parseInt(v) || 700)}
+                                />
                             </div>
                         </div>
                     </AdminSection>

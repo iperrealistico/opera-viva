@@ -136,6 +136,11 @@ export interface SiteContent {
   contactsSection: {
     buttonLabel: LocalizedString;
   };
+  adminConfig?: {
+    storage: 'vercel-blob' | 'github';
+    maxDimension: number;
+    maxSizeKB: number;
+  };
 };
 
 export interface Event {

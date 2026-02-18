@@ -693,5 +693,10 @@
       "it": "Contatti",
       "en": "Contact"
     }
+  },
+  "adminConfig": {
+    "storage": "vercel-blob",
+    "maxDimension": 1920,
+    "maxSizeKB": 700
   }
 }
