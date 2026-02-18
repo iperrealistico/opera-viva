@@ -107,6 +107,11 @@ export default function ComeLoFacciamo({ content }: { content: SiteContent }) {
                                                     src={item.src}
                                                     alt={item.alt}
                                                     onLoad={(e) => e.currentTarget.parentElement?.classList.add('is-loaded')}
+                                                    ref={(img) => {
+                                                        if (img?.complete) {
+                                                            img.parentElement?.classList.add('is-loaded');
+                                                        }
+                                                    }}
                                                 />
                                             </a>
                                         </div>

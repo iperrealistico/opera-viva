@@ -31,6 +31,8 @@ export interface SiteContent {
       videoUrl: string;
       videoStart: number;
       videoAutoplay: boolean;
+      mediaType: 'video' | 'image';
+      showLogo: boolean;
       backgroundImage: string;
       title: LocalizedString;
       subtitle: LocalizedString;

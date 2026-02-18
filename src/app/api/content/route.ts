@@ -36,23 +36,47 @@ export async function POST(req: NextRequest) {
         const newContent = await req.json();
 
         // 1. Update local file (for local dev)
+        // In a Vercel deployment, this only updates the ephemeral filesystem
         const contentPath = path.join(process.cwd(), 'content', 'site.json');
-        fs.writeFileSync(contentPath, JSON.stringify(newContent, null, 2));
+        try {
+            fs.writeFileSync(contentPath, JSON.stringify(newContent, null, 2));
+        } catch (fsError) {
+            console.error("Failed to write local file (expected in Vercel)", fsError);
+        }
 
-        // 2. Commit to GitHub (if env vars are present)
-        if (process.env.GITHUB_TOKEN && OWNER && REPO) {
-            const pathInRepo = 'content/site.json';
+        // 2. Commit to GitHub (Required for Vercel updates)
+        if (!process.env.GITHUB_TOKEN || !OWNER || !REPO) {
+            console.error("Missing GitHub Environment Variables: ", {
+                hasToken: !!process.env.GITHUB_TOKEN,
+                owner: !!OWNER,
+                repo: !!REPO
+            });
+            // If we are in production (simulated by checking for these vars), we should probably error or warn
+            // But for local dev without them, we just return success based on local file write
+            return NextResponse.json({
+                success: true,
+                warning: 'GitHub credentials missing. Content saved locally only (ephemeral if on server).'
+            });
+        }
 
-            // Get current file sha
+        const pathInRepo = 'content/site.json';
+
+        // Get current file sha
+        let sha;
+        try {
             const { data: currentFile } = await octokit.repos.getContent({
                 owner: OWNER,
                 repo: REPO,
                 path: pathInRepo,
                 ref: BRANCH
-            }).catch(() => ({ data: null })) as any;
+            }) as any;
+            sha = currentFile?.sha;
+        } catch (e: any) {
+            console.error("GitHub GetContent Error:", e.status, e.message);
+            // If file doesn't exist, sha remains undefined, which is fine for createOrUpdate
+        }
 
-            const sha = currentFile?.sha;
-
+        try {
             await octokit.repos.createOrUpdateFileContents({
                 owner: OWNER,
                 repo: REPO,
@@ -62,11 +86,17 @@ export async function POST(req: NextRequest) {
                 branch: BRANCH,
                 sha: sha
             });
+        } catch (e: any) {
+            console.error("GitHub Commit Error:", e.status, e.message);
+            throw new Error(`GitHub Commit Failed: ${e.message}`);
         }
 
         return NextResponse.json({ success: true });
     } catch (err: any) {
         console.error('Content update error:', err);
-        return NextResponse.json({ error: err.message || 'Unauthorized' }, { status: 401 });
+        return NextResponse.json({
+            error: err.message || 'Unknown Error',
+            details: process.env.NODE_ENV === 'development' ? err.stack : undefined
+        }, { status: 500 });
     }
 }

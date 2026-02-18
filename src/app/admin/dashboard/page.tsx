@@ -14,6 +14,8 @@ export default function AdminDashboard() {
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [activeTab, setActiveTab] = useState('pages');
+    const [checkResult, setCheckResult] = useState<any>(null);
+    const [checking, setChecking] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
@@ -44,15 +46,34 @@ export default function AdminDashboard() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(content),
             });
+            const data = await res.json();
             if (res.ok) {
-                alert('Content saved and publishing triggered!');
+                if (data.warning) {
+                    alert('Saved locally! Warning: ' + data.warning);
+                } else {
+                    alert('Content saved and publishing triggered!');
+                }
             } else {
-                alert('Error saving content');
+                alert('Error saving content: ' + (data.error || 'Unknown error'));
             }
         } catch (err) {
             alert('Error connecting to server');
         } finally {
             setSaving(false);
+        }
+    };
+
+    const handleCheckConnectivity = async () => {
+        setChecking(true);
+        setCheckResult(null);
+        try {
+            const res = await fetch('/api/connectivity');
+            const data = await res.json();
+            setCheckResult(data);
+        } catch (err) {
+            setCheckResult({ success: false, error: 'Failed to contact server' });
+        } finally {
+            setChecking(false);
         }
     };
 
@@ -116,7 +137,55 @@ export default function AdminDashboard() {
     if (!content) return null;
 
     return (
-        <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] pb-20">
+        <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] pb-20 relative">
+            {/* Connectivity Modal */}
+            {checkResult && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" onClick={() => setCheckResult(null)}>
+                    <div className="bg-[var(--bg-2)] border border-[var(--border)] rounded-lg p-6 max-w-md w-full shadow-2xl relative" onClick={e => e.stopPropagation()}>
+                        <button onClick={() => setCheckResult(null)} className="absolute top-4 right-4 text-[var(--muted)] hover:text-white">
+                            <LogOut size={16} className="rotate-45" />
+                        </button>
+                        <h3 className="h2 text-lg mb-4 flex items-center gap-2">
+                            {checkResult.success ? <div className="w-3 h-3 rounded-full bg-green-500"></div> : <div className="w-3 h-3 rounded-full bg-red-500"></div>}
+                            GitHub Connectivity
+                        </h3>
+
+                        {checkResult.checks ? (
+                            <div className="space-y-4 text-sm">
+                                <div className="grid grid-cols-[1fr_auto] gap-2 border-b border-[var(--border)] pb-2">
+                                    <span className="text-[var(--muted)]">Env Vars Present</span>
+                                    <span className={checkResult.checks.envVars.GITHUB_TOKEN ? "text-green-500" : "text-red-500"}>
+                                        {checkResult.checks.envVars.GITHUB_TOKEN ? "Yes" : "No"}
+                                    </span>
+                                </div>
+                                <div className="border-b border-[var(--border)] pb-2">
+                                    <div className="text-[var(--muted)] mb-1">Status</div>
+                                    <div className={checkResult.success ? "text-green-500" : "text-red-500"}>
+                                        {checkResult.checks.connection.message}
+                                    </div>
+                                </div>
+                                {checkResult.checks.permissions && (
+                                    <div>
+                                        <div className="text-[var(--muted)] mb-1">Permissions</div>
+                                        <div className="grid grid-cols-3 gap-2 text-center micro">
+                                            <div className={`p-1 rounded ${checkResult.checks.permissions.admin ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>Admin</div>
+                                            <div className={`p-1 rounded ${checkResult.checks.permissions.push ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>Push</div>
+                                            <div className={`p-1 rounded ${checkResult.checks.permissions.pull ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>Pull</div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="text-red-500">{checkResult.error}</div>
+                        )}
+
+                        <div className="mt-6 flex justify-end">
+                            <button onClick={() => setCheckResult(null)} className="btn bg-[var(--surface)] px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-lg border border-[var(--border)] hover:bg-[var(--bg-3)]">Close</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Header */}
             <header className="border-b border-[var(--border)] py-4 sticky top-0 bg-[var(--bg)] z-50 shadow-sm">
                 <div className="wrap flex justify-between items-center">
@@ -136,6 +205,14 @@ export default function AdminDashboard() {
                         </nav>
                     </div>
                     <div className="flex items-center gap-3">
+                        <button
+                            onClick={handleCheckConnectivity}
+                            disabled={checking}
+                            className="btn bg-[var(--bg-2)] text-[var(--muted)] border border-[var(--border)] px-3 py-2 rounded-lg flex items-center gap-2 font-black uppercase tracking-widest text-xs hover:bg-[var(--surface)] transition-colors hidden sm:flex"
+                            title="Check GitHub Connection"
+                        >
+                            <Globe size={16} className={checking ? "animate-spin" : ""} />
+                        </button>
                         <button onClick={handleSave} disabled={saving} className={`btn px-6 py-2 rounded-lg flex items-center gap-2 font-black uppercase tracking-widest text-xs transition-all ${saving ? 'bg-yellow-500 text-white' : 'bg-[var(--accent)] text-[var(--bg)] hover:brightness-110'}`}>
                             <Save size={16} />
                             {saving ? 'Saving...' : 'Publish'}
@@ -155,6 +232,33 @@ export default function AdminDashboard() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                 <Field label="Video URL" value={content.sections.hero.videoUrl} onChange={(v) => update('sections.hero.videoUrl', v)} />
                                 <Field label="Video Start (s)" value={content.sections.hero.videoStart.toString()} onChange={(v) => update('sections.hero.videoStart', parseInt(v) || 0)} />
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div className="space-y-1">
+                                    <label className="micro block">Hero Media Type</label>
+                                    <select
+                                        value={content.sections.hero.mediaType || 'image'}
+                                        onChange={(e) => update('sections.hero.mediaType', e.target.value)}
+                                        className="w-full bg-[var(--bg)] border border-[var(--border)] rounded-lg px-4 py-3 text-[var(--text)] focus:border-[var(--accent)] outline-none"
+                                    >
+                                        <option value="image">Photo</option>
+                                        <option value="video">Video</option>
+                                    </select>
+                                </div>
+                                <div className="flex items-center h-full pt-6">
+                                    <label className="flex items-center gap-3 cursor-pointer select-none">
+                                        <div className={`w-5 h-5 rounded border border-[var(--border)] flex items-center justify-center transition-colors ${content.sections.hero.showLogo !== false ? 'bg-[var(--accent)] border-[var(--accent)]' : 'bg-[var(--bg)]'}`}>
+                                            {content.sections.hero.showLogo !== false && <i className="fa-solid fa-check text-[var(--bg)] text-xs"></i>}
+                                        </div>
+                                        <input
+                                            type="checkbox"
+                                            checked={content.sections.hero.showLogo !== false}
+                                            onChange={(e) => update('sections.hero.showLogo', e.target.checked)}
+                                            className="hidden"
+                                        />
+                                        <span className="micro">Show Logo Overlay</span>
+                                    </label>
+                                </div>
                             </div>
                             <div className="mb-6">
                                 <label className="micro mb-2 block">Background Image</label>
@@ -282,6 +386,49 @@ export default function AdminDashboard() {
                             <I18nField label="Section Lead" value={(content as any).eventsTimeline.lead} onChange={(v) => update('eventsTimeline.lead', v)} />
                             <div className="h-4" />
                             <I18nField label="Details Button Label" value={(content as any).eventsTimeline.detailsLabel} onChange={(v) => update('eventsTimeline.detailsLabel', v)} />
+                        </div>
+
+                        {/* Favicon Section */}
+                        <div className="mb-8 p-6 border border-[var(--border)] bg-[var(--bg-2)]/30 rounded-lg">
+                            <h4 className="micro mb-4 text-[var(--accent)]">Site Favicon</h4>
+                            <div className="flex items-center gap-6">
+                                <div className="w-16 h-16 bg-[var(--bg)] border border-[var(--border)] rounded flex items-center justify-center">
+                                    <img src="/favicon.ico" alt="Favicon" className="w-8 h-8" onError={(e) => e.currentTarget.style.display = 'none'} />
+                                </div>
+                                <div>
+                                    <p className="text-sm text-[var(--muted)] mb-3 max-w-[40ch]">
+                                        Upload a high-res square image (PNG/JPG). We will generate all required favicon sizes automatically.
+                                    </p>
+                                    <label className="btn bg-[var(--surface)] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest cursor-pointer flex items-center gap-2 hover:bg-[var(--bg-2)] border border-[var(--border)] w-fit">
+                                        Generate & Upload Favicon
+                                        <input
+                                            type="file"
+                                            className="hidden"
+                                            accept="image/png, image/jpeg, image/svg+xml"
+                                            onChange={async (e) => {
+                                                const file = e.target.files?.[0];
+                                                if (!file) return;
+                                                const formData = new FormData();
+                                                formData.append('file', file);
+
+                                                if (!confirm("This will overwrite existing favicons and trigger a redeploy. Continue?")) return;
+
+                                                try {
+                                                    const res = await fetch('/api/favicon', { method: 'POST', body: formData });
+                                                    const data = await res.json();
+                                                    if (res.ok) {
+                                                        alert(data.message);
+                                                    } else {
+                                                        alert('Error: ' + data.error);
+                                                    }
+                                                } catch (err) {
+                                                    alert('Upload failed');
+                                                }
+                                            }}
+                                        />
+                                    </label>
+                                </div>
+                            </div>
                         </div>
 
                         <div className="space-y-4">
