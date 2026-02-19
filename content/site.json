@@ -62,7 +62,7 @@
       "videoUrl": "https://www.youtube.com/watch?v=nSSJRcRtqpo",
       "videoStart": 8,
       "videoAutoplay": true,
-      "mediaType": "video",
+      "mediaType": "image",
       "showLogo": true,
       "backgroundImage": "/img/opera-viva-1.jpg",
       "title": {
