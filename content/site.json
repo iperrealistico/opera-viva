@@ -352,8 +352,8 @@
         "en": "Gallery"
       },
       "title": {
-        "it": "Estratti",
-        "en": "Selections"
+        "it": "Mare temperat, argentum aeternat",
+        "en": "Mare temperat, argentum aeternat"
       },
       "lead": {
         "it": "Frammenti di luce, sospesi nel tempo.",
@@ -361,48 +361,40 @@
       },
       "items": [
         {
-          "src": "/img/opera-viva-1.jpg",
-          "alt": "Opera Viva, foto 01"
+          "src": "https://hmrgjxtiwnp0bkkg.public.blob.vercel-storage.com/media/1771515348054_opera-viva-1.jpg",
+          "alt": "New Image"
         },
         {
-          "src": "/img/opera-viva-2.jpg",
-          "alt": "Opera Viva, foto 02"
+          "src": "https://hmrgjxtiwnp0bkkg.public.blob.vercel-storage.com/media/1771515356733_opera-viva-2.jpg",
+          "alt": "New Image"
         },
         {
-          "src": "/img/opera-viva-3.jpg",
-          "alt": "Opera Viva, foto 03"
+          "src": "https://hmrgjxtiwnp0bkkg.public.blob.vercel-storage.com/media/1771515366106_opera-viva-3.jpg",
+          "alt": "New Image"
         },
         {
-          "src": "/img/opera-viva-4.jpg",
-          "alt": "Opera Viva, foto 04"
+          "src": "https://hmrgjxtiwnp0bkkg.public.blob.vercel-storage.com/media/1771515377763_opera-viva-4.jpg",
+          "alt": "New Image"
         },
         {
-          "src": "/img/opera-viva-5.jpg",
-          "alt": "Opera Viva, foto 05"
+          "src": "https://hmrgjxtiwnp0bkkg.public.blob.vercel-storage.com/media/1771515387668_opera-viva-6.jpg",
+          "alt": "New Image"
         },
         {
-          "src": "/img/opera-viva-6.jpg",
-          "alt": "Opera Viva, foto 06"
+          "src": "https://hmrgjxtiwnp0bkkg.public.blob.vercel-storage.com/media/1771515398589_opera-viva-7.jpg",
+          "alt": "New Image"
         },
         {
-          "src": "/img/opera-viva-7.jpg",
-          "alt": "Opera Viva, foto 07"
+          "src": "https://hmrgjxtiwnp0bkkg.public.blob.vercel-storage.com/media/1771515426686_opera-viva-7.jpg",
+          "alt": "New Image"
         },
         {
-          "src": "/img/opera-viva-8.jpg",
-          "alt": "Opera Viva, foto 08"
+          "src": "https://hmrgjxtiwnp0bkkg.public.blob.vercel-storage.com/media/1771515406080_opera-viva-8.jpg",
+          "alt": "New Image"
         },
         {
-          "src": "/img/opera-viva-9.jpg",
-          "alt": "Opera Viva, foto 09"
-        },
-        {
-          "src": "/img/opera-viva-10.jpg",
-          "alt": "Opera Viva, foto 10"
-        },
-        {
-          "src": "/img/opera-viva-11.jpg",
-          "alt": "Opera Viva, foto 11"
+          "src": "https://hmrgjxtiwnp0bkkg.public.blob.vercel-storage.com/media/1771515416319_opera-viva-9.jpg",
+          "alt": "New Image"
         }
       ]
     },
