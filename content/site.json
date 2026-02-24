@@ -97,7 +97,7 @@
         "it": "Scorri",
         "en": "Scroll"
       },
-      "logoPlacement": "top",
+      "logoPlacement": "center-left",
       "stickyLogo": true
     },
     "operaViva": {
@@ -350,12 +350,12 @@
       "title": {
         "it": "Mare temperat, argentum aeternat",
         "en": "Mare temperat, argentum aeternat",
-        "align": "center"
+        "align": "justify"
       },
       "lead": {
         "it": "Frammenti di luce, sospesi nel tempo.",
         "en": "Fragments of light, suspended in time.",
-        "align": "center"
+        "align": "justify"
       },
       "items": [
         {
