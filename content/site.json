@@ -108,25 +108,25 @@
         "en": "Opera Viva"
       },
       "lead": {
-        "it": "Marinai, portuali, navi e imbarcazioni. Il mare come memoria, destino e materia. Una nuova epopea, nel presente.",
-        "en": "Sailors, dock workers, ships and vessels. The sea as memory, fate and material. A new epic, in the present."
+        "it": "Capitani, armatori, navi e imbarcazioni diventano i protagonisti di opere pensate per chi vive il mare non come semplice scenario, ma come memoria personale, impresa, destino.",
+        "en": "Captains, shipowners, ships and boats become the protagonists of works designed for those who experience the sea not simply as a backdrop, but as a personal memory, an undertaking, a destiny."
       },
       "paragraphs": [
         {
-          "it": "«Il mare è da sempre un luogo dove l’uomo si misura con sé stesso, con la bellezza e con il tempo. Ogni nave che lo attraversa porta con sé una storia, un carattere, un’anima: è molto più di un mezzo, è un essere vivo, un testimone del viaggio e delle mani che l’hanno costruita.",
-          "en": "“The sea has always been a place where people measure themselves against beauty and time. Every ship that crosses it carries a story, a character, a soul: it is far more than a vehicle, it is a living being, a witness to the journey and to the hands that built it.”"
+          "it": "Ogni imbarcazione custodisce una storia unica: il nostro lavoro nasce per trasformarla in immagine, restituendole la forza simbolica e il carattere che la rendono irripetibile.",
+          "en": "Every boat has its own unique story: our work is designed to transform this story into an image, restoring the symbolic power and character that make it truly one of a kind."
         },
         {
-          "it": "Da sempre il mare custodisce miti e leggende, rotte reali e immaginarie. Galeoni, caravelle e bastimenti hanno attraversato i secoli portando sogni di conquista, libertà e destino. Con questo progetto vogliamo riportare quella stessa aura nel presente, raccontando navi ed equipaggi come protagonisti di una nuova epopea: figure sospese tra la forza del ferro e la fragilità del tempo.",
-          "en": "“The sea has always guarded myths and legends, real and imaginary routes. Galleons, caravels and great vessels have crossed centuries carrying dreams of conquest, freedom and destiny. With this project we want to bring that aura into the present, portraying ships and crews as protagonists of a new epic: figures suspended between the strength of iron and the fragility of time.”"
+          "it": "Il cuore del progetto è tecnico e rigoroso. Utilizziamo il collodio umido per ottenere lastre materiche e profonde, affiancato a riprese infrarosse che rivelano dettagli invisibili all’occhio umano. Questa combinazione di processi storici e tecnologie avanzate genera opere senza tempo, dove luce, metallo e volti acquisiscono una presenza scultorea.",
+          "en": "The heart of the project is technical and rigorous. We use wet collodion to obtain textured, deep plates, combined with infrared photography that reveals details invisible to the human eye. This combination of historical processes and advanced technologies generates timeless works, where light, metal and faces acquire a sculptural presence."
         },
         {
-          "it": "Attraverso tecniche fotografiche antiche, come il collodio umido, e sguardi infrarossi che rivelano ciò che normalmente resta invisibile, cerchiamo di trasformare ogni imbarcazione in un’opera senza tempo. Ogni scafo, ogni volto, ogni superficie diventa una traccia di luce, un’eco dei grandi racconti di mare che ancora ci accompagnano.",
-          "en": "“Through historic photographic techniques, such as wet plate collodion, and infrared views that reveal what usually remains invisible, we try to turn each vessel into a timeless work. Every hull, every face, every surface becomes a trace of light, an echo of the great sea stories that still accompany us.”"
+          "it": "Ogni intervento è su misura: dall’ideazione allo scatto, fino alla stampa finale, l’opera è concepita per abitare uno spazio e riflettere l’identità del suo proprietario. Non semplice fotografia, ma un ritratto monumentale della propria storia di mare, tradotto in linguaggio artistico e precisione tecnica.",
+          "en": "Each project is tailor-made: from conception to shooting, right through to the final print, the work is designed to inhabit a space and reflect the identity of its owner. Not just a simple photograph, but a monumental portrait of one's own history of the sea, translated into artistic language and technical precision."
         },
         {
-          "it": "Da Ulisse ai diari dei capitani, dalle leggende dei pirati alle visioni romantiche di Turner. Le navi non sono solo strumenti di navigazione: sono creature simboliche, custodi di memorie e destini. Nel nostro lavoro diventano monumenti di luce, fissati in un istante che non conosce corrosione né oblio.»",
-          "en": "“From Odysseus to captains’ logs, from pirate legends to Turner’s romantic visions. Ships are not only instruments of navigation: they are symbolic creatures, keepers of memories and destinies. In our work they become monuments of light, fixed in an instant that knows neither corrosion nor oblivion.”"
+          "it": "",
+          "en": ""
         }
       ],
       "gallery": [
@@ -412,7 +412,7 @@
         "en": "Email and Instagram are the fastest channels. We reply as soon as possible."
       },
       "email": "info@operaviva.example",
-      "instagram": "https://www.instagram.com/opera_viva_/",
+      "instagram": "https://instagram.com/",
       "homeLabel": {
         "it": "Home",
         "en": "Home"
