@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { SiteContent, getLocalizedValue, Event } from '@/lib/content';
+import { SiteContent, getLocalizedValue, Event, getAlignment } from '@/lib/content';
 
 export default function EventsTimeline({ content }: { content: SiteContent }) {
     const { locale } = useLanguage();
@@ -25,11 +25,11 @@ export default function EventsTimeline({ content }: { content: SiteContent }) {
     return (
         <section id="events-timeline" className="section py-[var(--s-6)]" aria-label="Eventi">
             <div className="wrap max-w-[75ch] mx-auto">
-                <div className="reveal text-center mb-12">
-                    <h2 className="h2 mb-4">
+                <div className="reveal mb-12">
+                    <h2 className="h2 mb-4" style={{ textAlign: getAlignment(timelineData.title) }}>
                         {getLocalizedValue(timelineData.title, locale)}
                     </h2>
-                    <p className="lead opacity-80">
+                    <p className="lead opacity-80" style={{ textAlign: getAlignment(timelineData.lead), marginInline: getAlignment(timelineData.lead) === 'center' ? 'auto' : 'unset' }}>
                         {getLocalizedValue(timelineData.lead, locale)}
                     </p>
                 </div>

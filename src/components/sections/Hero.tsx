@@ -44,9 +44,8 @@ export default function Hero({ content }: { content: SiteContent }) {
 
             {/* Content & Logo */}
             {showLogo && (
-                <div className={`absolute inset-0 z-50 pointer-events-none p-6 md:p-12 flex ${getLogoAlignmentClasses(hero.logoPlacement || 'center')
-                    }`}>
-                    <div className="w-48 md:w-64 lg:w-80 opacity-90 drop-shadow-2xl pointer-events-auto transition-all">
+                <div className={`absolute inset-0 z-50 pointer-events-none p-6 md:p-12 flex ${getLogoAlignmentClasses(hero.logoPlacement || 'center')}`}>
+                    <div className="w-48 md:w-64 lg:w-80 opacity-90 drop-shadow-2xl pointer-events-auto transition-all flex flex-col">
                         <img src="/logo.png" alt="Opera Viva Logo" className="w-full h-auto" />
                     </div>
                 </div>

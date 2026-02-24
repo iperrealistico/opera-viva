@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { SiteContent, getLocalizedValue } from '@/lib/content';
+import { SiteContent, getLocalizedValue, getAlignment } from '@/lib/content';
 import { marked } from 'marked';
 
 export default function Eventi({ content }: { content: SiteContent }) {
@@ -34,9 +34,9 @@ export default function Eventi({ content }: { content: SiteContent }) {
         <section id="eventi" className="section py-[var(--s-6)]" aria-label="Eventi" data-events-section>
             <div className="wrap">
                 <div className="reveal">
-                    <p className="kicker">{getLocalizedValue(data.kicker, locale)}</p>
-                    <h2 className="h2">{getLocalizedValue(data.title, locale)}</h2>
-                    <p className="lead" style={{ maxWidth: '72ch' }}>
+                    <p className="kicker" style={{ textAlign: getAlignment(data.kicker) }}>{getLocalizedValue(data.kicker, locale)}</p>
+                    <h2 className="h2" style={{ textAlign: getAlignment(data.title) }}>{getLocalizedValue(data.title, locale)}</h2>
+                    <p className="lead" style={{ maxWidth: '72ch', textAlign: getAlignment(data.lead), marginInline: getAlignment(data.lead) === 'center' ? 'auto' : 'unset' }}>
                         {getLocalizedValue(data.lead, locale)}
                     </p>
                 </div>

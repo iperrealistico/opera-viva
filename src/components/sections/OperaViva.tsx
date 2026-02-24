@@ -10,7 +10,7 @@ export default function OperaViva({ content }: { content: SiteContent }) {
 
     return (
         <section id="opera-viva" className="section py-[var(--s-6)]" aria-label="Opera Viva">
-            <div className="wrap max-w-[75ch] mx-auto text-center">
+            <div className="wrap max-w-[75ch] mx-auto">
                 <div className="reveal">
                     {/* Intro text from previous Hero section implementation */}
                     {/* Intro text from previous Hero section implementation */}

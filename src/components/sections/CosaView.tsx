@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { SiteContent, getLocalizedValue } from '@/lib/content';
+import { SiteContent, getLocalizedValue, getAlignment } from '@/lib/content';
 import Link from 'next/link';
 
 export default function CosaView({ content }: { content: SiteContent }) {
@@ -27,13 +27,13 @@ export default function CosaView({ content }: { content: SiteContent }) {
         <section className="techStack pt-[calc(var(--s-6)+30px)] pb-[var(--s-6)]" aria-label="Cosa facciamo">
             <div className="wrap">
                 <div className="techStack__head py-[var(--s-5)] pb-[var(--s-4)]">
-                    <p className="kicker techAnim" data-tech-anim>{getLocalizedValue(data.kicker, locale)}</p>
-                    <h1 className="h2 techAnim" data-tech-anim>{getLocalizedValue(data.title, locale)}</h1>
-                    <p className="lead techAnim" data-tech-anim style={{ maxWidth: '72ch' }}>
+                    <p className="kicker techAnim" data-tech-anim style={{ textAlign: getAlignment(data.kicker) }}>{getLocalizedValue(data.kicker, locale)}</p>
+                    <h1 className="h2 techAnim" data-tech-anim style={{ textAlign: getAlignment(data.title) }}>{getLocalizedValue(data.title, locale)}</h1>
+                    <p className="lead techAnim" data-tech-anim style={{ maxWidth: '72ch', textAlign: getAlignment(data.lead), marginInline: getAlignment(data.lead) === 'center' ? 'auto' : 'unset' }}>
                         {getLocalizedValue(data.lead, locale)}
                     </p>
 
-                    <div className="techAnim mt-[var(--s-3)]" data-tech-anim>
+                    <div className="techAnim mt-[var(--s-3)]" data-tech-anim style={{ textAlign: getAlignment(data.lead) === 'center' ? 'center' : 'left' }}>
                         <Link
                             href={locale === 'en' ? "/en" : "/"}
                             className="btn btn--ghost inline-flex items-center gap-2 px-5 py-3.5 rounded-full border border-[var(--border)] transition-all hover:translate-y-[-1px]"
@@ -59,11 +59,11 @@ export default function CosaView({ content }: { content: SiteContent }) {
                                 </div>
                             </div>
                             <div className="techSection__copy">
-                                <h2 className="techSection__title techAnim font-[var(--serif)] tracking-[0.02em] mb-3 text-[clamp(1.4rem,2.2vw,2.1rem)]" data-tech-anim>
+                                <h2 className="techSection__title techAnim font-[var(--serif)] tracking-[0.02em] mb-3 text-[clamp(1.4rem,2.2vw,2.1rem)]" data-tech-anim style={{ textAlign: getAlignment(section.title) }}>
                                     {getLocalizedValue(section.title, locale)}
                                 </h2>
                                 {section.paragraphs.map((p, pIdx) => (
-                                    <p key={pIdx} className="techSection__p techAnim m-0 mb-3 text-[var(--muted)] leading-[1.6] max-w-[68ch]" data-tech-anim>
+                                    <p key={pIdx} className="techSection__p techAnim m-0 mb-3 text-[var(--muted)] leading-[1.6] max-w-[68ch]" data-tech-anim style={{ textAlign: getAlignment(p) }}>
                                         {getLocalizedValue(p, locale)}
                                     </p>
                                 ))}

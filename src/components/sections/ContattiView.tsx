@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { SiteContent, getLocalizedValue } from '@/lib/content';
+import { SiteContent, getLocalizedValue, getAlignment } from '@/lib/content';
 import Link from 'next/link';
 
 export default function ContattiView({ content }: { content: SiteContent }) {
@@ -20,14 +20,14 @@ export default function ContattiView({ content }: { content: SiteContent }) {
         <section className="contactPage pt-[clamp(7.5rem,12vh,10.5rem)] pb-[var(--s-6)]" aria-label="Contatti">
             <div className="wrap">
                 <div className="reveal">
-                    <p className="kicker">{getLocalizedValue(data.kicker, locale)}</p>
-                    <h1 className="h2 mb-[var(--s-2)]">{getLocalizedValue(data.title, locale)}</h1>
+                    <p className="kicker" style={{ textAlign: getAlignment(data.kicker) }}>{getLocalizedValue(data.kicker, locale)}</p>
+                    <h1 className="h2 mb-[var(--s-2)]" style={{ textAlign: getAlignment(data.title) }}>{getLocalizedValue(data.title, locale)}</h1>
 
-                    <p className="lead m-0 text-[var(--muted)]">
+                    <p className="lead m-0 text-[var(--muted)]" style={{ textAlign: getAlignment(data.lead), marginInline: getAlignment(data.lead) === 'center' ? 'auto' : 'unset' }}>
                         {getLocalizedValue(data.lead, locale)}
                     </p>
 
-                    <p className="micro mt-3">
+                    <p className="micro mt-3" style={{ textAlign: getAlignment(data.location) }}>
                         {getLocalizedValue(data.location, locale)}
                     </p>
                 </div>
