@@ -96,37 +96,40 @@
       "scrollLabel": {
         "it": "Scorri",
         "en": "Scroll"
-      }
+      },
+      "logoPlacement": "top"
     },
     "operaViva": {
       "kicker": {
         "it": "Progetto fotografico",
-        "en": "Photographic project"
+        "en": "Photographic project",
+        "align": "center"
       },
       "title": {
         "it": "Opera Viva",
-        "en": "Opera Viva"
+        "en": "Opera Viva",
+        "align": "center"
       },
       "lead": {
         "it": "Capitani, armatori, navi e imbarcazioni diventano i protagonisti di opere pensate per chi vive il mare non come semplice scenario, ma come memoria personale, impresa, destino.",
-        "en": "Captains, shipowners, ships and boats become the protagonists of works designed for those who experience the sea not simply as a backdrop, but as a personal memory, an undertaking, a destiny."
+        "en": "Captains, shipowners, ships and boats become the protagonists of works designed for those who experience the sea not simply as a backdrop, but as a personal memory, an undertaking, a destiny.",
+        "align": "center"
       },
       "paragraphs": [
         {
           "it": "Ogni imbarcazione custodisce una storia unica: il nostro lavoro nasce per trasformarla in immagine, restituendole la forza simbolica e il carattere che la rendono irripetibile.",
-          "en": "Every boat has its own unique story: our work is designed to transform this story into an image, restoring the symbolic power and character that make it truly one of a kind."
+          "en": "Every boat has its own unique story: our work is designed to transform this story into an image, restoring the symbolic power and character that make it truly one of a kind.",
+          "align": "center"
         },
         {
           "it": "Il progetto si fonda su un dialogo tra processi fotografici antichi e tecnologie contemporanee: metodologie storiche, lavorazioni artigianali e sperimentazioni visive avanzate convivono in un unico linguaggio, dove controllo tecnico e ricerca estetica sono parte integrante del risultato.",
-          "en": "The project is based on a dialogue between ancient photographic processes and contemporary technologies: historical methodologies, craftsmanship and advanced visual experimentation coexist in a single language, where technical control and aesthetic research are an integral part of the result."
+          "en": "The project is based on a dialogue between ancient photographic processes and contemporary technologies: historical methodologies, craftsmanship and advanced visual experimentation coexist in a single language, where technical control and aesthetic research are an integral part of the result.",
+          "align": "center"
         },
         {
           "it": "Ogni intervento è su misura: dall’ideazione allo scatto, fino alla stampa finale, l’opera è concepita per abitare uno spazio e riflettere l’identità del suo proprietario. Non semplice fotografia, ma un ritratto monumentale della propria storia di mare, tradotto in linguaggio artistico e precisione tecnica.",
-          "en": "Each project is tailor-made: from conception to shooting, right through to the final print, the work is designed to inhabit a space and reflect the identity of its owner. Not just a simple photograph, but a monumental portrait of one's own history of the sea, translated into artistic language and technical precision."
-        },
-        {
-          "it": "",
-          "en": ""
+          "en": "Each project is tailor-made: from conception to shooting, right through to the final print, the work is designed to inhabit a space and reflect the identity of its owner. Not just a simple photograph, but a monumental portrait of one's own history of the sea, translated into artistic language and technical precision.",
+          "align": "center"
         }
       ],
       "gallery": [
@@ -345,11 +348,13 @@
       },
       "title": {
         "it": "Mare temperat, argentum aeternat",
-        "en": "Mare temperat, argentum aeternat"
+        "en": "Mare temperat, argentum aeternat",
+        "align": "center"
       },
       "lead": {
         "it": "Frammenti di luce, sospesi nel tempo.",
-        "en": "Fragments of light, suspended in time."
+        "en": "Fragments of light, suspended in time.",
+        "align": "center"
       },
       "items": [
         {
@@ -416,7 +421,9 @@
       "homeLabel": {
         "it": "Home",
         "en": "Home"
-      }
+      },
+      "showWhatsApp": true,
+      "whatsappNumber": "+39123456789"
     }
   },
   "offer": {
@@ -631,7 +638,9 @@
           }
         ]
       }
-    ]
+    ],
+    "locked": true,
+    "passwordHash": "2a7f3c6d03c8b41405bcab0962a90c16e0a864a0e6d7b6232ec4e820ee9e9355"
   },
   "events": [
     {
