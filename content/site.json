@@ -97,7 +97,8 @@
         "it": "Scorri",
         "en": "Scroll"
       },
-      "logoPlacement": "top"
+      "logoPlacement": "top",
+      "stickyLogo": true
     },
     "operaViva": {
       "kicker": {
