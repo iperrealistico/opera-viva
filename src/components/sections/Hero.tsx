@@ -43,21 +43,16 @@ export default function Hero({ content }: { content: SiteContent }) {
             </div>
 
             {/* Content & Logo */}
-            {showLogo && hero.logoPlacement === 'top' && (
-                <div className={`absolute left-0 w-full flex justify-center pt-8 z-50 ${hero.stickyLogo ? 'sticky top-0 bg-gradient-to-b from-black/80 to-transparent pb-4' : ''}`}>
-                    <div className="w-32 md:w-48 lg:w-56 opacity-90 drop-shadow-2xl transition-all">
+            {showLogo && (
+                <div className={`absolute inset-0 z-50 pointer-events-none p-6 md:p-12 flex ${getLogoAlignmentClasses(hero.logoPlacement || 'center')
+                    }`}>
+                    <div className="w-48 md:w-64 lg:w-80 opacity-90 drop-shadow-2xl pointer-events-auto transition-all">
                         <img src="/logo.png" alt="Opera Viva Logo" className="w-full h-auto" />
                     </div>
                 </div>
             )}
 
             <div className="relative z-10 flex flex-col items-center justify-center h-full w-full gap-8 max-w-4xl px-6 animate-fade-in-up flex-1">
-                {/* Logo centered */}
-                {showLogo && (!hero.logoPlacement || hero.logoPlacement === 'center') && (
-                    <div className={`w-56 md:w-80 lg:w-[420px] opacity-90 drop-shadow-2xl transition-all ${hero.stickyLogo ? 'sticky top-12 z-50' : ''}`}>
-                        <img src="/logo.png" alt="Opera Viva Logo" className="w-full h-auto" />
-                    </div>
-                )}
 
                 {/* Main Title Removed as per request */}
 
@@ -89,4 +84,20 @@ export default function Hero({ content }: { content: SiteContent }) {
             `}</style>
         </section>
     );
+}
+
+function getLogoAlignmentClasses(placement: string) {
+    switch (placement) {
+        case 'top-left': return 'justify-start items-start';
+        case 'top-center': return 'justify-center items-start';
+        case 'top-right': return 'justify-end items-start';
+        case 'center-left': return 'justify-start items-center';
+        case 'center-right': return 'justify-end items-center';
+        case 'bottom-left': return 'justify-start items-end';
+        case 'bottom-center': return 'justify-center items-end';
+        case 'bottom-right': return 'justify-end items-end';
+        case 'top': return 'justify-center items-start'; // Fallback for migrated content
+        case 'center':
+        default: return 'justify-center items-center';
+    }
 }

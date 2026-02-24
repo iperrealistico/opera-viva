@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { SiteContent, getLocalizedValue } from '@/lib/content';
 import Link from 'next/link';
+import useEmblaCarousel from 'embla-carousel-react';
 
 export default function TecnicheView({ content }: { content: SiteContent }) {
     const { locale } = useLanguage();
@@ -132,9 +133,13 @@ export default function TecnicheView({ content }: { content: SiteContent }) {
                             idx % 2 !== 0 && "techSection__grid--flip"
                         )}>
                             <div className="techSection__media techAnim" data-tech-anim>
-                                <div className="techMedia relative border border-[color-mix(in_oklab,var(--border)_75%,transparent)] overflow-hidden bg-[color-mix(in_oklab,var(--surface)_82%,transparent)]" style={{ borderRadius: 'var(--r-ui)' }}>
-                                    <img src={section.image} alt={getLocalizedValue(section.title, locale)} className="w-full h-auto block" />
-                                </div>
+                                {section.images && section.images.length > 1 ? (
+                                    <TechSlider images={section.images} altPrefix={getLocalizedValue(section.title, locale)} />
+                                ) : (
+                                    <div className="techMedia relative border border-[color-mix(in_oklab,var(--border)_75%,transparent)] overflow-hidden bg-[color-mix(in_oklab,var(--surface)_82%,transparent)]" style={{ borderRadius: 'var(--r-ui)' }}>
+                                        <img src={section.images?.length === 1 ? section.images[0].src : section.image} alt={section.images?.length === 1 ? section.images[0].alt : getLocalizedValue(section.title, locale)} className="w-full h-auto block" />
+                                    </div>
+                                )}
                             </div>
                             <div className="techSection__copy">
                                 <h2 className="techSection__title techAnim font-[var(--serif)] tracking-[0.02em] mb-3 text-[clamp(1.4rem,2.2vw,2.1rem)]" data-tech-anim>
@@ -156,4 +161,68 @@ export default function TecnicheView({ content }: { content: SiteContent }) {
 
 function cn(...inputs: any[]) {
     return inputs.filter(Boolean).join(' ');
+}
+
+function TechSlider({ images, altPrefix }: { images: Array<{ src: string, alt: string }>, altPrefix: string }) {
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start' });
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+    const onInit = useCallback((emblaApi: any) => {
+        setScrollSnaps(emblaApi.scrollSnapList());
+    }, []);
+
+    const onSelect = useCallback((emblaApi: any) => {
+        setSelectedIndex(emblaApi.selectedScrollSnap());
+    }, []);
+
+    useEffect(() => {
+        if (!emblaApi) return;
+        onInit(emblaApi);
+        onSelect(emblaApi);
+        emblaApi.on('reInit', onInit);
+        emblaApi.on('reInit', onSelect);
+        emblaApi.on('select', onSelect);
+    }, [emblaApi, onInit, onSelect]);
+
+    const scrollTo = useCallback((index: number) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
+
+    return (
+        <div className="techMedia relative border border-[color-mix(in_oklab,var(--border)_75%,transparent)] overflow-hidden bg-[color-mix(in_oklab,var(--surface)_82%,transparent)]" style={{ borderRadius: 'var(--r-ui)' }}>
+            <div className="hScroll overflow-hidden relative" style={{ borderRadius: 'var(--r-ui)' }}>
+                <div className="overflow-hidden" ref={emblaRef}>
+                    <div className="flex touch-pan-y">
+                        {images.map((item, idx) => (
+                            <div key={idx} className="flex-[0_0_100%] min-w-0 relative bg-[var(--bg-2)] border-r border-[color-mix(in_oklab,var(--border)_70%,transparent)] last:border-r-0 overflow-hidden">
+                                <img
+                                    className="w-full h-auto block object-cover"
+                                    src={item.src}
+                                    alt={item.alt || altPrefix}
+                                    onLoad={(e) => {
+                                        const parent = e.currentTarget.parentElement;
+                                        if (parent && !parent.classList.contains('is-loaded')) {
+                                            parent.classList.add('is-loaded');
+                                        }
+                                    }}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="hScroll__meta p-[0.85rem_1.05rem] flex justify-center items-center absolute bottom-0 w-full z-10 bg-gradient-to-t from-black/50 to-transparent">
+                    <div className="dots flex gap-[0.45rem]">
+                        {scrollSnaps.map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`dot w-[10px] h-[10px] rounded-full border border-white/50 bg-white/30 transition-all p-0 cursor-pointer ${idx === selectedIndex ? '!bg-[var(--accent)] !border-[color-mix(in_oklab,var(--accent)_70%,transparent)] scale-115' : ''}`}
+                                onClick={() => scrollTo(idx)}
+                                aria-label={`Go to slide ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }

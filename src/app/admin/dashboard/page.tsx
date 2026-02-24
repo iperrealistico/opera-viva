@@ -306,23 +306,17 @@ export default function AdminDashboard() {
                                                     onChange={(e) => update('sections.hero.logoPlacement', e.target.value)}
                                                     className="bg-[var(--bg)] border border-[var(--border)] rounded px-3 py-1.5 text-xs text-[var(--text)] focus:border-[var(--accent)] outline-none"
                                                 >
-                                                    <option value="center">Center Default</option>
-                                                    <option value="top">Top Header</option>
+                                                    <option value="top-left">Top Left</option>
+                                                    <option value="top-center">Top Center</option>
+                                                    <option value="top-right">Top Right</option>
+                                                    <option value="center-left">Center Left</option>
+                                                    <option value="center">Center</option>
+                                                    <option value="center-right">Center Right</option>
+                                                    <option value="bottom-left">Bottom Left</option>
+                                                    <option value="bottom-center">Bottom Center</option>
+                                                    <option value="bottom-right">Bottom Right</option>
                                                 </select>
                                             </div>
-
-                                            <label className="flex items-center gap-3 cursor-pointer select-none pl-8">
-                                                <div className={`w-5 h-5 rounded border border-[var(--border)] flex items-center justify-center transition-colors ${content.sections.hero.stickyLogo ? 'bg-[var(--accent)] border-[var(--accent)]' : 'bg-[var(--bg)]'}`}>
-                                                    {content.sections.hero.stickyLogo && <i className="fa-solid fa-check text-[var(--bg)] text-xs"></i>}
-                                                </div>
-                                                <input
-                                                    type="checkbox"
-                                                    checked={!!content.sections.hero.stickyLogo}
-                                                    onChange={(e) => update('sections.hero.stickyLogo', e.target.checked)}
-                                                    className="hidden"
-                                                />
-                                                <span className="micro text-[var(--muted)]">Sticky Logo (floats on scroll)</span>
-                                            </label>
                                         </>
                                     )}
                                 </div>
@@ -410,13 +404,6 @@ export default function AdminDashboard() {
                                     onUpload={handleUpload}
                                 />
                             </div>
-                        </AdminSection>
-
-                        {/* Cosa Facciamo */}
-                        <AdminSection title="Cosa Facciamo (Offer)" icon={<LayoutTemplate size={18} />}>
-                            <I18nField label="Title" value={content.sections.cosaFacciamo.title} onChange={(v) => update('sections.cosaFacciamo.title', v)} />
-                            <div className="h-4" />
-                            <I18nField label="Lead" value={content.sections.cosaFacciamo.lead} onChange={(v) => update('sections.cosaFacciamo.lead', v)} textarea />
                         </AdminSection>
 
                         {/* Tecniche - Moved to dedicated tab */}
@@ -536,14 +523,19 @@ export default function AdminDashboard() {
 
                                             <div className="grid grid-cols-1 gap-6">
                                                 <div>
-                                                    <label className="micro mb-2 block">Section Image</label>
-                                                    <div className="flex items-center gap-4">
-                                                        <img src={section.image || '/placeholder.jpg'} alt="Preview" className="h-24 w-40 object-cover border border-[var(--border)] rounded bg-[var(--bg-3)]" />
-                                                        <label className="btn bg-[var(--surface)] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest cursor-pointer flex items-center gap-2 hover:bg-[var(--bg-2)] border border-[var(--border)]">
-                                                            Upload Image
-                                                            <input type="file" className="hidden" onChange={(e) => handleNestedUpload(e, `techniques.sections.${idx}.image`)} />
-                                                        </label>
-                                                    </div>
+                                                    <label className="micro mb-2 block">Section Images (Gallery)</label>
+                                                    <SortableGallery
+                                                        items={section.images || (section.image ? [{ src: section.image, alt: section.title?.en || '' }] : [])}
+                                                        onUpdate={(items) => {
+                                                            if (items.length > 0) {
+                                                                update(`techniques.sections.${idx}.image`, items[0].src);
+                                                            } else {
+                                                                update(`techniques.sections.${idx}.image`, '');
+                                                            }
+                                                            update(`techniques.sections.${idx}.images`, items);
+                                                        }}
+                                                        onUpload={handleUpload}
+                                                    />
                                                 </div>
 
                                                 <I18nField label="Section Title" value={section.title} onChange={(v) => update(`techniques.sections.${idx}.title`, v)} />

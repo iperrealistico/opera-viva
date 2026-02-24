@@ -34,7 +34,8 @@ export interface SiteContent {
       videoAutoplay: boolean;
       mediaType: 'video' | 'image';
       showLogo: boolean;
-      logoPlacement?: 'center' | 'top';
+      logoPlacement?: 'top-left' | 'top-center' | 'top-right' | 'center-left' | 'center' | 'center-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+      /* Deprecated sticky behavior */
       stickyLogo?: boolean;
       backgroundImage: string;
       title: LocalizedString;
@@ -54,18 +55,8 @@ export interface SiteContent {
       paragraphs: LocalizedString[];
       gallery: Array<{ src: string; alt: string }>;
     };
-    cosaFacciamo: {
-      kicker: LocalizedString;
-      title: LocalizedString;
-      lead: LocalizedString;
-      cta: { label: LocalizedString; href: string };
-      items: Array<{
-        id: string;
-        icon: string;
-        title: LocalizedString;
-        text: LocalizedString;
-      }>;
-    };
+    /* Deprecated unused section */
+    cosaFacciamo?: any;
     comeLoFacciamo: {
       kicker: LocalizedString;
       title: LocalizedString;
@@ -125,6 +116,7 @@ export interface SiteContent {
     sections: Array<{
       id: string;
       image: string;
+      images?: Array<{ src: string; alt: string }>;
       title: LocalizedString;
       paragraphs: LocalizedString[];
     }>;
