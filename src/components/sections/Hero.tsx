@@ -60,7 +60,7 @@ export default function Hero({ content }: { content: SiteContent }) {
             </div>
 
             {/* Scroll Indicator */}
-            <div className="absolute bottom-12 flex flex-col items-center gap-4 animate-bounce hover:opacity-100 transition-opacity opacity-60 cursor-pointer" onClick={() => {
+            <div className="absolute bottom-12 flex flex-col items-center gap-4 animate-bounce hover:opacity-100 transition-opacity opacity-60 cursor-pointer z-30 hover:scale-110" onClick={() => {
                 const operaVivaSection = document.getElementById('opera-viva');
                 if (operaVivaSection) operaVivaSection.scrollIntoView({ behavior: 'smooth' });
             }}>
