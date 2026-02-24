@@ -640,7 +640,7 @@
         ]
       }
     ],
-    "locked": false,
+    "locked": true,
     "passwordHash": "2a7f3c6d03c8b41405bcab0962a90c16e0a864a0e6d7b6232ec4e820ee9e9355"
   },
   "events": [
