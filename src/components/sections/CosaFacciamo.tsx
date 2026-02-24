@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { SiteContent, getLocalizedValue } from '@/lib/content';
+import { SiteContent, getLocalizedValue, getAlignment } from '@/lib/content';
 import Link from 'next/link';
 
 export default function CosaFacciamo({ content }: { content: SiteContent }) {
@@ -13,9 +13,9 @@ export default function CosaFacciamo({ content }: { content: SiteContent }) {
         <section id="cosa-facciamo" className="section py-[var(--s-6)]" aria-label="Cosa facciamo">
             <div className="wrap">
                 <div className="reveal">
-                    <p className="kicker">{getLocalizedValue(data.kicker, locale)}</p>
-                    <h2 className="h2">{getLocalizedValue(data.title, locale)}</h2>
-                    <p className="lead" style={{ maxWidth: '72ch' }}>
+                    <p className="kicker" style={{ textAlign: getAlignment(data.kicker) }}>{getLocalizedValue(data.kicker, locale)}</p>
+                    <h2 className="h2" style={{ textAlign: getAlignment(data.title) }}>{getLocalizedValue(data.title, locale)}</h2>
+                    <p className="lead" style={{ maxWidth: '72ch', textAlign: getAlignment(data.lead) }}>
                         {getLocalizedValue(data.lead, locale)}
                     </p>
 

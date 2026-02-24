@@ -283,7 +283,7 @@ export default function AdminDashboard() {
                                         <option value="video">Video</option>
                                     </select>
                                 </div>
-                                <div className="flex items-center h-full pt-6">
+                                <div className="flex flex-col gap-4 pt-2">
                                     <label className="flex items-center gap-3 cursor-pointer select-none">
                                         <div className={`w-5 h-5 rounded border border-[var(--border)] flex items-center justify-center transition-colors ${content.sections.hero.showLogo !== false ? 'bg-[var(--accent)] border-[var(--accent)]' : 'bg-[var(--bg)]'}`}>
                                             {content.sections.hero.showLogo !== false && <i className="fa-solid fa-check text-[var(--bg)] text-xs"></i>}
@@ -296,6 +296,35 @@ export default function AdminDashboard() {
                                         />
                                         <span className="micro">Show Logo Overlay</span>
                                     </label>
+
+                                    {content.sections.hero.showLogo !== false && (
+                                        <>
+                                            <div className="flex items-center gap-4 pl-8">
+                                                <label className="micro text-[var(--muted)]">Placement:</label>
+                                                <select
+                                                    value={content.sections.hero.logoPlacement || 'center'}
+                                                    onChange={(e) => update('sections.hero.logoPlacement', e.target.value)}
+                                                    className="bg-[var(--bg)] border border-[var(--border)] rounded px-3 py-1.5 text-xs text-[var(--text)] focus:border-[var(--accent)] outline-none"
+                                                >
+                                                    <option value="center">Center Default</option>
+                                                    <option value="top">Top Header</option>
+                                                </select>
+                                            </div>
+
+                                            <label className="flex items-center gap-3 cursor-pointer select-none pl-8">
+                                                <div className={`w-5 h-5 rounded border border-[var(--border)] flex items-center justify-center transition-colors ${content.sections.hero.stickyLogo ? 'bg-[var(--accent)] border-[var(--accent)]' : 'bg-[var(--bg)]'}`}>
+                                                    {content.sections.hero.stickyLogo && <i className="fa-solid fa-check text-[var(--bg)] text-xs"></i>}
+                                                </div>
+                                                <input
+                                                    type="checkbox"
+                                                    checked={!!content.sections.hero.stickyLogo}
+                                                    onChange={(e) => update('sections.hero.stickyLogo', e.target.checked)}
+                                                    className="hidden"
+                                                />
+                                                <span className="micro text-[var(--muted)]">Sticky Logo (floats on scroll)</span>
+                                            </label>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                             <div className="mb-6">
@@ -326,16 +355,29 @@ export default function AdminDashboard() {
                             <div className="h-4" />
                             <I18nField label="Lead Text" value={content.sections.operaViva.lead} onChange={(v) => update('sections.operaViva.lead', v)} textarea />
                             <div className="h-6" />
-                            <label className="micro mb-2 block">Paragraphs</label>
+                            <div className="flex items-center justify-between mb-2">
+                                <label className="micro">Paragraphs</label>
+                                <button onClick={() => {
+                                    const newPara = { it: 'Nuovo paragrafo', en: 'New paragraph' };
+                                    const updatedParagraphs = [...content.sections.operaViva.paragraphs, newPara];
+                                    update('sections.operaViva.paragraphs', updatedParagraphs);
+                                }} className="text-[var(--accent)] text-xs font-bold uppercase tracking-wider hover:underline">+ Add Paragraph</button>
+                            </div>
                             <div className="space-y-4">
-                                {content.sections.operaViva.paragraphs.map((_, idx) => (
-                                    <I18nField
-                                        key={idx}
-                                        label={`Paragraph ${idx + 1}`}
-                                        value={content.sections.operaViva.paragraphs[idx]}
-                                        onChange={(v) => update(`sections.operaViva.paragraphs.${idx}`, v)}
-                                        textarea
-                                    />
+                                {content.sections.operaViva.paragraphs.map((para, idx) => (
+                                    <div key={idx} className="relative group">
+                                        <I18nField
+                                            label={`Paragraph ${idx + 1}`}
+                                            value={para}
+                                            onChange={(v) => update(`sections.operaViva.paragraphs.${idx}`, v)}
+                                            textarea
+                                        />
+                                        <button onClick={() => {
+                                            const updatedParagraphs = [...content.sections.operaViva.paragraphs];
+                                            updatedParagraphs.splice(idx, 1);
+                                            update('sections.operaViva.paragraphs', updatedParagraphs);
+                                        }} className="absolute top-0 right-0 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity text-xs p-1 font-bold" title="Remove Paragraph">✕</button>
+                                    </div>
                                 ))}
                             </div>
                         </AdminSection>
@@ -407,7 +449,54 @@ export default function AdminDashboard() {
                         {/* Techniques Page Content */}
                         <AdminSection title="/tecniche/ Page Content" icon={<Lightbulb size={18} />} defaultOpen>
                             <div className="mb-8 p-6 border border-[var(--border)] rounded-lg bg-[var(--bg-2)]/30">
-                                <h4 className="micro mb-4 text-[var(--accent)]">Page Header</h4>
+                                <h4 className="micro mb-4 text-[var(--accent)]">Page Settings (Client-Side Lock)</h4>
+                                <div className="flex flex-col gap-4 mb-6">
+                                    <label className="flex items-center gap-3 cursor-pointer select-none">
+                                        <div className={`w-5 h-5 rounded border border-[var(--border)] flex items-center justify-center transition-colors ${content.techniques.locked ? 'bg-[var(--accent)] border-[var(--accent)]' : 'bg-[var(--bg)]'}`}>
+                                            {content.techniques.locked && <i className="fa-solid fa-check text-[var(--bg)] text-xs"></i>}
+                                        </div>
+                                        <input type="checkbox" checked={!!content.techniques.locked} onChange={(e) => update('techniques.locked', e.target.checked)} className="hidden" />
+                                        <span className="micro">Lock Techniques Page</span>
+                                    </label>
+
+                                    {content.techniques.locked && (
+                                        <div className="flex flex-col gap-2 p-4 border border-[var(--border)] rounded bg-[var(--surface)]/30">
+                                            <label className="micro">Set New Password</label>
+                                            <div className="flex gap-2">
+                                                <input
+                                                    type="text"
+                                                    id="new-tech-password"
+                                                    placeholder="Enter new password..."
+                                                    className="flex-1 bg-[var(--bg)] border border-[var(--border)] rounded-lg px-4 py-2 text-sm focus:border-[var(--accent)] outline-none text-[var(--text)]"
+                                                />
+                                                <button
+                                                    onClick={async () => {
+                                                        const input = document.getElementById('new-tech-password') as HTMLInputElement;
+                                                        if (!input || !input.value) return;
+                                                        const encoder = new TextEncoder();
+                                                        const data = encoder.encode(input.value);
+                                                        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+                                                        const hashArray = Array.from(new Uint8Array(hashBuffer));
+                                                        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+                                                        update('techniques.passwordHash', hashHex);
+                                                        alert('Password hash updated! Click Publish to save.');
+                                                        input.value = '';
+                                                    }}
+                                                    className="btn bg-[var(--bg-2)] border border-[var(--border)] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-[var(--surface)] transition-colors"
+                                                >
+                                                    Set
+                                                </button>
+                                            </div>
+                                            {content.techniques.passwordHash ? (
+                                                <p className="text-xs text-[var(--ok)] mt-1"><i className="fa-solid fa-check mr-1"></i> A password is currently set.</p>
+                                            ) : (
+                                                <p className="text-xs text-red-500 mt-1"><i className="fa-solid fa-triangle-exclamation mr-1"></i> No password is set. Page might block users completely!</p>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+
+                                <h4 className="micro mb-4 text-[var(--accent)] mt-8">Page Header</h4>
                                 <I18nField label="Kicker" value={content.techniques.kicker} onChange={(v) => update('techniques.kicker', v)} />
                                 <div className="h-4" />
                                 <I18nField label="Title" value={content.techniques.title} onChange={(v) => update('techniques.title', v)} />
@@ -499,8 +588,38 @@ export default function AdminDashboard() {
                 {activeTab === 'global' && (
                     <AdminSection title="Contact Info" icon={<Globe size={18} />} defaultOpen>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <Field label="Email" value={content.sections.contatti.email} onChange={(v) => update('sections.contatti.email', v)} />
-                            <Field label="Instagram URL" value={content.sections.contatti.instagram} onChange={(v) => update('sections.contatti.instagram', v)} />
+                            <div className="flex flex-col gap-2">
+                                <label className="flex items-center gap-3 cursor-pointer select-none">
+                                    <div className={`w-5 h-5 rounded border border-[var(--border)] flex items-center justify-center transition-colors ${content.sections.contatti.showEmail !== false ? 'bg-[var(--accent)] border-[var(--accent)]' : 'bg-[var(--bg)]'}`}>
+                                        {content.sections.contatti.showEmail !== false && <i className="fa-solid fa-check text-[var(--bg)] text-xs"></i>}
+                                    </div>
+                                    <input type="checkbox" checked={content.sections.contatti.showEmail !== false} onChange={(e) => update('sections.contatti.showEmail', e.target.checked)} className="hidden" />
+                                    <span className="micro">Show Email</span>
+                                </label>
+                                <Field label="Email" value={content.sections.contatti.email} onChange={(v) => update('sections.contatti.email', v)} />
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <label className="flex items-center gap-3 cursor-pointer select-none">
+                                    <div className={`w-5 h-5 rounded border border-[var(--border)] flex items-center justify-center transition-colors ${content.sections.contatti.showInstagram !== false ? 'bg-[var(--accent)] border-[var(--accent)]' : 'bg-[var(--bg)]'}`}>
+                                        {content.sections.contatti.showInstagram !== false && <i className="fa-solid fa-check text-[var(--bg)] text-xs"></i>}
+                                    </div>
+                                    <input type="checkbox" checked={content.sections.contatti.showInstagram !== false} onChange={(e) => update('sections.contatti.showInstagram', e.target.checked)} className="hidden" />
+                                    <span className="micro">Show Instagram</span>
+                                </label>
+                                <Field label="Instagram URL" value={content.sections.contatti.instagram} onChange={(v) => update('sections.contatti.instagram', v)} />
+                            </div>
+                            <div className="flex flex-col gap-2 md:col-span-2">
+                                <label className="flex items-center gap-3 cursor-pointer select-none">
+                                    <div className={`w-5 h-5 rounded border border-[var(--border)] flex items-center justify-center transition-colors ${content.sections.contatti.showWhatsApp === true ? 'bg-[var(--accent)] border-[var(--accent)]' : 'bg-[var(--bg)]'}`}>
+                                        {content.sections.contatti.showWhatsApp === true && <i className="fa-solid fa-check text-[var(--bg)] text-xs"></i>}
+                                    </div>
+                                    <input type="checkbox" checked={content.sections.contatti.showWhatsApp === true} onChange={(e) => update('sections.contatti.showWhatsApp', e.target.checked)} className="hidden" />
+                                    <span className="micro">Show WhatsApp</span>
+                                </label>
+                                {content.sections.contatti.showWhatsApp && (
+                                    <Field label="WhatsApp Number (include country code, e.g. +39333...)" value={content.sections.contatti.whatsappNumber || ''} onChange={(v) => update('sections.contatti.whatsappNumber', v)} />
+                                )}
+                            </div>
                         </div>
                         <div className="h-4" />
                         <I18nField label="Button Label" value={(content as any).contactsSection.buttonLabel} onChange={(v) => update('contactsSection.buttonLabel', v)} />

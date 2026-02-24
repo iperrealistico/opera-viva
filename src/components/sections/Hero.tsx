@@ -42,16 +42,23 @@ export default function Hero({ content }: { content: SiteContent }) {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
             </div>
 
-            {/* Content */}
-            <div className="relative z-10 flex flex-col items-center gap-8 max-w-4xl px-6 animate-fade-in-up">
-                {/* Logo */}
-                {showLogo && (
-                    <div className="w-56 md:w-80 lg:w-[420px] opacity-90 drop-shadow-2xl">
+            {/* Content & Logo */}
+            {showLogo && hero.logoPlacement === 'top' && (
+                <div className={`absolute left-0 w-full flex justify-center pt-8 z-50 ${hero.stickyLogo ? 'sticky top-0 bg-gradient-to-b from-black/80 to-transparent pb-4' : ''}`}>
+                    <div className="w-32 md:w-48 lg:w-56 opacity-90 drop-shadow-2xl transition-all">
+                        <img src="/logo.png" alt="Opera Viva Logo" className="w-full h-auto" />
+                    </div>
+                </div>
+            )}
+
+            <div className="relative z-10 flex flex-col items-center justify-center h-full w-full gap-8 max-w-4xl px-6 animate-fade-in-up flex-1">
+                {/* Logo centered */}
+                {showLogo && (!hero.logoPlacement || hero.logoPlacement === 'center') && (
+                    <div className={`w-56 md:w-80 lg:w-[420px] opacity-90 drop-shadow-2xl transition-all ${hero.stickyLogo ? 'sticky top-12 z-50' : ''}`}>
                         <img src="/logo.png" alt="Opera Viva Logo" className="w-full h-auto" />
                     </div>
                 )}
 
-                {/* Main Title */}
                 {/* Main Title Removed as per request */}
 
                 {/* Intro Text / Poem */}

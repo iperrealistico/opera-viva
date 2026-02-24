@@ -3,6 +3,7 @@ export type Locale = 'it' | 'en';
 export interface LocalizedString {
   it: string;
   en: string;
+  align?: string;
 }
 
 export interface SiteContent {
@@ -33,6 +34,8 @@ export interface SiteContent {
       videoAutoplay: boolean;
       mediaType: 'video' | 'image';
       showLogo: boolean;
+      logoPlacement?: 'center' | 'top';
+      stickyLogo?: boolean;
       backgroundImage: string;
       title: LocalizedString;
       subtitle: LocalizedString;
@@ -95,6 +98,10 @@ export interface SiteContent {
       cardLead: LocalizedString;
       email: string;
       instagram: string;
+      showEmail?: boolean;
+      showInstagram?: boolean;
+      showWhatsApp?: boolean;
+      whatsappNumber?: string;
       homeLabel: LocalizedString;
     };
   };
@@ -121,6 +128,8 @@ export interface SiteContent {
       title: LocalizedString;
       paragraphs: LocalizedString[];
     }>;
+    locked?: boolean;
+    passwordHash?: string;
   };
   login: {
     title: string;
@@ -153,4 +162,11 @@ export interface Event {
 export function getLocalizedValue(value: LocalizedString | string, locale: Locale): string {
   if (typeof value === 'string') return value;
   return value[locale] || value['it'];
+}
+
+export function getAlignment(value: LocalizedString | string | undefined | null): 'left' | 'center' | 'right' | 'justify' {
+  if (value && typeof value === 'object' && 'align' in value && value.align) {
+    return value.align as any;
+  }
+  return 'left';
 }

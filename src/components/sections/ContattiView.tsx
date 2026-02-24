@@ -40,48 +40,67 @@ export default function ContattiView({ content }: { content: SiteContent }) {
                     </div>
 
                     <div className="contactCard__right flex flex-wrap gap-3 items-center" aria-label="Azioni contatto" style={{ borderRadius: 'var(--r-ui)' }}>
-                        <button
-                            className="btn btn--primary relative flex items-center gap-2 px-5 py-3.5 rounded-full border border-[var(--border)] bg-[color-mix(in_oklab,var(--surface-2)_85%,transparent)] transition-all hover:translate-y-[-1px] min-w-[160px] justify-center"
-                            onClick={copyEmail}
-                            aria-label="Vedi email e copia"
-                        >
-                            <span className={cn(
-                                "btnBadge absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full bg-[color-mix(in_oklab,var(--bg)_82%,transparent)] border border-[var(--border)] rounded-full px-3 py-1.5 shadow-[0_22px_80px_var(--shadow)] flex items-center gap-2 transition-all text-[0.72em] font-[950] tracking-[0.1em] uppercase whitespace-nowrap z-20",
-                                copied ? "opacity-100 translate-y-[-12px]" : "opacity-0 translate-y-[-4px] pointer-events-none"
-                            )}>
-                                <i className="fa-solid fa-circle-check text-[var(--ok)]"></i>
-                                <span>{locale === 'en' ? "Copied" : "Copiata"}</span>
-                            </span>
+                        {data.showEmail !== false && (
+                            <button
+                                className="btn btn--primary relative flex items-center gap-2 px-5 py-3.5 rounded-full border border-[var(--border)] bg-[color-mix(in_oklab,var(--surface-2)_85%,transparent)] transition-all hover:translate-y-[-1px] min-w-[160px] justify-center"
+                                onClick={copyEmail}
+                                aria-label="Vedi email e copia"
+                            >
+                                <span className={cn(
+                                    "btnBadge absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full bg-[color-mix(in_oklab,var(--bg)_82%,transparent)] border border-[var(--border)] rounded-full px-3 py-1.5 shadow-[0_22px_80px_var(--shadow)] flex items-center gap-2 transition-all text-[0.72em] font-[950] tracking-[0.1em] uppercase whitespace-nowrap z-20",
+                                    copied ? "opacity-100 translate-y-[-12px]" : "opacity-0 translate-y-[-4px] pointer-events-none"
+                                )}>
+                                    <i className="fa-solid fa-circle-check text-[var(--ok)]"></i>
+                                    <span>{locale === 'en' ? "Copied" : "Copiata"}</span>
+                                </span>
 
-                            <div className="flex items-center gap-2.5">
-                                <i className="fa-solid fa-envelope"></i>
-                                {!copied ? (
-                                    <span className="font-bold">
-                                        {locale === 'en' ? "View email" : "Vedi email"}
-                                    </span>
-                                ) : (
-                                    <span className="font-black text-[var(--accent)] tracking-tighter">
-                                        {data.email}
-                                    </span>
-                                )}
-                            </div>
-                        </button>
+                                <div className="flex items-center gap-2.5">
+                                    <i className="fa-solid fa-envelope" aria-hidden="true"></i>
+                                    {!copied ? (
+                                        <span className="font-bold">
+                                            {locale === 'en' ? "View email" : "Vedi email"}
+                                        </span>
+                                    ) : (
+                                        <span className="font-black text-[var(--accent)] tracking-tighter">
+                                            {data.email}
+                                        </span>
+                                    )}
+                                </div>
+                            </button>
+                        )}
 
-                        <a
-                            className="btn btn--ghost flex items-center gap-2 px-5 py-3.5 rounded-full border border-[var(--border)] transition-all hover:translate-y-[-1px]"
-                            href={data.instagram}
-                            rel="noopener"
-                            target="_blank"
-                        >
-                            <i className="fa-brands fa-instagram"></i>
-                            <span>Instagram</span>
-                        </a>
+                        {data.showInstagram !== false && (
+                            <a
+                                className="btn btn--ghost flex items-center gap-2 px-5 py-3.5 rounded-full border border-[var(--border)] transition-all hover:translate-y-[-1px]"
+                                href={data.instagram}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                aria-label="Instagram"
+                            >
+                                <i className="fa-brands fa-instagram" aria-hidden="true"></i>
+                                <span>Instagram</span>
+                            </a>
+                        )}
+
+                        {data.showWhatsApp === true && data.whatsappNumber && (
+                            <a
+                                className="btn btn--ghost flex items-center gap-2 px-5 py-3.5 rounded-full border border-[var(--border)] transition-all hover:translate-y-[-1px]"
+                                href={`https://wa.me/${data.whatsappNumber.replace(/\D/g, '')}`}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                                aria-label="WhatsApp"
+                            >
+                                <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        )}
 
                         <Link
                             href={locale === 'en' ? "/en" : "/"}
                             className="btn btn--ghost flex items-center gap-2 px-5 py-3.5 rounded-full border border-[var(--border)] transition-all hover:translate-y-[-1px]"
+                            aria-label={getLocalizedValue(data.homeLabel, locale)}
                         >
-                            <i className="fa-solid fa-house"></i>
+                            <i className="fa-solid fa-house" aria-hidden="true"></i>
                             <span>{getLocalizedValue(data.homeLabel, locale)}</span>
                         </Link>
                     </div>

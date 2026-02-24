@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useCallback } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { SiteContent, getLocalizedValue } from '@/lib/content';
+import { SiteContent, getLocalizedValue, getAlignment } from '@/lib/content';
 import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
 import 'glightbox/dist/css/glightbox.min.css';
@@ -64,8 +64,10 @@ export default function ComeLoFacciamo({ content }: { content: SiteContent }) {
             <div className="wrap">
                 <div className="split grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-[var(--s-5)] items-start">
                     <div className="reveal">
-                        <h2 className="h2">{getLocalizedValue(data.title, locale)}</h2>
-                        <p className="lead" style={{ maxWidth: '72ch' }}>
+                        <h2 className="h2" style={{ textAlign: getAlignment(data.title) }}>
+                            {getLocalizedValue(data.title, locale)}
+                        </h2>
+                        <p className="lead" style={{ maxWidth: '72ch', textAlign: getAlignment(data.lead) }}>
                             {getLocalizedValue(data.lead, locale)}
                         </p>
 
