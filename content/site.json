@@ -646,25 +646,25 @@
   "events": [
     {
       "title": {
-        "it": "Mostra a Genova",
-        "en": "Exhibition in Genoa"
+        "it": "Mostra a Madonna di Campiglio",
+        "en": "Exhibition in Madonna di Campiglio"
       },
-      "date": "2026-05-20",
+      "date": "2026-12-12",
       "description": {
-        "it": "Esposizione dei lavori al Museo del Mare.",
-        "en": "Exhibition of works at the Sea Museum."
+        "it": "Esposizione del progetto Opera Viva.",
+        "en": "Exhibition of project Opera Viva."
       },
       "link": "https://example.com"
     },
     {
       "title": {
-        "it": "Incontro con l'autore",
-        "en": "Meet the artist"
+        "it": "Salone Nautico di Venezia",
+        "en": "Salone Nautico of Venezia"
       },
-      "date": "2026-06-15",
+      "date": "2026-05-27",
       "description": {
-        "it": "Presentazione del libro fotografico.",
-        "en": "Photo book presentation."
+        "it": "Esposizione del progetto Opera Viva.",
+        "en": "Exhibition of project Opera Viva."
       }
     }
   ],
