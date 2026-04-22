@@ -646,13 +646,13 @@
   "events": [
     {
       "title": {
-        "it": "Mostra a Madonna di Campiglio",
+        "it": "Esposizione a Madonna di Campiglio",
         "en": "Exhibition in Madonna di Campiglio"
       },
       "date": "2026-12-12",
       "description": {
-        "it": "Esposizione del progetto Opera Viva.",
-        "en": "Exhibition of project Opera Viva."
+        "it": "Esposizione del progetto fotografico Opera Viva allo Suisse Bar",
+        "en": "Exhibition of project Opera Viva photographic project at the Suisse Bar"
       },
       "link": "https://example.com"
     },
@@ -663,9 +663,21 @@
       },
       "date": "2026-05-27",
       "description": {
-        "it": "Esposizione del progetto Opera Viva.",
-        "en": "Exhibition of project Opera Viva."
+        "it": "Esposizione del progetto fotografico Opera Viva presso tesa 93",
+        "en": "Exhibition of project Opera Viva photography project at the tesa 93"
       }
+    },
+    {
+      "title": {
+        "it": "MYBA Charter Show",
+        "en": "MYBA Charter Show"
+      },
+      "date": "2026-04-27",
+      "description": {
+        "it": "Esposizione del progetto fotografico Opera Viva presso lo stand Valdettaro Group",
+        "en": "Exhibition of the Opera Viva photography project at the Valdettaro Group stand"
+      },
+      "link": ""
     }
   ],
   "eventsTimeline": {
