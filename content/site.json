@@ -654,7 +654,7 @@
         "it": "Esposizione del progetto fotografico Opera Viva allo Suisse Bar",
         "en": "Exhibition of project Opera Viva photographic project at the Suisse Bar"
       },
-      "link": "https://example.com"
+      "link": ""
     },
     {
       "title": {
@@ -673,6 +673,18 @@
         "en": "MYBA Charter Show"
       },
       "date": "2026-04-27",
+      "description": {
+        "it": "Esposizione del progetto fotografico Opera Viva presso lo stand Valdettaro Group",
+        "en": "Exhibition of the Opera Viva photography project at the Valdettaro Group stand"
+      },
+      "link": ""
+    },
+    {
+      "title": {
+        "it": "Fiera Nautica di Sardegna",
+        "en": "Fiera Nautica di Sardegna"
+      },
+      "date": "2026-05-07",
       "description": {
         "it": "Esposizione del progetto fotografico Opera Viva presso lo stand Valdettaro Group",
         "en": "Exhibition of the Opera Viva photography project at the Valdettaro Group stand"
