@@ -59,10 +59,10 @@
   },
   "sections": {
     "hero": {
-      "videoUrl": "https://www.youtube.com/watch?v=nSSJRcRtqpo",
+      "videoUrl": "https://youtube.com/shorts/Ytw52nT3u3o?feature=share",
       "videoStart": 8,
       "videoAutoplay": true,
-      "mediaType": "image",
+      "mediaType": "video",
       "showLogo": true,
       "backgroundImage": "/img/opera-viva-1.jpg",
       "title": {
