@@ -62,8 +62,8 @@
       "videoUrl": "https://youtu.be/hGr--znBvZU?si=JWagkhBKnIbTV1Af",
       "videoStart": 8,
       "videoAutoplay": true,
-      "mediaType": "video",
-      "showLogo": true,
+      "mediaType": "image",
+      "showLogo": false,
       "backgroundImage": "/img/opera-viva-1.jpg",
       "title": {
         "it": "Opera Viva",
