@@ -63,7 +63,7 @@
       "videoStart": 8,
       "videoAutoplay": true,
       "mediaType": "image",
-      "showLogo": false,
+      "showLogo": true,
       "backgroundImage": "/img/opera-viva-1.jpg",
       "title": {
         "it": "Opera Viva",
